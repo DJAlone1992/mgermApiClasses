@@ -1,0 +1,21 @@
+{
+    "name": "mgerm/apiclasses",
+    "description": "Classes to make MGERM api available",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mgerm\\Apiclasses\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Egor Ermilov",
+            "email": "egor.ermilov1992@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4"
+    }
+}
