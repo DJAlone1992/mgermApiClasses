@@ -2714,7 +2714,8 @@
     "stability-flags": {
         "symfony/serializer": 20,
         "symfony/property-access": 20,
-        "phpdocumentor/reflection-docblock": 20
+        "phpdocumentor/reflection-docblock": 20,
+        "phpunit/phpunit": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
