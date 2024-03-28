@@ -2,13 +2,25 @@
 
 namespace MgermApiClasses;
 
+use MgermApiClasses\Enum\ContactType;
+use MgermApiClasses\lib\BaseClass;
+
 /**
  * Класс пациента из MGERM
  */
 class Patient extends Person
 {
+    /**
+     * @var int|null|null
+     */
     private ?int $cardNumber = null;
+    /**
+     * @var int|null|null
+     */
     private ?int $cardYear = null;
+    /**
+     * @var string|null|null
+     */
     private ?string $phone = null;
 
     /**
@@ -51,39 +63,8 @@ class Patient extends Person
         return $this;
     }
 
-    /**
-     * createFromMgermResponse
-     * Создание экземпляра объекта из ответа MGERM
-     * @param  array $data
-     * @return static
-     */
-    public static function  createFromMgermResponse($data): static
-    {
-        $patient = new static();
-        $patient
-            ->setId($data['patientID'])
-            ->setLastName($data['patientLastName'])
-            ->setFirstName($data['patientFirstName'])
-            ->setBirthDay($data['patientBirthday'])
-            ->setSex($data['patientSex']);
 
-        if (isset($data['patientSecondName'])) {
-            $patient->setSecondName($data['patientSecondName']);
-        }
-        if (isset($data['patientCardNumber'])) {
-            $patient->setCardNumber($data['patientCardNumber']);
-        }
-        if (isset($data['patientCardYear'])) {
-            $patient->setCardYear($data['patientCardYear']);
-        }
-        return $patient;
-    }
 
-    /**
-     * createDummy
-     * Создание экземпляра объекта с тестовым наполнением параметров
-     * @return static
-     */
     public static function createDummy(): static
     {
         $patient = new static();
@@ -93,23 +74,15 @@ class Patient extends Person
             ->setPhone('+79998887766')
             ->setLastName('Фамилия пациента')
             ->setFirstName('Имя пациента')
-            ->setSecondName('Фамилия пациента')
+            ->setSecondName('Отчество пациента')
             ->setBirthDay('1991-01-01')
-            ->setSex(1);
+            ->setSex(1)
+            ->setId(1)
+            ->appendContactFactory(ContactType::Phone, '+7999888--66')
+            ->appendContactFactory(ContactType::DefaultEmail, 'patient@patient.ru')
+            ->appendContactFactory(ContactType::Email, 'add@patient.ru');
         return $patient;
     }
-    public function _toArray(): array
-    {
-        $data = parent::_toArray();
-        if ($this->cardNumber) {
-            $data['cardNumber'] = $this->cardNumber;
-        }
-        if ($this->cardYear) {
-            $data['cardYear'] = $this->cardYear;
-        }
-        return $data;
-    }
-
     /**
      * Get the value of phone
      */

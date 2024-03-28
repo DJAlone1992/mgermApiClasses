@@ -3,20 +3,59 @@
 namespace MgermApiClasses;
 
 use DateTime;
+use MgermApiClasses\Base\BaseClass;
+use MgermApiClasses\Enum\ContactType;
 use MgermApiClasses\Enum\Sex;
 
 /**
  * Супер-класс обозначающий человека
  */
-class Person
+abstract class Person extends BaseClass
 {
-    private ?int $id = null;
-    private string $lastName;
-    private string $firstName;
-    private ?string $secondName = null;
-    private ?Sex $sex = null;
-    private ?DateTime $birthDay = null;
 
+    /**
+     * @var string
+     */
+    private string $lastName;
+    /**
+     * @var string
+     */
+    private string $firstName;
+    /**
+     * @var string|null|null
+     */
+    private ?string $secondName = null;
+    /**
+     * @var Sex|null|null
+     */
+    private ?Sex $sex = null;
+    /**
+     * @var DateTime|null|null
+     */
+    private ?DateTime $birthDay = null;
+    /**
+     * @var Contact[]|null|array $contacts
+     */
+    private ?array $contacts = null;
+
+    public function addContact(Contact $contact): static
+    {
+        if (is_null($this->contacts)) {
+            $this->contacts = [];
+        }
+        $this->contacts[] = $contact;
+        return $this;
+    }
+
+    public function appendContactFactory(int|ContactType $contactType, string $value): static
+    {
+        $contact = new Contact();
+        $contact
+            ->setType($contactType)
+            ->setValue($value);
+        $this->contacts[] = $contact;
+        return $this;
+    }
     /**
      * Get the value of lastName
      */
@@ -127,47 +166,29 @@ class Person
         return $this->secondName;
     }
 
+
+
     /**
-     * Get the value of id
+     * Get $contacts
+     *
+     * @return  Contact[]
      */
-    public function getId()
+    public function getContacts(): ?array
     {
-        return $this->id;
+        return $this->contacts;
     }
 
     /**
-     * Set the value of id
+     * Set $contacts
+     *
+     * @param  Contact[]|null $contacts
      *
      * @return  self
      */
-    public function setId(int $id)
+    public function setContacts(array $contacts): static
     {
-        $this->id = $id;
+        $this->contacts = $contacts;
 
         return $this;
-    }
-
-    public function _toArray(): array
-    {
-        $data = [];
-        if ($this->id) {
-            $data['id'] = $this->id;
-        }
-        if ($this->lastName) {
-            $data['lastName'] = $this->lastName;
-        }
-        if ($this->firstName) {
-            $data['firstName'] = $this->firstName;
-        }
-        if ($this->secondName) {
-            $data['secondName'] = $this->secondName;
-        }
-        if ($this->sex) {
-            $data['sex'] = $this->sex->value;
-        }
-        if ($this->birthDay) {
-            $data['birthDay'] = $this->birthDay->format('Y-m-d');
-        }
-        return $data;
     }
 }

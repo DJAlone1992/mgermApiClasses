@@ -3,19 +3,40 @@
 namespace MgermApiClasses;
 
 use DateTime;
+use MgermApiClasses\Base\BaseClass;
 
 /**
  * Класс направления из MGERM
  */
-class Referral
+class Referral extends BaseClass
 {
-    private ?int $id = null;
+    /**
+     * @var DateTime|null|null
+     */
     private ?DateTime $referralDate = null;
+    /**
+     * @var DateTime|null|null
+     */
     private ?DateTime $referralTimeStart = null;
+    /**
+     * @var DateTime|null|null
+     */
     private ?DateTime $referralTimeEnd = null;
+    /**
+     * @var Patient
+     */
     private Patient $patient;
+    /**
+     * @var Doctor
+     */
     private Doctor $doctor;
+    /**
+     * @var Department
+     */
     private Department $department;
+    /**
+     * @var Hospital
+     */
     private Hospital $hospital;
 
     public function __construct()
@@ -25,6 +46,11 @@ class Referral
         $this->department = new Department();
         $this->hospital = new Hospital();
     }
+    /**
+     * getDepartment
+     *
+     * @return Department
+     */
     public function getDepartment(): Department
     {
         return $this->department;
@@ -34,7 +60,13 @@ class Referral
         $this->department->factory($id, $name);
         return $this;
     }
-    public function setDepartment(Department $department): static
+    /**
+     * setDepartment
+     *
+     * @param  array|Department $department
+     * @return self
+     */
+    public function setDepartment(array|Department $department): static
     {
         $this->department = $department;
         return $this;
@@ -131,31 +163,6 @@ class Referral
         return $this;
     }
     /**
-     * createFromMgermResponse
-     * Создание экземпляра объекта из ответа MGERM
-     * @param  array $data
-     * @return static
-     */
-    public static function createFromMgermResponse($data): static
-    {
-        $referral = new static();
-        $patient = Patient::createFromMgermResponse($data);
-        $doctor = Doctor::createFromMgermResponse($data);
-        $hospital = Hospital::createFromMgermResponse($data);
-
-        $referral
-            ->setId($data['referralRecordID'])
-            ->setPatient($patient)
-            ->setDoctor($doctor)
-            ->setHospital($hospital)
-            ->departmentFactory($data['departmentID'], $data['departmentName'])
-            ->setReferralDate($data['referralDate'])
-            ->setReferralTimeStart($data['referralTimeStart'])
-            ->setReferralTimeEnd($data['referralTimeEnd']);
-
-        return $referral;
-    }
-    /**
      * createDummy
      * Создание экземпляра объекта с тестовым наполнением параметров
      * @return static
@@ -177,58 +184,6 @@ class Referral
             ->setReferralTimeEnd('10:10');
 
         return $referral;
-    }
-
-    /**
-     * Get the value of id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set the value of id
-     *
-     * @return  self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    public function _toArray($noIndents = false): array
-    {
-        $result = [];
-        /** Данные пациента */
-        if ($this->patient) {
-            $result['patient'] = $this->patient->_toArray();
-        }
-        /** Данные направления */
-        if ($this->referralDate) {
-            $result['referralDate'] = $this->referralDate->format('Y-m-d');
-        }
-        if ($this->referralTimeStart) {
-            $result['referralTimeStart'] = $this->referralTimeStart->format('H:i:s');
-        }
-        if ($this->referralTimeEnd) {
-            $result['referralTimeEnd'] = $this->referralTimeEnd->format('H:i:s');
-        }
-        /** Данные подразделения */
-        if ($this->department) {
-            $result['department'] = $this->department->_toArray();
-        }
-        /** Данные врача */
-        if ($this->doctor) {
-            $result['doctor'] = $this->doctor->_toArray();
-        }
-        /** Данные клиники */
-        if ($this->hospital) {
-            $result['hospital'] = $this->hospital->_toArray();
-        }
-        return $result;
     }
 
     /**

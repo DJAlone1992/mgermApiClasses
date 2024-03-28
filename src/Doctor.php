@@ -7,7 +7,13 @@ namespace MgermApiClasses;
  */
 class Doctor extends Person
 {
+    /**
+     * @var Specialty
+     */
     private Specialty $specialty;
+    /**
+     * @var Department
+     */
     private Department $department;
 
     public function __construct()
@@ -53,38 +59,6 @@ class Doctor extends Person
     }
 
     /**
-     * createFromMgermResponse
-     * Создание экземпляра объекта из ответа MGERM
-     * @param  array $data
-     * @return static
-     */
-    public static function createFromMgermResponse($data): static
-    {
-        $doctor = new static();
-        $doctor
-            ->specialtyFactory($data['doctorSpecialtyID'], $data['doctorSpecialtyName'])
-            ->setLastName($data['doctorLastName'])
-            ->setId($data['doctorID'])
-            ->setFirstName($data['doctorFirstName']);
-
-        if (isset($data['doctorDepartmentID'])) {
-            $doctor->getDepartment()->setId($data['doctorDepartmentID']);
-        }
-        if (isset($data['doctorDepartmentName'])) {
-            $doctor->getDepartment()->setName($data['doctorDepartmentName']);
-        }
-        if (isset($data['doctorSecondName'])) {
-            $doctor->setSecondName($data['doctorSecondName']);
-        }
-        if (isset($data['doctorBirthday'])) {
-            $doctor->setBirthDay($data['doctorBirthday']);
-        }
-        if (isset($data['doctorSex'])) {
-            $doctor->setSex($data['doctorSex']);
-        }
-        return $doctor;
-    }
-    /**
      * createDummy
      * Создание экземпляра объекта с тестовым наполнением параметров
      * @return static
@@ -97,20 +71,10 @@ class Doctor extends Person
             ->specialtyFactory(2, 'Специальность врача')
             ->setLastName('Фамилия врача')
             ->setFirstName('Имя врача')
-            ->setSecondName('Фамилия врача')
+            ->setSecondName('Отчество врача')
             ->setBirthDay('1992-02-02')
-            ->setSex(1);
+            ->setSex(1)
+            ->setId(2);
         return $doctor;
-    }
-    public function _toArray(): array
-    {
-        $data = parent::_toArray();
-        if ($this->department) {
-            $data['department'] = $this->department->_toArray();
-        }
-        if ($this->specialty) {
-            $data['specialty'] = $this->specialty->_toArray();
-        }
-        return $data;
     }
 }

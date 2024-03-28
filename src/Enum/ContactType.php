@@ -1,4 +1,5 @@
 <?php
+
 namespace MgermApiClasses\Enum;
 
 /**
@@ -6,6 +7,8 @@ namespace MgermApiClasses\Enum;
  */
 enum ContactType: int
 {
-    case Phone = 1;
-    case Email = 2;
+    case MobilePhone = 1;
+    case Phone = 2;
+    case DefaultEmail = 3;
+    case Email = 4;
 }

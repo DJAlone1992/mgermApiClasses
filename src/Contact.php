@@ -2,11 +2,19 @@
 
 namespace MgermApiClasses;
 
+use MgermApiClasses\Base\BaseClass;
 use MgermApiClasses\Enum\ContactType;
 
-class Contact extends Person
+class Contact extends BaseClass
 {
+
+    /**
+     * @var string
+     */
     private string $value;
+    /**
+     * @var ContactType
+     */
     private ContactType $type;
 
     /**
@@ -42,10 +50,19 @@ class Contact extends Person
      *
      * @return  self
      */
-    public function setType(ContactType $type)
+    public function setType(int|ContactType $type)
     {
+        if (is_int($type)) {
+            $type = ContactType::from($type);
+        }
         $this->type = $type;
 
         return $this;
+    }
+    public static function createDummy(): static
+    {
+        $contact = new static();
+        $contact->setType(ContactType::MobilePhone, '+79998887711');
+        return $contact;
     }
 }
