@@ -49,6 +49,7 @@ class Serializer
         $this->serializer = new SymfonySerializer($normalizers, $encoders);
     }
     /**
+     * Преобразование объекта в массив для отправки в запросе
      * @param BaseClass $object
      *
      * @return array
@@ -61,6 +62,7 @@ class Serializer
     }
 
     /**
+     * Преобразование массива обратно в готовый класс
      * @param array $array
      * @param string $type
      *
@@ -72,5 +74,59 @@ class Serializer
         $context[AbstractNormalizer::OBJECT_TO_POPULATE] = $type;
         $object = $this->serializer->deserialize(json_encode($array), $type, JsonEncoder::FORMAT, $this->serializerContext);
         return $object;
+    }
+
+    /**
+     * Преобразование массива в массив без вложенности
+     * @param array $array
+     * @param string|null $prefix
+     *
+     * @return array
+     */
+    public function noIndents(array $array, string $prefix = null): array
+    {
+        $result = [];
+        foreach ($array as $key => $item) {
+            if (is_array($item)) {
+                $result = array_merge($result, $this->noIndents($item, $prefix . $key . '_'));
+            } else {
+                $result[$prefix . $key] = $item;
+            }
+        }
+        return $result;
+    }
+
+    /**
+     * Обратная функция к noIndents
+     * @param array $array
+     *
+     * @return array
+     */
+    public function reverseIndents(array $array): array
+    {
+        $seen = [];
+        $result = [];
+        foreach ($array as $key => $item) {
+            if (in_array($key, $seen)) {
+                continue;
+            }
+            if (strpos($key, '_') !== FALSE) {
+                $keys = explode('_', $key);
+                $inKey = $keys[0];
+                $subArray = [];
+                foreach ($array as $twoKey => $twoItem) {
+                    if (str_starts_with($twoKey, "{$inKey}_") !== FALSE) {
+                        $subKey = str_replace("{$inKey}_", '', $twoKey);
+                        $subArray[$subKey] = $twoItem;
+                        $seen[] = $twoKey;
+                    }
+                }
+                $result[$inKey] = $this->reverseIndents($subArray);
+                $seen[] = $key;
+            } else {
+                $result[$key] = $item;
+            }
+        }
+        return $result;
     }
 }

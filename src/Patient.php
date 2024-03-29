@@ -25,20 +25,20 @@ class Patient extends Person
 
 
     /**
-     * @return string|null
+     * @return int|null
      */
-    public function getCardNumber(): ?string
+    public function getCardNumber(): ?int
     {
         return $this->cardNumber;
     }
 
 
     /**
-     * @param string|null $cardNumber
+     * @param int|null $cardNumber
      *
      * @return static
      */
-    public function setCardNumber(?string $cardNumber): static
+    public function setCardNumber(?int $cardNumber): static
     {
         $this->cardNumber = $cardNumber;
 
@@ -47,20 +47,20 @@ class Patient extends Person
 
 
     /**
-     * @return string|null
+     * @return int|null
      */
-    public function getCardYear(): ?string
+    public function getCardYear(): ?int
     {
         return $this->cardYear;
     }
 
 
     /**
-     * @param string|null $cardYear
+     * @param int|null $cardYear
      *
      * @return static
      */
-    public function setCardYear(?string $cardYear): static
+    public function setCardYear(?int $cardYear): static
     {
         $this->cardYear = $cardYear;
 

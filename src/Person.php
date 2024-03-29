@@ -39,6 +39,10 @@ abstract class Person extends BaseClass
     private ?array $contacts = null;
 
     /**
+     * @var int
+     */
+    private int $contactsCount = 0;
+    /**
      * @param Contact|null $contact
      *
      * @return static
@@ -49,6 +53,7 @@ abstract class Person extends BaseClass
             $this->contacts = [];
         }
         $this->contacts[] = $contact;
+        $this->contactsCount++;
         return $this;
     }
 
@@ -64,10 +69,26 @@ abstract class Person extends BaseClass
         $contact
             ->setType($contactType)
             ->setValue($value);
-        $this->contacts[] = $contact;
+        $this->addContact($contact);
         return $this;
     }
-
+    /**
+     * @return int
+     */
+    public function getContactsCount(): int
+    {
+        return $this->contactsCount;
+    }
+    /**
+     * @param int $contactsCount
+     *
+     * @return static
+     */
+    public function setContactsCount(int $contactsCount): static
+    {
+        $this->contactsCount = $contactsCount;
+        return $this;
+    }
     /**
      * @return string|null
      */
