@@ -19,9 +19,9 @@
         "php": ">=7.4",
         "symfony/serializer": ">=5.4.x-dev",
         "symfony/property-access": ">=5.4.x-dev",
-        "phpdocumentor/reflection-docblock": "5.x-dev"
+        "phpdocumentor/reflection-docblock": ">=5.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "10.5.x-dev"
+        "phpunit/phpunit": ">=9.6.x-dev"
     }
 }
