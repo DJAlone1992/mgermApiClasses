@@ -5,10 +5,12 @@ namespace MgermApiClasses\Enum;
 /**
  * Перечисление для типов контактов
  */
-enum ContactType: int
+
+final class ContactType
 {
-    case MobilePhone = 1;
-    case Phone = 2;
-    case DefaultEmail = 3;
-    case Email = 4;
+    const MobilePhone = 1;
+    const Phone = 2;
+    const DefaultEmail = 3;
+    const Email = 4;
+    const Unknown = 0;
 }

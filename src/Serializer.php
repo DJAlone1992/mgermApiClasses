@@ -49,9 +49,8 @@ class Serializer
         $this->serializer = new SymfonySerializer($normalizers, $encoders);
     }
     /**
-     * prepareArray
+     * @param BaseClass $object
      *
-     * @param  BaseClass $object
      * @return array
      */
     public function prepareArray(BaseClass $object): array

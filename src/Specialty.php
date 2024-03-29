@@ -8,7 +8,7 @@ use MgermApiClasses\Base\IdNameClass;
 class Specialty extends IdNameClass
 {
 
-    public static function SelfFactory(int $id, string $name): static
+    public static function SelfFactory(?int $id, ?string $name): static
     {
         $specialty = new static();
         $specialty->setId($id)->setName($name);

@@ -14,21 +14,21 @@ abstract class Person extends BaseClass
 {
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $lastName;
+    private ?string $lastName;
     /**
-     * @var string
+     * @var string|null
      */
-    private string $firstName;
+    private ?string $firstName;
     /**
      * @var string|null|null
      */
     private ?string $secondName = null;
     /**
-     * @var Sex|null|null
+     * @var int|null
      */
-    private ?Sex $sex = null;
+    private ?int $sex = null;
     /**
      * @var DateTime|null|null
      */
@@ -38,7 +38,12 @@ abstract class Person extends BaseClass
      */
     private ?array $contacts = null;
 
-    public function addContact(Contact $contact): static
+    /**
+     * @param Contact|null $contact
+     *
+     * @return static
+     */
+    public function addContact(?Contact $contact): static
     {
         if (is_null($this->contacts)) {
             $this->contacts = [];
@@ -47,7 +52,13 @@ abstract class Person extends BaseClass
         return $this;
     }
 
-    public function appendContactFactory(int|ContactType $contactType, string $value): static
+    /**
+     * @param int|null $contactType
+     * @param string|null $value
+     *
+     * @return static
+     */
+    public function appendContactFactory(?int $contactType, ?string $value): static
     {
         $contact = new Contact();
         $contact
@@ -56,87 +67,97 @@ abstract class Person extends BaseClass
         $this->contacts[] = $contact;
         return $this;
     }
+
     /**
-     * Get the value of lastName
+     * @return string|null
      */
-    public function getLastName(): string
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
+
     /**
-     * Set the value of lastName
+     * @param string|null $lastName
      *
-     * @return  self
+     * @return static
      */
-    public function setLastName(string $lastName): static
+    public function setLastName(?string $lastName): static
     {
         $this->lastName = $lastName;
 
         return $this;
     }
 
+
     /**
-     * Set the value of firstName
+     * @param string|null $firstName
      *
-     * @return  self
+     * @return static
      */
-    public function setFirstName(string $firstName): static
+    public function setFirstName(?string $firstName): static
     {
         $this->firstName = $firstName;
 
         return $this;
     }
 
+
     /**
-     * Set the value of secondName
+     * @param string|null $secondName
      *
-     * @return  self
+     * @return static
      */
-    public function setSecondName(string $secondName): static
+    public function setSecondName(?string $secondName): static
     {
         $this->secondName = $secondName;
 
         return $this;
     }
 
+
     /**
-     * Get the value of sex
+     * @return int|null
      */
-    public function getSex(): ?Sex
+    public function getSex(): ?int
     {
         return $this->sex;
     }
 
+
+
     /**
-     * Set the value of sex
+     * @param int|null $sex
      *
-     * @return  self
+     * @return static
      */
-    public function setSex(int|Sex $sex)
+    public function setSex(?int $sex): static
     {
-        if (is_int($sex)) {
-            $sex = Sex::from($sex);
+        if (!is_null($sex) || $sex < 1 || $sex > 2) {
+            $sex = Sex::Unknown;
         }
         $this->sex = $sex;
 
         return $this;
     }
 
+
     /**
-     * Get the value of birthDay
+     * @return DateTime|null
      */
-    public function getBirthDay(): DateTime
+    public function getBirthDay(): ?DateTime
     {
         return $this->birthDay;
     }
 
+
+
     /**
-     * Set the value of birthDay
+     * @param null|string|int|DateTime $birthDay
      *
-     * @return  self
+     * @return static
      */
-    public function setBirthDay(string|int|DateTime $birthDay)
+    public function setBirthDay(null|string|int|DateTime $birthDay): static
     {
         if (is_string($birthDay)) {
             $birthDay = new DateTime($birthDay);
@@ -149,10 +170,11 @@ abstract class Person extends BaseClass
         return $this;
     }
 
+
     /**
-     * Get the value of firstName
+     * @return string|null
      */
-    public function getFirstName(): string
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
@@ -160,6 +182,9 @@ abstract class Person extends BaseClass
 
     /**
      * Get the value of secondName
+     */
+    /**
+     * @return string|null
      */
     public function getSecondName(): ?string
     {

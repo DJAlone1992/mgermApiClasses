@@ -19,60 +19,66 @@ class Hospital extends BaseClass
      */
     private ?string $phone = null;
 
+
     /**
-     * Get the value of name
+     * @return string|null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
+
     /**
-     * Set the value of name
+     * @param string|null $name
      *
-     * @return  self
+     * @return static
      */
-    public function setName($name)
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
+
     /**
-     * Get the value of address
+     * @return string|null
      */
-    public function getAddress()
+    public function getAddress(): ?string
     {
         return $this->address;
     }
 
+
     /**
-     * Set the value of address
+     * @param string|null $address
      *
-     * @return  self
+     * @return static
      */
-    public function setAddress($address)
+    public function setAddress(?string $address): static
     {
         $this->address = $address;
 
         return $this;
     }
 
+
     /**
-     * Get the value of phone
+     * @return string|null
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
+
     /**
-     * Set the value of phone
+     * @param string|null $phone
      *
-     * @return  self
+     * @return static
      */
-    public function setPhone($phone)
+    public function setPhone(?string $phone): static
     {
         $this->phone = $phone;
 

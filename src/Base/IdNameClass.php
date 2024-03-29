@@ -9,34 +9,32 @@ abstract class IdNameClass extends BaseClass
      */
     private ?string $name = null;
 
-
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return static
      */
-    public function setName(string $name): static
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
     /**
-     * @param int $id
-     * @param string $name
+     * @param int|null $id
+     * @param string|null $name
      *
      * @return static
      */
-    public function factory(int $id, string $name): static
+    public function factory(?int $id, ?string $name): static
     {
         $this->setId($id)->setName($name);
         return $this;
@@ -45,9 +43,9 @@ abstract class IdNameClass extends BaseClass
     /**
      * SelfFactory
      * Создание экземпляра объекта
-     * @param  int $id
-     * @param  string $name
+     * @param  int|null $id
+     * @param  string|null $name
      * @return static
      */
-    abstract public static function SelfFactory(int $id, string $name): static;
+    abstract public static function SelfFactory(?int $id, ?string $name): static;
 }

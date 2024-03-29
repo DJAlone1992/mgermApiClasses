@@ -9,51 +9,55 @@ class Contact extends BaseClass
 {
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $value;
+    private ?string $value;
     /**
-     * @var ContactType
+     * @var int|null
      */
-    private ContactType $type;
+    private ?int $type = ContactType::Unknown;
+
 
     /**
-     * Get the value of value
+     * @return string|null
      */
-    public function getValue(): string
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
+
     /**
-     * Set the value of value
+     * @param string|null $value
      *
-     * @return  self
+     * @return static
      */
-    public function setValue($value): static
+    public function setValue(?string $value): static
     {
         $this->value = $value;
 
         return $this;
     }
 
+
     /**
-     * Get the value of type
+     * @return int|null
      */
-    public function getType(): ContactType
+    public function getType(): ?int
     {
         return $this->type;
     }
 
+
     /**
-     * Set the value of type
+     * @param int|null $type
      *
-     * @return  self
+     * @return static
      */
-    public function setType(int|ContactType $type)
+    public function setType(?int $type): static
     {
-        if (is_int($type)) {
-            $type = ContactType::from($type);
+        if (!is_null($type) || $type < 1 || $type > 2) {
+            $type = ContactType::Unknown;
         }
         $this->type = $type;
 

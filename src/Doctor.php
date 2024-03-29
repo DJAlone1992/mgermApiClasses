@@ -8,52 +8,76 @@ namespace MgermApiClasses;
 class Doctor extends Person
 {
     /**
-     * @var Specialty
+     * @var Specialty|null
      */
-    private Specialty $specialty;
+    private ?Specialty $specialty;
     /**
-     * @var Department
+     * @var Department|null
      */
-    private Department $department;
+    private ?Department $department;
 
     public function __construct()
     {
         $this->specialty = new Specialty();
         $this->department = new Department();
     }
-    public function setSpecialty(Specialty $specialty): static
+    /**
+     * @param Specialty|null $specialty
+     *
+     * @return static
+     */
+    public function setSpecialty(?Specialty $specialty): static
     {
         $this->specialty = $specialty;
         return $this;
     }
-    public function setDepartment(Department $department): static
+    /**
+     * @param Department|null $department
+     *
+     * @return static
+     */
+    public function setDepartment(?Department $department): static
     {
         $this->department = $department;
         return $this;
     }
-    public function specialtyFactory(int $id, string $name): static
+    /**
+     * @param int|null $id
+     * @param string|null $name
+     *
+     * @return static
+     */
+    public function specialtyFactory(?int $id, ?string $name): static
     {
         $this->specialty->factory($id, $name);
         return $this;
     }
-    public function departmentFactory(int $id, string $name): static
+    /**
+     * @param int|null $id
+     * @param string|null $name
+     *
+     * @return static
+     */
+    public function departmentFactory(?int $id, ?string $name): static
     {
         $this->department->factory($id, $name);
         return $this;
     }
 
+
     /**
-     * Get the value of specialty
+     * @return Specialty|null
      */
-    public function getSpecialty(): Specialty
+    public function getSpecialty(): ?Specialty
     {
         return $this->specialty;
     }
 
+
     /**
-     * Get the value of department
+     * @return Department|null
      */
-    public function getDepartment(): Department
+    public function getDepartment(): ?Department
     {
         return $this->department;
     }

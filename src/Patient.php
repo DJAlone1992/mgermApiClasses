@@ -23,40 +23,44 @@ class Patient extends Person
      */
     private ?string $phone = null;
 
+
     /**
-     * Get the value of cardNumber
+     * @return string|null
      */
-    public function getCardNumber()
+    public function getCardNumber(): ?string
     {
         return $this->cardNumber;
     }
 
+
     /**
-     * Set the value of cardNumber
+     * @param string|null $cardNumber
      *
-     * @return  self
+     * @return static
      */
-    public function setCardNumber($cardNumber)
+    public function setCardNumber(?string $cardNumber): static
     {
         $this->cardNumber = $cardNumber;
 
         return $this;
     }
 
+
     /**
-     * Get the value of cardYear
+     * @return string|null
      */
-    public function getCardYear()
+    public function getCardYear(): ?string
     {
         return $this->cardYear;
     }
 
+
     /**
-     * Set the value of cardYear
+     * @param string|null $cardYear
      *
-     * @return  self
+     * @return static
      */
-    public function setCardYear($cardYear)
+    public function setCardYear(?string $cardYear): static
     {
         $this->cardYear = $cardYear;
 
@@ -83,20 +87,22 @@ class Patient extends Person
             ->appendContactFactory(ContactType::Email, 'add@patient.ru');
         return $patient;
     }
+
     /**
-     * Get the value of phone
+     * @return string|null
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
+
     /**
-     * Set the value of phone
+     * @param string|null $phone
      *
-     * @return  self
+     * @return static
      */
-    public function setPhone($phone)
+    public function setPhone(?string $phone): static
     {
 
         $this->phone = $phone;

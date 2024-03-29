@@ -23,21 +23,21 @@ class Referral extends BaseClass
      */
     private ?DateTime $referralTimeEnd = null;
     /**
-     * @var Patient
+     * @var Patient|null
      */
-    private Patient $patient;
+    private ?Patient $patient;
     /**
-     * @var Doctor
+     * @var Doctor|null
      */
-    private Doctor $doctor;
+    private ?Doctor $doctor;
     /**
-     * @var Department
+     * @var Department|null
      */
-    private Department $department;
+    private ?Department $department;
     /**
-     * @var Hospital
+     * @var Hospital|null
      */
-    private Hospital $hospital;
+    private ?Hospital $hospital;
 
     public function __construct()
     {
@@ -49,73 +49,91 @@ class Referral extends BaseClass
     /**
      * getDepartment
      *
-     * @return Department
+     * @return Department|null
      */
-    public function getDepartment(): Department
+    public function getDepartment(): ?Department
     {
         return $this->department;
     }
-    public function departmentFactory(int $id, string $name): static
+    /**
+     * @param int|null $id
+     * @param string|null $name
+     *
+     * @return static
+     */
+    public function departmentFactory(?int $id, ?string $name): static
     {
         $this->department->factory($id, $name);
         return $this;
     }
+
     /**
-     * setDepartment
+     * @param array|Department|null $department
      *
-     * @param  array|Department $department
-     * @return self
+     * @return static
      */
-    public function setDepartment(array|Department $department): static
+    public function setDepartment(array|Department|null $department): static
     {
         $this->department = $department;
         return $this;
     }
 
+
     /**
-     * Get the value of doctor
+     * @return Doctor|null
      */
-    public function getDoctor()
+    public function getDoctor(): ?Doctor
     {
         return $this->doctor;
     }
 
+
     /**
-     * Set the value of doctor
+     * @param Doctor|null $doctor
      *
-     * @return  self
+     * @return static
      */
-    public function setDoctor($doctor)
+    public function setDoctor(?Doctor $doctor): static
     {
         $this->doctor = $doctor;
 
         return $this;
     }
 
+
     /**
-     * Get the value of patient
+     * @return Patient|null
      */
-    public function getPatient()
+    public function getPatient(): ?Patient
     {
         return $this->patient;
     }
 
+
     /**
-     * Set the value of patient
+     * @param Patient|null $patient
      *
-     * @return  self
+     * @return static
      */
-    public function setPatient($patient)
+    public function setPatient(?Patient $patient): static
     {
         $this->patient = $patient;
 
         return $this;
     }
+    /**
+     * @return DateTime|null
+     */
     public function getReferralDate(): ?DateTime
     {
         return $this->referralDate;
     }
 
+    /**
+     * @param string|int|null|DateTime $referralDate
+     *
+     * @return static
+     */
     public function setReferralDate(string|int|null|DateTime $referralDate): static
     {
         if (is_string($referralDate)) {
@@ -129,11 +147,19 @@ class Referral extends BaseClass
         return $this;
     }
 
+    /**
+     * @return DateTime|null
+     */
     public function getReferralTimeStart(): ?DateTime
     {
         return $this->referralTimeStart;
     }
 
+    /**
+     * @param string|int|null|DateTime $referralTimeStart
+     *
+     * @return static
+     */
     public function setReferralTimeStart(string|int|null|DateTime $referralTimeStart): static
     {
         if (is_string($referralTimeStart)) {
@@ -146,11 +172,19 @@ class Referral extends BaseClass
         return $this;
     }
 
+    /**
+     * @return DateTime|null
+     */
     public function getReferralTimeEnd(): ?DateTime
     {
         return $this->referralTimeEnd;
     }
 
+    /**
+     * @param string|int|null|DateTime $referralTimeEnd
+     *
+     * @return static
+     */
     public function setReferralTimeEnd(string|int|null|DateTime $referralTimeEnd): static
     {
         if (is_string($referralTimeEnd)) {
@@ -186,20 +220,22 @@ class Referral extends BaseClass
         return $referral;
     }
 
+
     /**
-     * Get the value of hospital
+     * @return Hospital|null
      */
-    public function getHospital()
+    public function getHospital(): ?Hospital
     {
         return $this->hospital;
     }
 
+
     /**
-     * Set the value of hospital
+     * @param Hospital|null $hospital
      *
-     * @return  self
+     * @return static
      */
-    public function setHospital($hospital)
+    public function setHospital(?Hospital $hospital): static
     {
         $this->hospital = $hospital;
 

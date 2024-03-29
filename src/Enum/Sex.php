@@ -5,8 +5,9 @@ namespace MgermApiClasses\Enum;
 /**
  * Перечисление для пола в MGERM
  */
-enum Sex: int
+final class Sex
 {
-    case Male = 1;
-    case Female = 2;
+    const Male = 1;
+    const Female = 2;
+    const Unknown = 0;
 }
