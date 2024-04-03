@@ -2,32 +2,37 @@
 
 namespace MgermApiClasses\Complex;
 
+use MgermApiClasses\Base\BaseClass;
 use MgermApiClasses\Classes\Department;
 
-class ScheduledDepartment{
+class ScheduledDepartment extends BaseClass
+{
     /**
      * @var Department|null|null
      */
-    private ?Department $department=null;
+    private ?Department $department = null;
     /**
      * @var ScheduledDoctor[]|null|null
      */
     private ?array $doctors = null;
 
-/**
- * @param ScheduledDoctor $doctor
- *
- * @return static
- */
-public function appendDoctor(ScheduledDoctor $doctor):static{
-    if(is_null($this->doctors)){$this->doctors=[];}
-    $this->doctors[]=$doctor;
-    return $this;
-}
+    /**
+     * @param ScheduledDoctor $doctor
+     *
+     * @return static
+     */
+    public function appendDoctor(ScheduledDoctor $doctor): static
+    {
+        if (is_null($this->doctors)) {
+            $this->doctors = [];
+        }
+        $this->doctors[] = $doctor;
+        return $this;
+    }
     /**
      * @return ScheduledDoctor[]|null
      */
-    public function getDoctors():?array
+    public function getDoctors(): ?array
     {
         return $this->doctors;
     }
@@ -38,7 +43,7 @@ public function appendDoctor(ScheduledDoctor $doctor):static{
      *
      * @return static
      */
-    public function setDoctors(?array $doctors):static
+    public function setDoctors(?array $doctors): static
     {
         $this->doctors = $doctors;
 
@@ -49,7 +54,7 @@ public function appendDoctor(ScheduledDoctor $doctor):static{
     /**
      * @return Department|null
      */
-    public function getDepartment():?Department
+    public function getDepartment(): ?Department
     {
         return $this->department;
     }
@@ -60,10 +65,17 @@ public function appendDoctor(ScheduledDoctor $doctor):static{
      *
      * @return static
      */
-    public function setDepartment(?Department $department):static
+    public function setDepartment(?Department $department): static
     {
         $this->department = $department;
 
         return $this;
+    }
+
+    public static function createDummy(): static
+    {
+        $me = new static();
+        $me->setDepartment(Department::createDummy())->appendDoctor(ScheduledDoctor::createDummy());
+        return $me;
     }
 }

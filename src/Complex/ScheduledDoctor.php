@@ -2,11 +2,12 @@
 
 namespace MgermApiClasses\Complex;
 
+use MgermApiClasses\Base\BaseClass;
 use MgermApiClasses\Classes\Doctor;
 use MgermApiClasses\Classes\Schedule\Cell;
 use MgermApiClasses\Classes\Service;
 
-class ScheduledDoctor
+class ScheduledDoctor extends BaseClass
 {
     /**
      * @var Doctor|null|null
@@ -162,5 +163,13 @@ class ScheduledDoctor
         $this->doctor = $doctor;
 
         return $this;
+    }
+
+    public static function createDummy(): static
+    {
+        $me = new static();
+        $doctor = Doctor::createDummy();
+        $me->setDoctor($doctor)->appendCell(Cell::createDummy())->appendService(Service::createDummy());
+        return $me;
     }
 }

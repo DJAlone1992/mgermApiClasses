@@ -3,8 +3,9 @@
 namespace MgermApiClasses\Complex;
 
 use DateTime;
+use MgermApiClasses\Base\BaseClass;
 
-class DaySchedule
+class DaySchedule extends BaseClass
 {
     /**
      * @var DateTime|null|null
@@ -71,5 +72,12 @@ class DaySchedule
         $this->departments = $departments;
 
         return $this;
+    }
+
+    public static function createDummy(): static
+    {
+        $me = new static();
+        $me->setDate('2002-02-02')->appendDepartment(ScheduledDepartment::createDummy());
+        return $me;
     }
 }
