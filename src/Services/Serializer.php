@@ -1,6 +1,6 @@
 <?php
 
-namespace MgermApiClasses;
+namespace MgermApiClasses\Services;
 
 use MgermApiClasses\Base\BaseClass;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
@@ -24,7 +24,7 @@ class Serializer
 
     protected SymfonySerializer $serializer;
     protected array $serializerContext = [
-        AbstractNormalizer::IGNORED_ATTRIBUTES => ['serializer', 'serializerContext'],
+        AbstractNormalizer::IGNORED_ATTRIBUTES => ['serializer', 'serializerContext', 'fullName', 'lastNameWithInitials'],
         AbstractObjectNormalizer::SKIP_NULL_VALUES => true,
         AbstractObjectNormalizer::SKIP_UNINITIALIZED_VALUES => true,
         DateTimeNormalizer::FORMAT_KEY => 'Y-m-d H:i:s'
@@ -48,6 +48,7 @@ class Serializer
         ];
         $this->serializer = new SymfonySerializer($normalizers, $encoders);
     }
+
     /**
      * Преобразование объекта в массив для отправки в запросе
      * @param BaseClass $object

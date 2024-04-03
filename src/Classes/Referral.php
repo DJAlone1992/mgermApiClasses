@@ -1,27 +1,14 @@
 <?php
 
-namespace MgermApiClasses;
+namespace MgermApiClasses\Classes;
 
-use DateTime;
-use MgermApiClasses\Base\BaseClass;
+use MgermApiClasses\Base\DateTimeStartTimeEndClass;
 
 /**
  * Класс направления из MGERM
  */
-class Referral extends BaseClass
+class Referral extends DateTimeStartTimeEndClass
 {
-    /**
-     * @var DateTime|null|null
-     */
-    private ?DateTime $referralDate = null;
-    /**
-     * @var DateTime|null|null
-     */
-    private ?DateTime $referralTimeStart = null;
-    /**
-     * @var DateTime|null|null
-     */
-    private ?DateTime $referralTimeEnd = null;
     /**
      * @var Patient|null
      */
@@ -121,81 +108,7 @@ class Referral extends BaseClass
 
         return $this;
     }
-    /**
-     * @return DateTime|null
-     */
-    public function getReferralDate(): ?DateTime
-    {
-        return $this->referralDate;
-    }
 
-    /**
-     * @param string|int|null|DateTime $referralDate
-     *
-     * @return static
-     */
-    public function setReferralDate(string|int|null|DateTime $referralDate): static
-    {
-        if (is_string($referralDate)) {
-            $referralDate = new DateTime($referralDate);
-        }
-        if (is_int($referralDate)) {
-            $referralDate = new DateTime(date('Y-m-d', $referralDate));
-        }
-
-        $this->referralDate = $referralDate;
-        return $this;
-    }
-
-    /**
-     * @return DateTime|null
-     */
-    public function getReferralTimeStart(): ?DateTime
-    {
-        return $this->referralTimeStart;
-    }
-
-    /**
-     * @param string|int|null|DateTime $referralTimeStart
-     *
-     * @return static
-     */
-    public function setReferralTimeStart(string|int|null|DateTime $referralTimeStart): static
-    {
-        if (is_string($referralTimeStart)) {
-            $referralTimeStart = new DateTime($referralTimeStart);
-        }
-        if (is_int($referralTimeStart)) {
-            $referralTimeStart = new DateTime(date('Y-m-d', $referralTimeStart));
-        }
-        $this->referralTimeStart = $referralTimeStart;
-        return $this;
-    }
-
-    /**
-     * @return DateTime|null
-     */
-    public function getReferralTimeEnd(): ?DateTime
-    {
-        return $this->referralTimeEnd;
-    }
-
-    /**
-     * @param string|int|null|DateTime $referralTimeEnd
-     *
-     * @return static
-     */
-    public function setReferralTimeEnd(string|int|null|DateTime $referralTimeEnd): static
-    {
-        if (is_string($referralTimeEnd)) {
-            $referralTimeEnd = new DateTime($referralTimeEnd);
-        }
-        if (is_int($referralTimeEnd)) {
-            $referralTimeEnd = new DateTime(date('Y-m-d', $referralTimeEnd));
-        }
-        $this->referralTimeEnd = $referralTimeEnd;
-        return $this;
-    }
     /**
      * createDummy
      * Создание экземпляра объекта с тестовым наполнением параметров
@@ -213,9 +126,9 @@ class Referral extends BaseClass
             ->setDoctor($doctor)
             ->setHospital($hospital)
             ->departmentFactory(1, '[Отделение, куда направлен пациент]')
-            ->setReferralDate('1999-09-09')
-            ->setReferralTimeStart('09:09')
-            ->setReferralTimeEnd('10:10');
+            ->setDate('1999-09-09')
+            ->setTimeStart('09:09')
+            ->setTimeEnd('10:10');
 
         return $referral;
     }

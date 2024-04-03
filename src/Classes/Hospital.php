@@ -1,6 +1,6 @@
 <?php
 
-namespace MgermApiClasses;
+namespace MgermApiClasses\Classes;
 
 use MgermApiClasses\Base\BaseClass;
 

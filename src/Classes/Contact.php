@@ -1,6 +1,6 @@
 <?php
 
-namespace MgermApiClasses;
+namespace MgermApiClasses\Classes;
 
 use MgermApiClasses\Base\BaseClass;
 use MgermApiClasses\Enum\ContactType;
@@ -56,7 +56,7 @@ class Contact extends BaseClass
      */
     public function setType(?int $type): static
     {
-        if (!is_null($type) || $type < 1 || $type > 2) {
+        if (is_null($type) || $type < 1 || $type > 2) {
             $type = ContactType::Unknown;
         }
         $this->type = $type;

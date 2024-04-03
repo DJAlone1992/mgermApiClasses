@@ -1,6 +1,6 @@
 <?php
 
-namespace MgermApiClasses;
+namespace MgermApiClasses\Classes;
 
 use DateTime;
 use MgermApiClasses\Base\BaseClass;
@@ -154,7 +154,7 @@ abstract class Person extends BaseClass
      */
     public function setSex(?int $sex): static
     {
-        if (!is_null($sex) || $sex < 1 || $sex > 2) {
+        if (is_null($sex) || $sex < 1 || $sex > 2) {
             $sex = Sex::Unknown;
         }
         $this->sex = $sex;
@@ -236,5 +236,19 @@ abstract class Person extends BaseClass
         $this->contacts = $contacts;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullName(): string
+    {
+        return $this->getLastName() . ' ' . $this->getFirstName() . ' ' . $this->getSecondName();
+    }
+
+    public function getLastNameWithInitials(): string
+    {
+        return
+            $this->getLastName() . ' ' . mb_substr($this->getFirstName(), 0, 1) . '. ' . mb_substr($this->getSecondName(), 0, 1) . '.';
     }
 }
