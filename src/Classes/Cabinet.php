@@ -63,4 +63,25 @@ class Cabinet extends IdNameClass
 
         return $this;
     }
+
+
+    /**
+     * @return int|null
+     */
+    public function getNumber():?int
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param int|null $number
+     *
+     * @return static
+     */
+    public function setNumber(?int $number):static
+    {
+        $this->number = $number;
+
+        return $this;
+    }
 }
