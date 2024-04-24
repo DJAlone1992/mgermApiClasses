@@ -16,10 +16,16 @@ class Doctor extends Person
      */
     private ?Department $department;
 
+    /**
+     * @var Guid|null
+     */
+    private ?Guid $guid;
+
     public function __construct()
     {
         $this->specialty = new Specialty();
         $this->department = new Department();
+        $this->guid = new Guid();
     }
     /**
      * @param Specialty|null $specialty
@@ -63,6 +69,17 @@ class Doctor extends Person
         $this->department->factory($id, $name);
         return $this;
     }
+    /**
+     * @param int|null $id
+     * @param string|null $name
+     *
+     * @return static
+     */
+    public function guidFactory(?int $id, ?string $name): static
+    {
+        $this->guid->factory($id, $name);
+        return $this;
+    }
 
 
     /**
@@ -100,5 +117,24 @@ class Doctor extends Person
             ->setSex(1)
             ->setId(2);
         return $doctor;
+    }
+
+    /**
+     * @return Guid|null
+     */
+    public function getGuid(): ?Guid
+    {
+        return $this->guid;
+    }
+    /**
+     * @param Guid|null $guid
+     *
+     * @return static
+     */
+    public function setGuid(?Guid $guid): static
+    {
+        $this->guid = $guid;
+
+        return $this;
     }
 }

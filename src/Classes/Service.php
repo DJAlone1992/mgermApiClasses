@@ -7,45 +7,18 @@ use MgermApiClasses\Base\IdNameClass;
 class Service extends IdNameClass
 {
 
-    private int $wholePrice = 0;
-    private int $fractionalPrice = 0;
+    private int $price = 0;
     private ?string $code = null;
     private ?int $priceListId = 0;
 
-    public function getPrice(): float
+    public function getFloatPrice(): float
     {
-        return $this->wholePrice + ($this->fractionalPrice / 100);
+        return (float) round($this->price  / 100, 2, PHP_ROUND_HALF_DOWN);
     }
     public function setPrice(float $price): static
     {
         $price = round($price, 2, PHP_ROUND_HALF_DOWN);
-        $this->wholePrice = floor($price);
-        $this->fractionalPrice = ($price - $this->wholePrice) * 100;
-        return $this;
-    }
-
-    public function getWholePrice(): int
-    {
-        return $this->wholePrice;
-    }
-
-    public function setWholePrice(int $wholePrice): static
-    {
-        $this->wholePrice = $wholePrice;
-
-        return $this;
-    }
-
-
-    public function getFractionalPrice(): int
-    {
-        return $this->fractionalPrice;
-    }
-
-    public function setFractionalPrice(int $fractionalPrice): static
-    {
-        $this->fractionalPrice = $fractionalPrice;
-
+        $this->price = $price * 100;
         return $this;
     }
 

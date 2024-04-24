@@ -25,6 +25,14 @@ class Referral extends DateTimeStartTimeEndClass
      * @var Hospital|null
      */
     private ?Hospital $hospital;
+    /**
+     * @var Service|null
+     */
+    private ?Service $service;
+    /**
+     * @var Cabinet|null
+     */
+    private ?Cabinet $cabinet;
 
     public function __construct()
     {
@@ -32,6 +40,7 @@ class Referral extends DateTimeStartTimeEndClass
         $this->doctor = new Doctor();
         $this->department = new Department();
         $this->hospital = new Hospital();
+        $this->service = new Service();
     }
     /**
      * getDepartment
@@ -151,6 +160,47 @@ class Referral extends DateTimeStartTimeEndClass
     public function setHospital(?Hospital $hospital): static
     {
         $this->hospital = $hospital;
+
+        return $this;
+    }
+
+    /**
+     * Получение услуги по направлению
+     * @return Service|null
+     */
+    public function getService(): ?Service
+    {
+        return $this->service;
+    }
+    /**
+     * Установка услуги по направлению
+     * @param Service|null $service
+     *
+     * @return static
+     */
+    public function setService(?Service $service): static
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+    /**
+     * @return Cabinet|null
+     */
+    public function getCabinet(): ?Cabinet
+    {
+        return $this->cabinet;
+    }
+
+
+    /**
+     * @param Cabinet|null $cabinet
+     *
+     * @return static
+     */
+    public function setCabinet(?Cabinet $cabinet): static
+    {
+        $this->cabinet = $cabinet;
 
         return $this;
     }
