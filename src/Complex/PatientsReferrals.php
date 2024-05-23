@@ -93,9 +93,10 @@ class PatientsReferrals extends BaseClass
      */
     public function getFirstReferral(): Referral
     {
-        $minDateTime = $selected = null;
+        $minDateTime = new DateTime('+20 years');
+        $selected = null;
         foreach ($this->referrals as $referral) {
-            $refDateTime = new DateTime($referral->getDate() . ' ' . $referral->getTimeStart());
+            $refDateTime = new DateTime($referral->getDate()->format('Y-m-d') . ' ' . $referral->getTimeStart()->format('H:i:s'));
             if ($refDateTime < $minDateTime) {
                 $minDateTime = $refDateTime;
                 $selected = $referral;
