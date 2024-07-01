@@ -18,7 +18,7 @@ class DataSigner
     {
         $serialized = serialize($data);
         $timestamp = (new DateTime())->getTimestamp();
-        $salt = random_bytes(256);
+        $salt = self::__generateRandomString(256);
         $data['signTimestamp'] = $timestamp;
         $data['salt'] = $salt;
         $data['signature'] = self::_createSignature($serialized, $timestamp, $salt);
@@ -57,5 +57,22 @@ class DataSigner
     {
         $data = $salt . self::STATIC_SALT . $serializedData . self::STATIC_SALT . $timestamp . self::STATIC_SALT;
         return hash('sha256', $data);
+    }
+
+    /**
+     * Генерация произвольной строки
+     * @param int $length Длина
+     *
+     * @return string
+     */
+    private static function __generateRandomString(int $length = 256): string
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[random_int(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }
