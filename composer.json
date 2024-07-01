@@ -16,7 +16,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.2",
+        "php": "^7.2|>=8.1",
         "symfony/serializer": "5.4.x-dev",
         "symfony/property-access": "5.4.x-dev",
         "phpdocumentor/reflection-docblock": "5.3.0"
