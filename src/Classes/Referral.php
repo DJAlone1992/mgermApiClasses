@@ -41,6 +41,7 @@ class Referral extends DateTimeStartTimeEndClass
         $this->department = new Department();
         $this->hospital = new Hospital();
         $this->service = new Service();
+        $this->cabinet = new Cabinet();
     }
     /**
      * getDepartment
