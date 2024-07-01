@@ -38,11 +38,22 @@ class DataSigner
         $salt = $data['salt'];
         $signature =        $data['signature'];
         $clone = unserialize(serialize($data));
-        unset($clone['signTimestamp']);
-        unset($clone['salt']);
-        unset($clone['signature']);
+        self::cleanValidationData($clone);
         $serialized = serialize($clone);
         return self::_createSignature($serialized, $timestamp, $salt) == $signature;
+    }
+
+    /**
+     * Очистка валидации из массива педедачи информации
+     * @param array $data
+     *
+     * @return void
+     */
+    public static function cleanValidationData(array &$data): void
+    {
+        unset($data['signTimestamp']);
+        unset($data['salt']);
+        unset($data['signature']);
     }
 
     /**
