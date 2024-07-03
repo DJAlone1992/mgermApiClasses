@@ -66,7 +66,7 @@ class Contact extends BaseClass
     public static function createDummy(): static
     {
         $contact = new static();
-        $contact->setType(ContactType::MobilePhone, '+79998887711');
+        $contact->setType(ContactType::MobilePhone);
         return $contact;
     }
 }

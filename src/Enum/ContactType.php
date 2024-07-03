@@ -8,9 +8,9 @@ namespace MgermApiClasses\Enum;
 
 final class ContactType
 {
-    const MobilePhone = 1;
-    const Phone = 2;
-    const DefaultEmail = 3;
-    const Email = 4;
-    const Unknown = 0;
+    public const MobilePhone = 1;
+    public const Phone = 2;
+    public const DefaultEmail = 3;
+    public const Email = 4;
+    public const Unknown = 0;
 }
