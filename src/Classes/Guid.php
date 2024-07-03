@@ -6,12 +6,18 @@ use MgermApiClasses\Base\IdNameClass;
 
 class Guid extends IdNameClass
 {
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         return self::SelfFactory(1, '[Администратор]');
     }
 
-    public static function SelfFactory(?int $id, ?string $name): static
+    /**
+     * @return static
+     */
+    public static function SelfFactory(?int $id, ?string $name)
     {
         $me = new static();
         $me->factory($id, $name);

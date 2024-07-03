@@ -15,20 +15,29 @@ class Service extends IdNameClass
     {
         return (float) round($this->price  / 100, 2, PHP_ROUND_HALF_DOWN);
     }
-    public function setPrice(float $price): static
+    /**
+     * @return static
+     */
+    public function setPrice(float $price)
     {
         $price = round($price, 2, PHP_ROUND_HALF_DOWN);
         $this->price = $price * 100;
         return $this;
     }
 
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         $me = new static();
         $me->setId(1)->setName('[Услуга]')->setPrice('123.45');
         return $me;
     }
-    public static function    SelfFactory(?int $id, ?string $name): static
+    /**
+     * @return static
+     */
+    public static function    SelfFactory(?int $id, ?string $name)
     {
         $me = new static();
         $me->factory($id, $name);
@@ -50,7 +59,7 @@ class Service extends IdNameClass
      *
      * @return static
      */
-    public function setCode(?string $code): static
+    public function setCode(?string $code)
     {
         $this->code = $code;
 
@@ -72,7 +81,7 @@ class Service extends IdNameClass
      *
      * @return static
      */
-    public function setPriceListId(?int $priceListId): static
+    public function setPriceListId(?int $priceListId)
     {
         $this->priceListId = $priceListId;
 

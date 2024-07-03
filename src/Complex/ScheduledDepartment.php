@@ -21,7 +21,7 @@ class ScheduledDepartment extends BaseClass
      *
      * @return static
      */
-    public function appendDoctor(ScheduledDoctor $doctor): static
+    public function appendDoctor(ScheduledDoctor $doctor)
     {
         if (is_null($this->doctors)) {
             $this->doctors = [];
@@ -43,7 +43,7 @@ class ScheduledDepartment extends BaseClass
      *
      * @return static
      */
-    public function setDoctors(?array $doctors): static
+    public function setDoctors(?array $doctors)
     {
         $this->doctors = $doctors;
 
@@ -65,14 +65,17 @@ class ScheduledDepartment extends BaseClass
      *
      * @return static
      */
-    public function setDepartment(?Department $department): static
+    public function setDepartment(?Department $department)
     {
         $this->department = $department;
 
         return $this;
     }
 
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         $me = new static();
         $me->setDepartment(Department::createDummy())->appendDoctor(ScheduledDoctor::createDummy());

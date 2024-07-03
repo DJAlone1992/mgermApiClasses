@@ -28,7 +28,7 @@ abstract class DateTimeStartTimeEndClass extends DateClass
      *
      * @return static
      */
-    public function setTimeStart(string|int|null|DateTime $timeStart): static
+    public function setTimeStart($timeStart)
     {
         if (is_string($timeStart)) {
             $timeStart = new DateTime($timeStart);
@@ -53,7 +53,7 @@ abstract class DateTimeStartTimeEndClass extends DateClass
      *
      * @return static
      */
-    public function setTimeEnd(string|int|null|DateTime $timeEnd): static
+    public function setTimeEnd($timeEnd)
     {
         if (is_string($timeEnd)) {
             $timeEnd = new DateTime($timeEnd);

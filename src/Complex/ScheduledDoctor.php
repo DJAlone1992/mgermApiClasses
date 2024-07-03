@@ -35,7 +35,7 @@ class ScheduledDoctor extends BaseClass
      *
      * @return static
      */
-    public function appendService(Service $service): static
+    public function appendService(Service $service)
     {
         if (is_null($this->services)) {
             $this->services = [];
@@ -48,7 +48,7 @@ class ScheduledDoctor extends BaseClass
      *
      * @return static
      */
-    public function appendCell(Cell $cell): static
+    public function appendCell(Cell $cell)
     {
         if (is_null($this->cells)) {
             $this->cells = [];
@@ -71,7 +71,7 @@ class ScheduledDoctor extends BaseClass
      *
      * @return static
      */
-    public function setIntervalDuration(?int $intervalDuration): static
+    public function setIntervalDuration(?int $intervalDuration)
     {
         $this->intervalDuration = $intervalDuration;
 
@@ -92,7 +92,7 @@ class ScheduledDoctor extends BaseClass
      *
      * @return static
      */
-    public function setInterval(bool $interval): static
+    public function setInterval(bool $interval)
     {
         $this->interval = $interval;
 
@@ -114,7 +114,7 @@ class ScheduledDoctor extends BaseClass
      *
      * @return static
      */
-    public function setServices(?array $services): static
+    public function setServices(?array $services)
     {
         $this->services = $services;
 
@@ -136,7 +136,7 @@ class ScheduledDoctor extends BaseClass
      *
      * @return static
      */
-    public function setCells(?array $cells): static
+    public function setCells(?array $cells)
     {
         $this->cells = $cells;
 
@@ -158,14 +158,17 @@ class ScheduledDoctor extends BaseClass
      *
      * @return static
      */
-    public function setDoctor(?Doctor $doctor): static
+    public function setDoctor(?Doctor $doctor)
     {
         $this->doctor = $doctor;
 
         return $this;
     }
 
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         $me = new static();
         $doctor = Doctor::createDummy();

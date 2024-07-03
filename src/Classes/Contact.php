@@ -32,7 +32,7 @@ class Contact extends BaseClass
      *
      * @return static
      */
-    public function setValue(?string $value): static
+    public function setValue(?string $value)
     {
         $this->value = $value;
 
@@ -54,7 +54,7 @@ class Contact extends BaseClass
      *
      * @return static
      */
-    public function setType(?int $type): static
+    public function setType(?int $type)
     {
         if (is_null($type) || $type < 1 || $type > 2) {
             $type = ContactType::Unknown;
@@ -63,7 +63,10 @@ class Contact extends BaseClass
 
         return $this;
     }
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         $contact = new static();
         $contact->setType(ContactType::MobilePhone);

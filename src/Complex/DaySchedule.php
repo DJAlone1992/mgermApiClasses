@@ -28,7 +28,7 @@ class DaySchedule extends BaseClass
      *
      * @return static
      */
-    public function setDate(string|int|null|DateTime $date): static
+    public function setDate($date)
     {
         if (is_string($date)) {
             $date = new DateTime($date);
@@ -45,7 +45,7 @@ class DaySchedule extends BaseClass
      *
      * @return static
      */
-    public function appendDepartment(ScheduledDepartment $department): static
+    public function appendDepartment(ScheduledDepartment $department)
     {
         if (is_null($this->departments)) {
             $this->departments = [];
@@ -67,14 +67,17 @@ class DaySchedule extends BaseClass
      *
      * @return static
      */
-    public function setDepartments(?array $departments): static
+    public function setDepartments(?array $departments)
     {
         $this->departments = $departments;
 
         return $this;
     }
 
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         $me = new static();
         $me->setDate('2002-02-02')->appendDepartment(ScheduledDepartment::createDummy());

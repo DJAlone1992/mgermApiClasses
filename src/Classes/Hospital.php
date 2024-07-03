@@ -34,7 +34,7 @@ class Hospital extends BaseClass
      *
      * @return static
      */
-    public function setName(?string $name): static
+    public function setName(?string $name)
     {
         $this->name = $name;
 
@@ -56,7 +56,7 @@ class Hospital extends BaseClass
      *
      * @return static
      */
-    public function setAddress(?string $address): static
+    public function setAddress(?string $address)
     {
         $this->address = $address;
 
@@ -78,14 +78,17 @@ class Hospital extends BaseClass
      *
      * @return static
      */
-    public function setPhone(?string $phone): static
+    public function setPhone(?string $phone)
     {
         $this->phone = $phone;
 
         return $this;
     }
 
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         $hospital = new static();
         $hospital

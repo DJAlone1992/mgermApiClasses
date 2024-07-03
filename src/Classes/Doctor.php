@@ -32,7 +32,7 @@ class Doctor extends Person
      *
      * @return static
      */
-    public function setSpecialty(?Specialty $specialty): static
+    public function setSpecialty(?Specialty $specialty)
     {
         $this->specialty = $specialty;
         return $this;
@@ -42,7 +42,7 @@ class Doctor extends Person
      *
      * @return static
      */
-    public function setDepartment(?Department $department): static
+    public function setDepartment(?Department $department)
     {
         $this->department = $department;
         return $this;
@@ -53,7 +53,7 @@ class Doctor extends Person
      *
      * @return static
      */
-    public function specialtyFactory(?int $id, ?string $name): static
+    public function specialtyFactory(?int $id, ?string $name)
     {
         $this->specialty->factory($id, $name);
         return $this;
@@ -64,7 +64,7 @@ class Doctor extends Person
      *
      * @return static
      */
-    public function departmentFactory(?int $id, ?string $name): static
+    public function departmentFactory(?int $id, ?string $name)
     {
         $this->department->factory($id, $name);
         return $this;
@@ -75,7 +75,7 @@ class Doctor extends Person
      *
      * @return static
      */
-    public function guidFactory(?int $id, ?string $name): static
+    public function guidFactory(?int $id, ?string $name)
     {
         $this->guid->factory($id, $name);
         return $this;
@@ -104,7 +104,7 @@ class Doctor extends Person
      * Создание экземпляра объекта с тестовым наполнением параметров
      * @return static
      */
-    public static function createDummy(): static
+    public static function createDummy()
     {
         $doctor = new static();
         $doctor
@@ -131,7 +131,7 @@ class Doctor extends Person
      *
      * @return static
      */
-    public function setGuid(?Guid $guid): static
+    public function setGuid(?Guid $guid)
     {
         $this->guid = $guid;
 

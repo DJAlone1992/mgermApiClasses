@@ -41,8 +41,8 @@ class Serializer
             new BackedEnumNormalizer(),
             new ArrayDenormalizer(),
             new ObjectNormalizer(
-                propertyTypeExtractor: new PropertyInfoExtractor(
-                    typeExtractors: [new PhpDocExtractor(), new ReflectionExtractor()],
+                null, null, null, new PropertyInfoExtractor(
+                    [], [new PhpDocExtractor(), new ReflectionExtractor()],
                 ),
             ),
         ];
@@ -116,7 +116,7 @@ class Serializer
                 $inKey = $keys[0];
                 $subArray = [];
                 foreach ($array as $twoKey => $twoItem) {
-                    if (str_starts_with($twoKey, "{$inKey}_") !== FALSE) {
+                    if ((strncmp($twoKey, "{$inKey}_", strlen("{$inKey}_")) === 0) !== FALSE) {
                         $subKey = str_replace("{$inKey}_", '', $twoKey);
                         $subArray[$subKey] = $twoItem;
                         $seen[] = $twoKey;

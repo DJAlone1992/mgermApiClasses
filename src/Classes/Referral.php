@@ -58,7 +58,7 @@ class Referral extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function departmentFactory(?int $id, ?string $name): static
+    public function departmentFactory(?int $id, ?string $name)
     {
         $this->department->factory($id, $name);
         return $this;
@@ -69,7 +69,7 @@ class Referral extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function setDepartment(array|Department|null $department): static
+    public function setDepartment($department)
     {
         $this->department = $department;
         return $this;
@@ -90,7 +90,7 @@ class Referral extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function setDoctor(?Doctor $doctor): static
+    public function setDoctor(?Doctor $doctor)
     {
         $this->doctor = $doctor;
 
@@ -112,7 +112,7 @@ class Referral extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function setPatient(?Patient $patient): static
+    public function setPatient(?Patient $patient)
     {
         $this->patient = $patient;
 
@@ -124,7 +124,7 @@ class Referral extends DateTimeStartTimeEndClass
      * Создание экземпляра объекта с тестовым наполнением параметров
      * @return static
      */
-    public static function createDummy(): static
+    public static function createDummy()
     {
         $referral = new static();
         $patient = Patient::createDummy();
@@ -158,7 +158,7 @@ class Referral extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function setHospital(?Hospital $hospital): static
+    public function setHospital(?Hospital $hospital)
     {
         $this->hospital = $hospital;
 
@@ -179,7 +179,7 @@ class Referral extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function setService(?Service $service): static
+    public function setService(?Service $service)
     {
         $this->service = $service;
 
@@ -199,7 +199,7 @@ class Referral extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function setCabinet(?Cabinet $cabinet): static
+    public function setCabinet(?Cabinet $cabinet)
     {
         $this->cabinet = $cabinet;
 

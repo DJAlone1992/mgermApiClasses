@@ -38,7 +38,7 @@ class Patient extends Person
      *
      * @return static
      */
-    public function setCardNumber(?int $cardNumber): static
+    public function setCardNumber(?int $cardNumber)
     {
         $this->cardNumber = $cardNumber;
 
@@ -60,7 +60,7 @@ class Patient extends Person
      *
      * @return static
      */
-    public function setCardYear(?int $cardYear): static
+    public function setCardYear(?int $cardYear)
     {
         $this->cardYear = $cardYear;
 
@@ -69,7 +69,10 @@ class Patient extends Person
 
 
 
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         $patient = new static();
         $patient
@@ -102,7 +105,7 @@ class Patient extends Person
      *
      * @return static
      */
-    public function setPhone(?string $phone): static
+    public function setPhone(?string $phone)
     {
 
         $this->phone = $phone;
