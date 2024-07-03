@@ -9,7 +9,7 @@ abstract class DateClass extends BaseClass
     /**
      * @var DateTime|null|null
      */
-    private ?DateTime $date = null;
+    private $date;
     /**
      * @return DateTime|null
      */
@@ -23,7 +23,7 @@ abstract class DateClass extends BaseClass
      *
      * @return static
      */
-    public function setDate(string|int|null|DateTime $date): static
+    public function setDate($date)
     {
         if (is_string($date)) {
             $date = new DateTime($date);

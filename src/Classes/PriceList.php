@@ -9,22 +9,31 @@ class PriceList extends IdNameClass
     /**
      * @var Service[]
      */
-    private array $services = [];
+    private $services = [];
 
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         $me = new static();
         $me->factory(1, '[Прайс-лист]');
         return $me;
     }
-    public static function SelfFactory(?int $id, ?string $name): static
+    /**
+     * @return static
+     */
+    public static function SelfFactory(?int $id, ?string $name)
     {
         $me = new static();
         $me->factory($id, $name);
         return $me;
     }
 
-    public function appendService(Service $service): static
+    /**
+     * @return static
+     */
+    public function appendService(Service $service)
     {
         $this->services[] = $service->setPriceListId($this->getId());
         return $this;
@@ -41,7 +50,7 @@ class PriceList extends IdNameClass
      *
      * @return static
      */
-    public function setServices(array $services): static
+    public function setServices(array $services)
     {
         $this->services = $services;
 

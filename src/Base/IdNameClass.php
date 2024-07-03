@@ -7,7 +7,7 @@ abstract class IdNameClass extends BaseClass
     /**
      * @var string|null
      */
-    private ?string $name = null;
+    private $name;
 
     /**
      * @return string|null
@@ -22,7 +22,7 @@ abstract class IdNameClass extends BaseClass
      *
      * @return static
      */
-    public function setName(?string $name): static
+    public function setName(?string $name)
     {
         $this->name = $name;
 
@@ -34,7 +34,7 @@ abstract class IdNameClass extends BaseClass
      *
      * @return static
      */
-    public function factory(?int $id, ?string $name): static
+    public function factory(?int $id, ?string $name)
     {
         $this->setId($id)->setName($name);
         return $this;
@@ -47,5 +47,5 @@ abstract class IdNameClass extends BaseClass
      * @param  string|null $name
      * @return static
      */
-    abstract public static function SelfFactory(?int $id, ?string $name): static;
+    abstract public static function SelfFactory(?int $id, ?string $name);
 }

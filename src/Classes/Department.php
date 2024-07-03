@@ -10,13 +10,19 @@ use MgermApiClasses\Base\IdNameClass;
 class Department extends IdNameClass
 {
 
-    public static function SelfFactory(?int $id, ?string $name): static
+    /**
+     * @return static
+     */
+    public static function SelfFactory(?int $id, ?string $name)
     {
         $department = new static();
         $department->setId($id)->setName($name);
         return $department;
     }
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         return self::SelfFactory(1, 'Отделение');
     }

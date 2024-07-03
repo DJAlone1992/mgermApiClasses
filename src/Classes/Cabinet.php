@@ -10,11 +10,11 @@ class Cabinet extends IdNameClass
      * Номер кабинета
      * @var int|null|null
      */
-    private ?int $number = null;
+    private $number;
     /**
      * @var Department|null
      */
-    private ?Department $department;
+    private $department;
 
     public function __construct()
     {
@@ -26,18 +26,24 @@ class Cabinet extends IdNameClass
      *
      * @return static
      */
-    public function departmentFactory(?int $id, ?string $name): static
+    public function departmentFactory(?int $id, ?string $name)
     {
         $this->department->factory($id, $name);
         return $this;
     }
-    public static function SelfFactory(?int $id, ?string $name): static
+    /**
+     * @return static
+     */
+    public static function SelfFactory(?int $id, ?string $name)
     {
         $me = new static();
         $me->factory($id, $name);
         return $me;
     }
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         return self::SelfFactory(1, '[Кабинет]');
     }
@@ -57,7 +63,7 @@ class Cabinet extends IdNameClass
      *
      * @return static
      */
-    public function setDepartment(?Department $department): static
+    public function setDepartment(?Department $department)
     {
         $this->department = $department;
 
@@ -78,7 +84,7 @@ class Cabinet extends IdNameClass
      *
      * @return static
      */
-    public function setNumber(?int $number):static
+    public function setNumber(?int $number)
     {
         $this->number = $number;
 

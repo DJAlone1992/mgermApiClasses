@@ -8,10 +8,22 @@ use PHPUnit\Framework\TestCase;
 
 class ReferralTest extends TestCase
 {
-    private Referral $dummy;
-    private array $serializedDummyNoIndents = [];
-    private Serializer $serializer;
-    private array $serializedDummy  = [];
+    /**
+     * @var \MgermApiClasses\Classes\Referral
+     */
+    private $dummy;
+    /**
+     * @var mixed[]
+     */
+    private $serializedDummyNoIndents = [];
+    /**
+     * @var \MgermApiClasses\Services\Serializer
+     */
+    private $serializer;
+    /**
+     * @var mixed[]
+     */
+    private $serializedDummy  = [];
 
     private function init()
     {

@@ -15,17 +15,17 @@ class PatientsReferrals extends BaseClass
     /**
      * @var Patient|null
      */
-    private ?Patient $patient = null;
+    private $patient;
     /**
      * @var Referral[] $referrals
      */
-    private array $referrals = [];
+    private $referrals = [];
     /**
      * @param Referral[] $referrals
      *
      * @return static
      */
-    public function setReferrals(array $referrals): static
+    public function setReferrals(array $referrals)
     {
         $this->referrals = $referrals;
         return $this;
@@ -35,7 +35,7 @@ class PatientsReferrals extends BaseClass
      *
      * @return static
      */
-    public function appendReferral(Referral $referral): static
+    public function appendReferral(Referral $referral)
     {
         if ($referral->getPatient()->getId() == $this->patient->getId() || !$this->patient) {
             $this->referrals[] = $referral;
@@ -54,7 +54,7 @@ class PatientsReferrals extends BaseClass
      *
      * @return static
      */
-    public function setPatient(Patient $patient): static
+    public function setPatient(Patient $patient)
     {
         $this->patient = $patient;
         $this->setId($patient->getId());
@@ -74,7 +74,7 @@ class PatientsReferrals extends BaseClass
      *
      * @return static
      */
-    public static function createFromReferral(Referral $referral): static
+    public static function createFromReferral(Referral $referral)
     {
         $me = new static();
         $me->setPatient($referral->getPatient());
@@ -82,7 +82,10 @@ class PatientsReferrals extends BaseClass
         return $me;
     }
 
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         return self::createFromReferral(Referral::createDummy());
     }

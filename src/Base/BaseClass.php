@@ -7,7 +7,7 @@ abstract class BaseClass
     /**
      * @var int|null
      */
-    private ?int $id = null;
+    private $id;
 
     /**
      * @return int|null
@@ -22,12 +22,15 @@ abstract class BaseClass
      *
      * @return static
      */
-    public function setId(?int $id): static
+    public function setId(?int $id)
     {
         $this->id = $id;
 
         return $this;
     }
 
-    abstract public static function createDummy(): static;
+    /**
+     * @return static
+     */
+    abstract public static function createDummy();
 }

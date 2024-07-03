@@ -7,10 +7,19 @@ use MgermApiClasses\Base\DateTimeStartTimeEndClass;
 
 class Cell extends DateTimeStartTimeEndClass
 {
-    private bool $free = false;
-    private ?bool $interval = false;
+    /**
+     * @var bool
+     */
+    private $free = false;
+    /**
+     * @var bool|null
+     */
+    private $interval = false;
 
-    public static function createDummy(): static
+    /**
+     * @return static
+     */
+    public static function createDummy()
     {
         $me = new static();
         $me
@@ -35,7 +44,7 @@ class Cell extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function setFree(bool $free): static
+    public function setFree(bool $free)
     {
         $this->free = $free;
 
@@ -56,7 +65,7 @@ class Cell extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function setInterval(bool $interval): static
+    public function setInterval(bool $interval)
     {
         $this->interval = $interval;
 

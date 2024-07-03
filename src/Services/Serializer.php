@@ -22,8 +22,14 @@ use Symfony\Component\Serializer\Serializer as SymfonySerializer;
 class Serializer
 {
 
-    protected SymfonySerializer $serializer;
-    protected array $serializerContext = [
+    /**
+     * @var SymfonySerializer
+     */
+    protected $serializer;
+    /**
+     * @var mixed[]
+     */
+    protected $serializerContext = [
         AbstractNormalizer::IGNORED_ATTRIBUTES => ['serializer', 'serializerContext', 'fullName', 'lastNameWithInitials'],
         AbstractObjectNormalizer::SKIP_NULL_VALUES => true,
         AbstractObjectNormalizer::SKIP_UNINITIALIZED_VALUES => true,
@@ -40,11 +46,7 @@ class Serializer
             new DateTimeNormalizer(),
             new BackedEnumNormalizer(),
             new ArrayDenormalizer(),
-            new ObjectNormalizer(
-                propertyTypeExtractor: new PropertyInfoExtractor(
-                    typeExtractors: [new PhpDocExtractor(), new ReflectionExtractor()],
-                ),
-            ),
+            new ObjectNormalizer(null, null, null, new PropertyInfoExtractor([], [new PhpDocExtractor(), new ReflectionExtractor()])),
         ];
         $this->serializer = new SymfonySerializer($normalizers, $encoders);
     }
@@ -116,7 +118,7 @@ class Serializer
                 $inKey = $keys[0];
                 $subArray = [];
                 foreach ($array as $twoKey => $twoItem) {
-                    if (str_starts_with($twoKey, "{$inKey}_") !== FALSE) {
+                    if ((strncmp($twoKey, "{$inKey}_", strlen("{$inKey}_")) === 0) !== FALSE) {
                         $subKey = str_replace("{$inKey}_", '', $twoKey);
                         $subArray[$subKey] = $twoItem;
                         $seen[] = $twoKey;
