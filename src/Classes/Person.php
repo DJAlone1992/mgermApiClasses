@@ -30,6 +30,10 @@ abstract class Person extends BaseClass
      */
     private ?int $sex = null;
     /**
+     * @var string|null
+     */
+    private ?string $sexName = "unknown";
+    /**
      * @var DateTime|null|null
      */
     private ?DateTime $birthDay = null;
@@ -144,9 +148,19 @@ abstract class Person extends BaseClass
     {
         return $this->sex;
     }
+    /**
+     * @return string|null
+     */
+    public function getSexName(): ?string
+    {
+        return $this->sexName;
+    }
 
-
-
+    public function setSexName(?string $sexName): static
+    {
+        $this->sexName = $sexName;
+        return $this;
+    }
     /**
      * @param int|null $sex
      *
@@ -158,6 +172,7 @@ abstract class Person extends BaseClass
             $sex = Sex::Unknown;
         }
         $this->sex = $sex;
+        $this->sexName = Sex::Names[$sex];
 
         return $this;
     }

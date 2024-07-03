@@ -7,7 +7,8 @@ namespace MgermApiClasses\Enum;
  */
 final class Sex
 {
-    const Male = 1;
-    const Female = 2;
-    const Unknown = 0;
+    public const Male = 1;
+    public const Female = 2;
+    public const Unknown = 0;
+    public const Names = [self::Male => "male", self::Female => "female", self::Unknown => "unknown"];
 }
