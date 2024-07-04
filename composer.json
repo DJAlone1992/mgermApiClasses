@@ -16,7 +16,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^>=7.4",
+        "php": ">=7.4",
         "symfony/serializer": ">=5.4.41",
         "symfony/property-access": ">=5.4.41",
         "phpdocumentor/reflection-docblock": ">=5.4.0"
