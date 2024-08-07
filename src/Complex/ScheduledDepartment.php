@@ -7,6 +7,14 @@ use MgermApiClasses\Classes\Department;
 
 class ScheduledDepartment extends BaseClass
 {
+    public const dummyArray =
+    [
+        'department' => Department::dummyArray,
+        'doctors' => [
+            0 => ScheduledDoctor::dummyArray,
+        ],
+        'id' => 1
+    ];
     /**
      * @var Department|null|null
      */
@@ -75,7 +83,7 @@ class ScheduledDepartment extends BaseClass
     public static function createDummy(): static
     {
         $me = new static();
-        $me->setDepartment(Department::createDummy())->appendDoctor(ScheduledDoctor::createDummy());
+        $me->setId(1)->setDepartment(Department::createDummy())->appendDoctor(ScheduledDoctor::createDummy());
         return $me;
     }
 }

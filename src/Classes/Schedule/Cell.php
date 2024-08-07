@@ -7,6 +7,14 @@ use MgermApiClasses\Base\DateTimeStartTimeEndClass;
 
 class Cell extends DateTimeStartTimeEndClass
 {
+    public const dummyArray =
+    [
+        'date' => '1999-09-09 00:00:00',
+        'timeStart' => '1999-09-09 09:09:00',
+        'timeEnd'   => '1999-09-09 10:10:00',
+        'free' => true,
+        'interval' => true
+    ];
     private bool $free = false;
     private ?bool $interval = false;
 

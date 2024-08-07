@@ -7,6 +7,12 @@ use MgermApiClasses\Enum\ContactType;
 
 class Contact extends BaseClass
 {
+    public const dummyArray
+    = [
+        'value' => '+79999999999',
+        'type' => 1
+    ];
+
 
     /**
      * @var string|null
@@ -56,7 +62,7 @@ class Contact extends BaseClass
      */
     public function setType(?int $type): static
     {
-        if (is_null($type) || $type < 1 || $type > 2) {
+        if (is_null($type) || $type < 1 || $type > 4) {
             $type = ContactType::Unknown;
         }
         $this->type = $type;
@@ -66,7 +72,7 @@ class Contact extends BaseClass
     public static function createDummy(): static
     {
         $contact = new static();
-        $contact->setType(ContactType::MobilePhone);
+        $contact->setType(ContactType::MobilePhone)->setValue('+79999999999');
         return $contact;
     }
 }

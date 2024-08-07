@@ -3,6 +3,7 @@
 namespace MgermApiClasses\Classes;
 
 use MgermApiClasses\Enum\ContactType;
+use MgermApiClasses\Enum\Sex;
 use MgermApiClasses\lib\BaseClass;
 
 /**
@@ -10,6 +11,43 @@ use MgermApiClasses\lib\BaseClass;
  */
 class Patient extends Person
 {
+    public const dummyArray
+    = [
+        'lastNameObj' => [
+            'nominativeCase' => 'Фамилия пациента'
+        ],
+        'lastName' => 'Фамилия пациента',
+        'firstNameObj' => [
+            'nominativeCase' => 'Имя пациента'
+        ],
+        'firstName' => 'Имя пациента',
+        'secondNameObj' => [
+            'nominativeCase' => 'Отчество пациента'
+        ],
+        'secondName' => 'Отчество пациента',
+        'sex' => 1,
+        'id' => 1,
+        'birthDay' => '1991-01-01 00:00:00',
+        'phone' => '+79998887766',
+        'cardYear' => 11,
+        'cardNumber' => 1234,
+        'contactsCount' => 3,
+        'sexName' => 'male',
+        'contacts' => [
+            [
+                'value' => '+7999888--66',
+                'type' => 2
+            ],
+            [
+                'value' => 'patient@patient.ru',
+                'type' => 3
+            ],
+            [
+                'value' => 'add@patient.ru',
+                'type' => 4
+            ]
+        ]
+    ];
     /**
      * @var int|null|null
      */
@@ -80,7 +118,7 @@ class Patient extends Person
             ->setFirstName('Имя пациента')
             ->setSecondName('Отчество пациента')
             ->setBirthDay('1991-01-01')
-            ->setSex(1)
+            ->setSex(Sex::Male)
             ->setId(1)
             ->appendContactFactory(ContactType::Phone, '+7999888--66')
             ->appendContactFactory(ContactType::DefaultEmail, 'patient@patient.ru')

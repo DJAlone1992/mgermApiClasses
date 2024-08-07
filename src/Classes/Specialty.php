@@ -7,7 +7,15 @@ use MgermApiClasses\Base\IdNameClass;
 
 class Specialty extends IdNameClass
 {
+    public const dummyArray =
+    [
 
+        'nameObj' => [
+            'nominativeCase' => 'Специальность'
+        ],
+        'name' => 'Специальность',
+        'id' => 1
+    ];
     public static function SelfFactory(?int $id, ?string $name): static
     {
         $specialty = new static();

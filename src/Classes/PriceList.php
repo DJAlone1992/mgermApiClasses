@@ -6,6 +6,15 @@ use MgermApiClasses\Base\IdNameClass;
 
 class PriceList extends IdNameClass
 {
+    public const dummyArray
+    = [
+        'nameObj' => [
+            'nominativeCase' => '[Прайс-лист]'
+        ],
+        'name' => '[Прайс-лист]',
+        'id' => 1,
+        'services' => []
+    ];
     /**
      * @var Service[]
      */

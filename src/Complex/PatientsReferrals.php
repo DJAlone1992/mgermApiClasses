@@ -12,6 +12,15 @@ use MgermApiClasses\Classes\Referral;
  */
 class PatientsReferrals extends BaseClass
 {
+    public const dummyArray =
+    [
+        'patient' => Patient::dummyArray,
+        'referrals' => [
+            0 => Referral::dummyArray
+        ],
+        'id' => Patient::dummyArray['id'],
+        'firstReferral' => Referral::dummyArray
+    ];
     /**
      * @var Patient|null
      */

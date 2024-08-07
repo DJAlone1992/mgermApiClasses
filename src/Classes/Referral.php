@@ -9,6 +9,25 @@ use MgermApiClasses\Base\DateTimeStartTimeEndClass;
  */
 class Referral extends DateTimeStartTimeEndClass
 {
+    public const dummyArray = [
+        'patient' => Patient::dummyArray,
+        'doctor' => Doctor::dummyArray,
+        'hospital' => Hospital::dummyArray,
+        'cabinet' => Cabinet::dummyArray,
+        'service' => Service::dummyArray,
+        'id' => 123456789,
+        'department' => [
+            'nameObj' => [
+                'nominativeCase' => '[Отделение, куда направлен пациент]'
+            ],
+            'name' => '[Отделение, куда направлен пациент]',
+            'id' => 1
+        ],
+        'date' => '1999-09-09 00:00:00',
+        'timeStart' => '1999-09-09 09:09:00',
+        'timeEnd'   => '1999-09-09 10:10:00',
+
+    ];
     /**
      * @var Patient|null
      */
@@ -138,7 +157,9 @@ class Referral extends DateTimeStartTimeEndClass
             ->departmentFactory(1, '[Отделение, куда направлен пациент]')
             ->setDate('1999-09-09')
             ->setTimeStart('09:09')
-            ->setTimeEnd('10:10');
+            ->setTimeEnd('10:10')
+            ->setService(Service::createDummy())
+            ->setCabinet(Cabinet::createDummy());
 
         return $referral;
     }

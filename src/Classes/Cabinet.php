@@ -6,6 +6,21 @@ use MgermApiClasses\Base\IdNameClass;
 
 class Cabinet extends IdNameClass
 {
+    public const dummyArray =
+    [
+        'department' => [
+            'nameObj' => [
+                'nominativeCase' => 'Отделение'
+            ],
+            'name' => 'Отделение',
+            'id' => 1
+        ],
+        'nameObj' => [
+            'nominativeCase' => '[Кабинет]'
+        ],
+        'name' => '[Кабинет]',
+        'id' => 1
+    ];
     /**
      * Номер кабинета
      * @var int|null|null
@@ -18,6 +33,7 @@ class Cabinet extends IdNameClass
 
     public function __construct()
     {
+        parent::__construct();
         $this->department = new Department();
     }
     /**
@@ -39,7 +55,9 @@ class Cabinet extends IdNameClass
     }
     public static function createDummy(): static
     {
-        return self::SelfFactory(1, '[Кабинет]');
+        $me = self::SelfFactory(1, '[Кабинет]');
+        $me->department = Department::createDummy();
+        return $me;
     }
 
 
@@ -68,7 +86,7 @@ class Cabinet extends IdNameClass
     /**
      * @return int|null
      */
-    public function getNumber():?int
+    public function getNumber(): ?int
     {
         return $this->number;
     }
@@ -78,7 +96,7 @@ class Cabinet extends IdNameClass
      *
      * @return static
      */
-    public function setNumber(?int $number):static
+    public function setNumber(?int $number): static
     {
         $this->number = $number;
 
