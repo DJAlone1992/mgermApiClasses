@@ -2,11 +2,54 @@
 
 namespace MgermApiClasses\Classes;
 
+use MgermApiClasses\Enum\Sex;
+
 /**
  * Класс врача из MGERM
  */
 class Doctor extends Person
 {
+    public const dummyArray
+    = [
+        'lastNameObj' => [
+            'nominativeCase' => 'Фамилия врача'
+        ],
+        'lastName' => 'Фамилия врача',
+        'firstNameObj' => [
+            'nominativeCase' => 'Имя врача'
+        ],
+        'firstName' => 'Имя врача',
+        'secondNameObj' => [
+            'nominativeCase' => 'Отчество врача'
+        ],
+        'secondName' => 'Отчество врача',
+        'sex' => 1,
+        'id' => 2,
+        'birthDay' => '1992-02-02 00:00:00',
+        'sexName' => 'male',
+        'department' => [
+            'nameObj' => [
+                'nominativeCase' => 'Отделение врача'
+            ],
+            'name' => 'Отделение врача',
+            'id' => 1
+        ],
+        'specialty' => [
+            'nameObj' => [
+                'nominativeCase' => 'Специальность врача'
+            ],
+            'name' => 'Специальность врача',
+            'id' => 2
+        ],
+        'guid' => [
+            'nameObj' => [
+                'nominativeCase' => 'Врач специалист'
+            ],
+            'name' => 'Врач специалист',
+            'id' => 11
+        ],
+        'contactsCount' => 0
+    ];
     /**
      * @var Specialty|null
      */
@@ -23,6 +66,7 @@ class Doctor extends Person
 
     public function __construct()
     {
+        parent::__construct();
         $this->specialty = new Specialty();
         $this->department = new Department();
         $this->guid = new Guid();
@@ -108,13 +152,14 @@ class Doctor extends Person
     {
         $doctor = new static();
         $doctor
+            ->guidFactory(11, 'Врач специалист')
             ->departmentFactory(1, 'Отделение врача')
             ->specialtyFactory(2, 'Специальность врача')
             ->setLastName('Фамилия врача')
             ->setFirstName('Имя врача')
             ->setSecondName('Отчество врача')
             ->setBirthDay('1992-02-02')
-            ->setSex(1)
+            ->setSex(Sex::Male)
             ->setId(2);
         return $doctor;
     }

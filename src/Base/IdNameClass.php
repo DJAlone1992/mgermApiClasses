@@ -4,17 +4,31 @@ namespace MgermApiClasses\Base;
 
 abstract class IdNameClass extends BaseClass
 {
+
+    private ?CaseString $nameObj = null;
+
+    public function __construct()
+    {
+        $this->nameObj = new CaseString();
+    }
     /**
-     * @var string|null
+     * @return CaseString|null
      */
-    private ?string $name = null;
+    public function getNameObj(): ?CaseString
+    {
+        return $this->nameObj;
+    }
 
     /**
-     * @return string|null
+     * @param CaseString|null $nameObj
+     *
+     * @return static
      */
-    public function getName(): ?string
+    public function setNameObj(?CaseString $nameObj): static
     {
-        return $this->name;
+        $this->nameObj = $nameObj;
+
+        return $this;
     }
 
     /**
@@ -24,9 +38,15 @@ abstract class IdNameClass extends BaseClass
      */
     public function setName(?string $name)
     {
-        $this->name = $name;
-
+        $this->nameObj->setNominativeCase($name);
         return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->nameObj->getNominativeCase();
     }
     /**
      * @param int|null $id

@@ -9,6 +9,19 @@ use MgermApiClasses\Classes\Service;
 
 class ScheduledDoctor extends BaseClass
 {
+    public const dummyArray =
+    [
+        'doctor' => Doctor::dummyArray,
+        'cells' => [
+            0 => Cell::dummyArray,
+        ],
+        'services' => [
+            0 => Service::dummyArray
+        ],
+        'interval' => true,
+        'intervalDuration' => 60,
+        'id' => 1
+    ];
     /**
      * @var Doctor|null|null
      */
@@ -172,7 +185,12 @@ class ScheduledDoctor extends BaseClass
     {
         $me = new static();
         $doctor = Doctor::createDummy();
-        $me->setDoctor($doctor)->appendCell(Cell::createDummy())->appendService(Service::createDummy());
+        $me->setId(1)
+            ->setInterval(true)
+            ->setDoctor($doctor)
+            ->appendCell(Cell::createDummy())
+            ->appendService(Service::createDummy())
+            ->setIntervalDuration(60);
         return $me;
     }
 }

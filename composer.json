@@ -15,6 +15,7 @@
         }
     ],
     "minimum-stability": "stable",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=7.4",
         "symfony/serializer": ">=5.4",
