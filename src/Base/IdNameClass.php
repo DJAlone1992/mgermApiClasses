@@ -24,7 +24,7 @@ abstract class IdNameClass extends BaseClass
      *
      * @return static
      */
-    public function setNameObj(?CaseString $nameObj): static
+    public function setNameObj(?CaseString $nameObj)
     {
         $this->nameObj = $nameObj;
 

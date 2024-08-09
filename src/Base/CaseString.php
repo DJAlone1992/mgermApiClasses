@@ -34,7 +34,7 @@ class CaseString
      *
      * @return static
      */
-    public function setNominativeCase(?string $nominativeCase): static
+    public function setNominativeCase(?string $nominativeCase)
     {
         $this->nominativeCase = $nominativeCase;
         return $this;
@@ -44,7 +44,7 @@ class CaseString
      *
      * @return static
      */
-    public function setGenitiveCase(?string $genitiveCase): static
+    public function setGenitiveCase(?string $genitiveCase)
     {
         $this->genitiveCase = $genitiveCase;
         return $this;
@@ -54,7 +54,7 @@ class CaseString
      *
      * @return static
      */
-    public function setDativeCase(?string $dativeCase): static
+    public function setDativeCase(?string $dativeCase)
     {
         $this->dativeCase = $dativeCase;
         return $this;
@@ -64,7 +64,7 @@ class CaseString
      *
      * @return static
      */
-    public function setAccusativeCase(?string $accusativeCase): static
+    public function setAccusativeCase(?string $accusativeCase)
     {
         $this->accusativeCase = $accusativeCase;
         return $this;
@@ -74,7 +74,7 @@ class CaseString
      *
      * @return static
      */
-    public function setCreativeCase(?string $creativeCase): static
+    public function setCreativeCase(?string $creativeCase)
     {
         $this->creativeCase = $creativeCase;
         return $this;
@@ -84,7 +84,7 @@ class CaseString
      *
      * @return static
      */
-    public function setPrepositionalCase(?string $prepositionalCase): static
+    public function setPrepositionalCase(?string $prepositionalCase)
     {
         $this->prepositionalCase = $prepositionalCase;
         return $this;

@@ -115,7 +115,7 @@ abstract class Person extends BaseClass
      *
      * @return static
      */
-    public function setLastNameObj(?CaseString $lastNameObj): static
+    public function setLastNameObj(?CaseString $lastNameObj)
     {
         $this->lastNameObj = $lastNameObj;
 
@@ -128,7 +128,7 @@ abstract class Person extends BaseClass
      *
      * @return static
      */
-    public function setFirstNameObj(?CaseString $firstNameObj): static
+    public function setFirstNameObj(?CaseString $firstNameObj)
     {
         $this->firstNameObj = $firstNameObj;
 
@@ -141,7 +141,7 @@ abstract class Person extends BaseClass
      *
      * @return static
      */
-    public function setSecondNameObj(?CaseString $secondNameObj): static
+    public function setSecondNameObj(?CaseString $secondNameObj)
     {
         $this->secondNameObj = $secondNameObj;
 
@@ -278,7 +278,10 @@ abstract class Person extends BaseClass
             $this->getLastNameObj()->getNominativeCase() . ' ' . mb_substr($this->getFirstNameObj()->getNominativeCase(), 0, 1) . '. ' . mb_substr($this->getSecondNameObj()->getNominativeCase(), 0, 1) . '.';
     }
 
-    public function setLastName(?string $lastName): static
+    /**
+     * @return static
+     */
+    public function setLastName(?string $lastName)
     {
         $this->lastNameObj->setNominativeCase($lastName);
         return $this;
@@ -287,7 +290,10 @@ abstract class Person extends BaseClass
     {
         return $this->lastNameObj->getNominativeCase();
     }
-    public function setFirstName(?string $firstName): static
+    /**
+     * @return static
+     */
+    public function setFirstName(?string $firstName)
     {
         $this->firstNameObj->setNominativeCase($firstName);
         return $this;
@@ -296,7 +302,10 @@ abstract class Person extends BaseClass
     {
         return $this->firstNameObj->getNominativeCase();
     }
-    public function setSecondName(?string $secondName): static
+    /**
+     * @return static
+     */
+    public function setSecondName(?string $secondName)
     {
         $this->secondNameObj->setNominativeCase($secondName);
         return $this;
