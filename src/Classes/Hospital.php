@@ -19,7 +19,7 @@ class Hospital extends BaseClass
     /**
      * @var CaseString|null
      */
-    private ?CaseString $nameObj = null;
+    private $nameObj;
     /**
      * @var string|null|null
      */
@@ -124,7 +124,7 @@ class Hospital extends BaseClass
      *
      * @return static
      */
-    public function setNameObj(?CaseString $nameObj): static
+    public function setNameObj(?CaseString $nameObj)
     {
         $this->nameObj = $nameObj;
 

@@ -17,10 +17,22 @@ class Service extends IdNameClass
         'floatPrice' => 123.45,
         'price' => 12345
     ];
-    private int $price = 0;
-    private float $floatPrice = 0;
-    private ?string $code = null;
-    private ?int $priceListId = 0;
+    /**
+     * @var int
+     */
+    private $price = 0;
+    /**
+     * @var float
+     */
+    private $floatPrice = 0;
+    /**
+     * @var string|null
+     */
+    private $code;
+    /**
+     * @var int|null
+     */
+    private $priceListId = 0;
 
     public function getFloatPrice(): float
     {
@@ -30,13 +42,19 @@ class Service extends IdNameClass
     {
         return $this->price;
     }
-    public function setFloatPrice(float $floatPrice): static
+    /**
+     * @return static
+     */
+    public function setFloatPrice(float $floatPrice)
     {
         $this->floatPrice = $floatPrice;
         $this->price =        round($floatPrice, 2, PHP_ROUND_HALF_DOWN) * 100;
         return $this;
     }
-    public function setPrice(int $price): static
+    /**
+     * @return static
+     */
+    public function setPrice(int $price)
     {
         $this->price = $price;
         $this->floatPrice = (float) round($this->price  / 100, 2, PHP_ROUND_HALF_DOWN);
