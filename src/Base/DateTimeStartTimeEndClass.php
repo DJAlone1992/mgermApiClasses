@@ -31,7 +31,7 @@ abstract class DateTimeStartTimeEndClass extends DateClass
     public function setTimeStart($timeStart)
     {
         if (is_string($timeStart)) {
-            $timeStart = new DateTime($timeStart);
+            $timeStart = new DateTime($this->getDate()->format('Y-m-d') . ' ' . $timeStart);
         }
         if (is_int($timeStart)) {
             $timeStart = new DateTime(date('Y-m-d', $timeStart));
@@ -56,7 +56,7 @@ abstract class DateTimeStartTimeEndClass extends DateClass
     public function setTimeEnd($timeEnd)
     {
         if (is_string($timeEnd)) {
-            $timeEnd = new DateTime($timeEnd);
+            $timeEnd = new DateTime($this->getDate()->format('Y-m-d') . ' ' . $timeEnd);
         }
         if (is_int($timeEnd)) {
             $timeEnd = new DateTime(date('Y-m-d', $timeEnd));

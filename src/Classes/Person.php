@@ -4,6 +4,7 @@ namespace MgermApiClasses\Classes;
 
 use DateTime;
 use MgermApiClasses\Base\BaseClass;
+use MgermApiClasses\Base\CaseString;
 use MgermApiClasses\Enum\ContactType;
 use MgermApiClasses\Enum\Sex;
 
@@ -14,17 +15,17 @@ abstract class Person extends BaseClass
 {
 
     /**
-     * @var string|null
+     * @var CaseString|null
      */
-    private $lastName;
+    private ?CaseString $lastNameObj = null;
     /**
-     * @var string|null
+     * @var CaseString|null
      */
-    private $firstName;
+    private ?CaseString $firstNameObj = null;
     /**
-     * @var string|null|null
+     * @var CaseString|null
      */
-    private $secondName;
+    private ?CaseString $secondNameObj = null;
     /**
      * @var int|null
      */
@@ -45,7 +46,14 @@ abstract class Person extends BaseClass
     /**
      * @var int
      */
-    private $contactsCount = 0;
+    private int $contactsCount = 0;
+
+    public function __construct()
+    {
+        $this->lastNameObj = new CaseString();
+        $this->secondNameObj = new CaseString();
+        $this->firstNameObj = new CaseString();
+    }
     /**
      * @param Contact|null $contact
      *
@@ -94,48 +102,48 @@ abstract class Person extends BaseClass
         return $this;
     }
     /**
-     * @return string|null
+     * @return CaseString|null
      */
-    public function getLastName(): ?string
+    public function getLastNameObj(): ?CaseString
     {
-        return $this->lastName;
+        return $this->lastNameObj;
     }
 
 
     /**
-     * @param string|null $lastName
+     * @param CaseString|null $lastNameObj
      *
      * @return static
      */
-    public function setLastName(?string $lastName)
+    public function setLastNameObj(?CaseString $lastNameObj): static
     {
-        $this->lastName = $lastName;
+        $this->lastNameObj = $lastNameObj;
 
         return $this;
     }
 
 
     /**
-     * @param string|null $firstName
+     * @param CaseString|null $firstNameObj
      *
      * @return static
      */
-    public function setFirstName(?string $firstName)
+    public function setFirstNameObj(?CaseString $firstNameObj): static
     {
-        $this->firstName = $firstName;
+        $this->firstNameObj = $firstNameObj;
 
         return $this;
     }
 
 
     /**
-     * @param string|null $secondName
+     * @param CaseString|null $secondNameObj
      *
      * @return static
      */
-    public function setSecondName(?string $secondName)
+    public function setSecondNameObj(?CaseString $secondNameObj): static
     {
-        $this->secondName = $secondName;
+        $this->secondNameObj = $secondNameObj;
 
         return $this;
     }
@@ -211,23 +219,23 @@ abstract class Person extends BaseClass
 
 
     /**
-     * @return string|null
+     * @return CaseString|null
      */
-    public function getFirstName(): ?string
+    public function getFirstNameObj(): ?CaseString
     {
-        return $this->firstName;
+        return $this->firstNameObj;
     }
 
 
     /**
-     * Get the value of secondName
+     * Get the value of secondNameObj
      */
     /**
-     * @return string|null
+     * @return CaseString|null
      */
-    public function getSecondName(): ?string
+    public function getSecondNameObj(): ?CaseString
     {
-        return $this->secondName;
+        return $this->secondNameObj;
     }
 
 
@@ -261,12 +269,40 @@ abstract class Person extends BaseClass
      */
     public function getFullName(): string
     {
-        return $this->getLastName() . ' ' . $this->getFirstName() . ' ' . $this->getSecondName();
+        return $this->getLastNameObj()->getNominativeCase() . ' ' . $this->getFirstNameObj()->getNominativeCase() . ' ' . $this->getSecondNameObj()->getNominativeCase();
     }
 
     public function getLastNameWithInitials(): string
     {
         return
-            $this->getLastName() . ' ' . mb_substr($this->getFirstName(), 0, 1) . '. ' . mb_substr($this->getSecondName(), 0, 1) . '.';
+            $this->getLastNameObj()->getNominativeCase() . ' ' . mb_substr($this->getFirstNameObj()->getNominativeCase(), 0, 1) . '. ' . mb_substr($this->getSecondNameObj()->getNominativeCase(), 0, 1) . '.';
+    }
+
+    public function setLastName(?string $lastName): static
+    {
+        $this->lastNameObj->setNominativeCase($lastName);
+        return $this;
+    }
+    public function getLastName(): ?string
+    {
+        return $this->lastNameObj->getNominativeCase();
+    }
+    public function setFirstName(?string $firstName): static
+    {
+        $this->firstNameObj->setNominativeCase($firstName);
+        return $this;
+    }
+    public function getFirstName(): ?string
+    {
+        return $this->firstNameObj->getNominativeCase();
+    }
+    public function setSecondName(?string $secondName): static
+    {
+        $this->secondNameObj->setNominativeCase($secondName);
+        return $this;
+    }
+    public function getSecondName(): ?string
+    {
+        return $this->secondNameObj->getNominativeCase();
     }
 }

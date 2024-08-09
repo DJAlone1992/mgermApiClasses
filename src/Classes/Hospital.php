@@ -3,13 +3,23 @@
 namespace MgermApiClasses\Classes;
 
 use MgermApiClasses\Base\BaseClass;
+use MgermApiClasses\Base\CaseString;
 
 class Hospital extends BaseClass
 {
+    public const dummyArray
+    = [
+        'nameObj' => [
+            'nominativeCase' => '[Наименование клиники]'
+        ],
+        'name' => '[Наименование клиники]',
+        'phone' => '+79998887755',
+        'address' => '[Адрес клиники]'
+    ];
     /**
-     * @var string|null|null
+     * @var CaseString|null
      */
-    private $name;
+    private ?CaseString $nameObj = null;
     /**
      * @var string|null|null
      */
@@ -19,13 +29,16 @@ class Hospital extends BaseClass
      */
     private $phone;
 
-
+    public function __construct()
+    {
+        $this->nameObj = new CaseString();
+    }
     /**
      * @return string|null
      */
     public function getName(): ?string
     {
-        return $this->name;
+        return $this->nameObj->getNominativeCase();
     }
 
 
@@ -36,7 +49,7 @@ class Hospital extends BaseClass
      */
     public function setName(?string $name)
     {
-        $this->name = $name;
+        $this->nameObj->setNominativeCase($name);
 
         return $this;
     }
@@ -97,5 +110,24 @@ class Hospital extends BaseClass
             ->setPhone('+79998887755');
 
         return $hospital;
+    }
+    /**
+     * @return CaseString|null
+     */
+    public function getNameObj(): ?CaseString
+    {
+        return $this->nameObj;
+    }
+
+    /**
+     * @param CaseString|null $nameObj
+     *
+     * @return static
+     */
+    public function setNameObj(?CaseString $nameObj): static
+    {
+        $this->nameObj = $nameObj;
+
+        return $this;
     }
 }

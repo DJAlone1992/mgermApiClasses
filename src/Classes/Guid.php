@@ -6,6 +6,14 @@ use MgermApiClasses\Base\IdNameClass;
 
 class Guid extends IdNameClass
 {
+    public const dummyArray
+    = [
+        'nameObj' => [
+            'nominativeCase' => '[Администратор]'
+        ],
+        'name' => '[Администратор]',
+        'id' => 1
+    ];
     /**
      * @return static
      */
