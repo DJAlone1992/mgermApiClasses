@@ -77,6 +77,9 @@ abstract class Person extends BaseClass
      */
     public function appendContactFactory(?int $contactType, ?string $value): static
     {
+        if (is_null($value) || is_null($contactType)) {
+            return $this;
+        }
         $contact = new Contact();
         $contact
             ->setType($contactType)
