@@ -7,6 +7,8 @@ use DateTime;
 abstract class DateClass extends BaseClass
 {
     /**
+     ** Дата
+     *# |date('d.m.Y')
      * @var DateTime|null|null
      */
     private $date;

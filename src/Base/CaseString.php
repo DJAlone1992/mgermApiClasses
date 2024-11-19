@@ -6,26 +6,38 @@ namespace MgermApiClasses\Base;
 class CaseString
 {
     /**
+     ** Именительный падеж
+     * есть кто/что?
      * @var string|null
      */
     private $nominativeCase;
     /**
+     ** Родительный падеж
+     * Нет кого/чего?
      * @var string|null
      */
     private $genitiveCase;
     /**
+     ** Дательный падеж
+     * даю кому/чему?
      * @var string|null
      */
     private $dativeCase;
     /**
+     ** Винительный падеж
+     * вижу кого/что?
      * @var string|null
      */
     private $accusativeCase;
     /**
+     ** Творительный падеж
+     * горжусь кем/чем?
      * @var string|null
      */
     private $creativeCase;
     /**
+     ** Предложный падеж
+     * думаю о ком/о чем?
      * @var string|null
      */
     private $prepositionalCase;

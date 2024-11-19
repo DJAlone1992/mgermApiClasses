@@ -13,4 +13,6 @@ final class ApiNames
     public const Wazapa = 'wazapa';
     public const EVostok = 'evostok';
     public const MangoTelecom = 'mangotelecom';
+    public const UIS = 'uis';
+    public const ChatPush = 'chatpush';
 }

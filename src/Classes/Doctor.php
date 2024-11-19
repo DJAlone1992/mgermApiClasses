@@ -11,55 +11,56 @@ class Doctor extends Person
 {
     public const dummyArray
     = [
-        'lastNameObj' => [
-            'nominativeCase' => 'Фамилия врача'
+        'lastNameObj'   => [
+            'nominativeCase'    => 'Фамилия врача',
+            'genitiveCase'      => 'Фамилии врача',
+            'dativeCase'        => 'Фамилии врача',
+            'accusativeCase'    => 'Фамилию врача',
+            'creativeCase'      => 'Фамилией врача',
+            'prepositionalCase' => 'Фамилии врача',
         ],
-        'lastName' => 'Фамилия врача',
-        'firstNameObj' => [
-            'nominativeCase' => 'Имя врача'
+        'lastName'      => 'Фамилия врача',
+        'firstNameObj'  => [
+            'nominativeCase'    => 'Имя врача',
+            'genitiveCase'      => 'Имени врача',
+            'dativeCase'        => 'Имя врача',
+            'accusativeCase'    => 'Имя врача',
+            'creativeCase'      => 'Именем врача',
+            'prepositionalCase' => 'Имени врача',
         ],
-        'firstName' => 'Имя врача',
+        'firstName'     => 'Имя врача',
         'secondNameObj' => [
-            'nominativeCase' => 'Отчество врача'
+            'nominativeCase'    => 'Отчество врача',
+            'genitiveCase'      => 'Отчества врача',
+            'dativeCase'        => 'Отчество врача',
+            'accusativeCase'    => 'Отчество врача',
+            'creativeCase'      => 'Отчеством врача',
+            'prepositionalCase' => 'Отчестве врача',
         ],
-        'secondName' => 'Отчество врача',
-        'sex' => 1,
-        'id' => 2,
-        'birthDay' => '1992-02-02 00:00:00',
-        'sexName' => 'male',
-        'department' => [
-            'nameObj' => [
-                'nominativeCase' => 'Отделение врача'
-            ],
-            'name' => 'Отделение врача',
-            'id' => 1
-        ],
-        'specialty' => [
-            'nameObj' => [
-                'nominativeCase' => 'Специальность врача'
-            ],
-            'name' => 'Специальность врача',
-            'id' => 2
-        ],
-        'guid' => [
-            'nameObj' => [
-                'nominativeCase' => 'Врач специалист'
-            ],
-            'name' => 'Врач специалист',
-            'id' => 11
-        ],
-        'contactsCount' => 0
+        'secondName'    => 'Отчество врача',
+        'sex'           => Sex::Male,
+        'sexName'       => Sex::Names[Sex::Male],
+        'id'            => 2,
+        'birthDay'      => '1992-02-02 00:00:00',
+        'department'    => Department::dummyArray,
+        'specialty'     => Specialty::dummyArray,
+        'guid'          => Guid::dummyArray,
+        'contactsCount' => 0,
+        'contacts'      => []
     ];
     /**
+     ** Специальность
      * @var Specialty|null
      */
     private $specialty;
     /**
+     ** Отделение
      * @var Department|null
      */
     private $department;
 
     /**
+     ** Группа
      * @var Guid|null
      */
     private $guid;
@@ -67,9 +68,9 @@ class Doctor extends Person
     public function __construct()
     {
         parent::__construct();
-        $this->specialty = new Specialty();
+        $this->specialty  = new Specialty();
         $this->department = new Department();
-        $this->guid = new Guid();
+        $this->guid       = new Guid();
     }
     /**
      * @param Specialty|null $specialty
@@ -125,8 +126,8 @@ class Doctor extends Person
         return $this;
     }
 
-
     /**
+     ** Специальность врача
      * @return Specialty|null
      */
     public function getSpecialty(): ?Specialty
@@ -134,8 +135,8 @@ class Doctor extends Person
         return $this->specialty;
     }
 
-
     /**
+     ** Отделение врача
      * @return Department|null
      */
     public function getDepartment(): ?Department
@@ -148,23 +149,72 @@ class Doctor extends Person
      * Создание экземпляра объекта с тестовым наполнением параметров
      * @return static
      */
-    public static function createDummy()
+    public static function createDummy(bool $imitateReal = false): static
     {
         $doctor = new static();
         $doctor
-            ->guidFactory(11, 'Врач специалист')
-            ->departmentFactory(1, 'Отделение врача')
-            ->specialtyFactory(2, 'Специальность врача')
-            ->setLastName('Фамилия врача')
-            ->setFirstName('Имя врача')
-            ->setSecondName('Отчество врача')
-            ->setBirthDay('1992-02-02')
-            ->setSex(Sex::Male)
-            ->setId(2);
+            ->setGuid(Guid::createDummy($imitateReal))
+            ->setDepartment(Department::createDummy($imitateReal))
+            ->setSpecialty(Specialty::createDummy($imitateReal));
+        if ($imitateReal) {
+            $doctor
+                ->setLastName('Петров')
+                ->setFirstName('Петр')
+                ->setSecondName('Петрович')
+                ->setBirthDay('1992-02-02')
+                ->setSex(Sex::Male)
+                ->setId(2);
+            $doctor->getLastNameObj()
+                ->setGenitiveCase('Петрова')
+                ->setDativeCase('Петрову')
+                ->setAccusativeCase('Петрова')
+                ->setCreativeCase('Петровым')
+                ->setPrepositionalCase('Петрове');
+            $doctor->getFirstNameObj()
+                ->setGenitiveCase('Петра')
+                ->setDativeCase('Петру')
+                ->setAccusativeCase('Петра')
+                ->setCreativeCase('Петром')
+                ->setPrepositionalCase('Петре');
+            $doctor->getSecondNameObj()
+                ->setGenitiveCase('Петровича')
+                ->setDativeCase('Петровичу')
+                ->setAccusativeCase('Петровича')
+                ->setCreativeCase('Петровичем')
+                ->setPrepositionalCase('Петровиче');
+        } else {
+            $doctor
+                ->setLastName('Фамилия врача')
+                ->setFirstName('Имя врача')
+                ->setSecondName('Отчество врача')
+                ->setBirthDay('1992-02-02')
+                ->setSex(Sex::Male)
+                ->setId(2);
+            $doctor->getLastNameObj()
+                ->setGenitiveCase('Фамилии врача')
+                ->setDativeCase('Фамилии врача')
+                ->setAccusativeCase('Фамилию врача')
+                ->setCreativeCase('Фамилией врача')
+                ->setPrepositionalCase('Фамилии врача');
+            $doctor->getFirstNameObj()
+                ->setGenitiveCase('Имени врача')
+                ->setDativeCase('Имя врача')
+                ->setAccusativeCase('Имя врача')
+                ->setCreativeCase('Именем врача')
+                ->setPrepositionalCase('Имени врача');
+            $doctor->getSecondNameObj()
+                ->setGenitiveCase('Отчества врача')
+                ->setDativeCase('Отчество врача')
+                ->setAccusativeCase('Отчество врача')
+                ->setCreativeCase('Отчеством врача')
+                ->setPrepositionalCase('Отчестве врача');
+        }
+
         return $doctor;
     }
 
     /**
+     ** Группа пользователя врача
      * @return Guid|null
      */
     public function getGuid(): ?Guid

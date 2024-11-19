@@ -12,10 +12,15 @@ class Department extends IdNameClass
     public const dummyArray =
     [
         'nameObj' => [
-            'nominativeCase' => 'Отделение'
+            'nominativeCase'    => 'Отделение',
+            'genitiveCase'      => 'Отделения',
+            'dativeCase'        => 'Отделению',
+            'accusativeCase'    => 'Отделение',
+            'creativeCase'      => 'Отделением',
+            'prepositionalCase' => 'Отделении',
         ],
-        'name' => 'Отделение',
-        'id' => 1
+        'name'    => 'Отделение',
+        'id'      => 1,
     ];
     /**
      * @return static
@@ -26,11 +31,25 @@ class Department extends IdNameClass
         $department->setId($id)->setName($name);
         return $department;
     }
-    /**
-     * @return static
-     */
-    public static function createDummy()
+    public static function createDummy(bool $imitateReal = false): static
     {
-        return self::SelfFactory(1, 'Отделение');
+        if ($imitateReal) {
+            $me = self::SelfFactory(1, 'Поликлиническое отделение');
+            $me->getNameObj()
+                ->setGenitiveCase('Поликлинического отделения')
+                ->setDativeCase('Поликлиническому отделению')
+                ->setAccusativeCase('Поликлиническое отделение')
+                ->setCreativeCase('Поликлиническим отделением')
+                ->setPrepositionalCase('Поликлиническом отделении');
+        } else {
+            $me = self::SelfFactory(1, 'Отделение');
+            $me->getNameObj()
+                ->setGenitiveCase('Отделения')
+                ->setDativeCase('Отделению')
+                ->setAccusativeCase('Отделение')
+                ->setCreativeCase('Отделением')
+                ->setPrepositionalCase('Отделении');
+        }
+        return $me;
     }
 }

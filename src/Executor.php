@@ -3,11 +3,13 @@
 namespace MgermApiClasses;
 
 use MgermApiClasses\Base\BaseClass;
+use MgermApiClasses\Base\CaseString;
 use MgermApiClasses\Classes\Department;
 use MgermApiClasses\Classes\Doctor;
 use MgermApiClasses\Classes\Patient;
 use MgermApiClasses\Classes\Referral;
 use MgermApiClasses\Complex\PatientsReferrals;
+use MgermApiClasses\Services\BaseClassDescriptor;
 use MgermApiClasses\Services\ReferralArrayToPatientsReferralArrayConverter;
 use MgermApiClasses\Services\Serializer;
 
@@ -94,5 +96,27 @@ class Executor
             $result[] = (new Department)->setId($mgermDepartment['ind'])->setName($mgermDepartment['name']);
         }
         return $result;
+    }
+
+    /**
+     * Получение массива описания полей
+     * @param BaseClass|CaseString $class
+     *
+     * @return array
+     */
+    public static function getDescriptionArray(BaseClass|CaseString $class): array
+    {
+        return BaseClassDescriptor::getDescription($class);
+    }
+
+    /**
+     * Получение HTML для отображения описания полей
+     * @param BaseClass|CaseString $class
+     *
+     * @return string
+     */
+    public static function getDescriptionHtml(BaseClass|CaseString $class): string
+    {
+        return BaseClassDescriptor::getDescriptionHtml($class);
     }
 }

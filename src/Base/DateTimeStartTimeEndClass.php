@@ -8,10 +8,14 @@ abstract class DateTimeStartTimeEndClass extends DateClass
 {
 
     /**
+     ** Дата и время начала
+     *# |date('d.m.Y H:i')
      * @var DateTime|null|null
      */
     private $timeStart;
     /**
+     ** Дата и время окончания
+     *# |date('d.m.Y H:i')
      * @var DateTime|null|null
      */
     private $timeEnd;

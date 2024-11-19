@@ -52,6 +52,7 @@ class PatientsReferrals extends BaseClass
         return $this;
     }
     /**
+     ** Направления
      * @return Referral[]
      */
     public function getReferrals(): array
@@ -70,6 +71,7 @@ class PatientsReferrals extends BaseClass
         return $this;
     }
     /**
+     ** Данные пациента
      * @return Patient
      */
     public function getPatient(): Patient
@@ -91,16 +93,13 @@ class PatientsReferrals extends BaseClass
         return $me;
     }
 
-    /**
-     * @return static
-     */
-    public static function createDummy()
+    public static function createDummy(bool $imitateReal = false): static
     {
-        return self::createFromReferral(Referral::createDummy());
+        return self::createFromReferral(Referral::createDummy($imitateReal));
     }
 
     /**
-     * Поиск в списке направлений самого раннего
+     ** Поиск в списке направлений самого раннего
      * @return Referral
      */
     public function getFirstReferral(): Referral
