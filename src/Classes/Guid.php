@@ -4,6 +4,9 @@ namespace MgermApiClasses\Classes;
 
 use MgermApiClasses\Base\IdNameClass;
 
+/**
+ * Группа пользователя MGERM
+ */
 class Guid extends IdNameClass
 {
     public const dummyArray

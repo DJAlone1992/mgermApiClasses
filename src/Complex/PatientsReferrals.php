@@ -52,6 +52,7 @@ class PatientsReferrals extends BaseClass
         return $this;
     }
     /**
+     ** Направления
      * @return Referral[]
      */
     public function getReferrals(): array
@@ -70,6 +71,7 @@ class PatientsReferrals extends BaseClass
         return $this;
     }
     /**
+     ** Данные пациента
      * @return Patient
      */
     public function getPatient(): Patient
@@ -97,7 +99,7 @@ class PatientsReferrals extends BaseClass
     }
 
     /**
-     * Поиск в списке направлений самого раннего
+     ** Поиск в списке направлений самого раннего
      * @return Referral
      */
     public function getFirstReferral(): Referral

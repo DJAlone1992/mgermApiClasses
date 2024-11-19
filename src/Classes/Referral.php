@@ -5,7 +5,7 @@ namespace MgermApiClasses\Classes;
 use MgermApiClasses\Base\DateTimeStartTimeEndClass;
 
 /**
- * Класс направления из MGERM
+ ** Класс направления из MGERM
  */
 class Referral extends DateTimeStartTimeEndClass
 {
@@ -63,8 +63,7 @@ class Referral extends DateTimeStartTimeEndClass
         $this->cabinet = new Cabinet();
     }
     /**
-     * getDepartment
-     *
+     ** Отделение направления
      * @return Department|null
      */
     public function getDepartment(): ?Department
@@ -96,6 +95,7 @@ class Referral extends DateTimeStartTimeEndClass
 
 
     /**
+     ** Врач в направлении
      * @return Doctor|null
      */
     public function getDoctor(): ?Doctor
@@ -118,6 +118,7 @@ class Referral extends DateTimeStartTimeEndClass
 
 
     /**
+     ** Направленный пациент
      * @return Patient|null
      */
     public function getPatient(): ?Patient
@@ -166,6 +167,7 @@ class Referral extends DateTimeStartTimeEndClass
 
 
     /**
+     ** Данные ЛПУ
      * @return Hospital|null
      */
     public function getHospital(): ?Hospital
@@ -187,7 +189,7 @@ class Referral extends DateTimeStartTimeEndClass
     }
 
     /**
-     * Получение услуги по направлению
+     ** Услуга по направлению
      * @return Service|null
      */
     public function getService(): ?Service
@@ -207,6 +209,7 @@ class Referral extends DateTimeStartTimeEndClass
         return $this;
     }
     /**
+     ** Кабинет в направлении
      * @return Cabinet|null
      */
     public function getCabinet(): ?Cabinet

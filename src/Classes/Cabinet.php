@@ -4,6 +4,9 @@ namespace MgermApiClasses\Classes;
 
 use MgermApiClasses\Base\IdNameClass;
 
+/**
+ * Сущность кабинета
+ */
 class Cabinet extends IdNameClass
 {
     public const dummyArray =
@@ -27,6 +30,7 @@ class Cabinet extends IdNameClass
      */
     private ?int $number = null;
     /**
+     * Отделение
      * @var Department|null
      */
     private ?Department $department;
@@ -62,6 +66,7 @@ class Cabinet extends IdNameClass
 
 
     /**
+     ** Отделение кабинета
      * @return Department|null
      */
     public function getDepartment(): ?Department

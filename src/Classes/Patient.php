@@ -49,14 +49,17 @@ class Patient extends Person
         ]
     ];
     /**
+     ** Номер амбулаторной карты
      * @var int|null|null
      */
     private ?int $cardNumber = null;
     /**
+     ** Год заведения амбулаторной карты
      * @var int|null|null
      */
     private ?int $cardYear = null;
     /**
+     ** Телефон пациента
      * @var string|null|null
      */
     private ?string $phone = null;
@@ -146,5 +149,14 @@ class Patient extends Person
         $this->phone = $phone;
 
         return $this;
+    }
+
+    /**
+     ** Полный номер амбулаторной карты пациента
+     * @return string
+     */
+    public function getFullCardNumber(): string
+    {
+        return $this->getCardNumber() . '/' . $this->getCardYear();
     }
 }

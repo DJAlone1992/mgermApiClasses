@@ -51,15 +51,18 @@ class Doctor extends Person
         'contactsCount' => 0
     ];
     /**
+     ** Специальность
      * @var Specialty|null
      */
     private ?Specialty $specialty;
     /**
+     ** Отделение
      * @var Department|null
      */
     private ?Department $department;
 
     /**
+     ** Группа
      * @var Guid|null
      */
     private ?Guid $guid;
@@ -127,6 +130,7 @@ class Doctor extends Person
 
 
     /**
+     ** Специальность врача
      * @return Specialty|null
      */
     public function getSpecialty(): ?Specialty
@@ -136,6 +140,7 @@ class Doctor extends Person
 
 
     /**
+     ** Отделение врача
      * @return Department|null
      */
     public function getDepartment(): ?Department
@@ -165,6 +170,7 @@ class Doctor extends Person
     }
 
     /**
+     ** Группа пользователя врача
      * @return Guid|null
      */
     public function getGuid(): ?Guid

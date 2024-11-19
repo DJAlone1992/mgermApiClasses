@@ -27,14 +27,18 @@ abstract class Person extends BaseClass
      */
     private ?CaseString $secondNameObj = null;
     /**
+     ** Пол (число)
      * @var int|null
      */
     private ?int $sex = null;
     /**
+     ** Пол (латиница)
      * @var string|null
      */
     private ?string $sexName = "unknown";
     /**
+     ** Дата рождения
+     *# |date('d.m.Y')
      * @var DateTime|null|null
      */
     private ?DateTime $birthDay = null;
@@ -88,6 +92,7 @@ abstract class Person extends BaseClass
         return $this;
     }
     /**
+     ** Количество указанных контактов
      * @return int
      */
     public function getContactsCount(): int
@@ -105,6 +110,7 @@ abstract class Person extends BaseClass
         return $this;
     }
     /**
+     ** Фамилия
      * @return CaseString|null
      */
     public function getLastNameObj(): ?CaseString
@@ -219,6 +225,7 @@ abstract class Person extends BaseClass
 
 
     /**
+     ** Имя
      * @return CaseString|null
      */
     public function getFirstNameObj(): ?CaseString
@@ -228,9 +235,7 @@ abstract class Person extends BaseClass
 
 
     /**
-     * Get the value of secondNameObj
-     */
-    /**
+     ** Отчество
      * @return CaseString|null
      */
     public function getSecondNameObj(): ?CaseString
@@ -241,8 +246,7 @@ abstract class Person extends BaseClass
 
 
     /**
-     * Get $contacts
-     *
+     ** Контакты
      * @return  Contact[]
      */
     public function getContacts(): ?array
@@ -265,6 +269,7 @@ abstract class Person extends BaseClass
     }
 
     /**
+     ** ФИО в именительном падеже
      * @return string
      */
     public function getFullName(): string
@@ -272,6 +277,10 @@ abstract class Person extends BaseClass
         return $this->getLastNameObj()->getNominativeCase() . ' ' . $this->getFirstNameObj()->getNominativeCase() . ' ' . $this->getSecondNameObj()->getNominativeCase();
     }
 
+    /**
+     ** Фамилия и инициалы в именительном падеже
+     * @return string
+     */
     public function getLastNameWithInitials(): string
     {
         return
@@ -283,6 +292,10 @@ abstract class Person extends BaseClass
         $this->lastNameObj->setNominativeCase($lastName);
         return $this;
     }
+    /**
+     ** Фамилия в именительном падеже
+     * @return string|null
+     */
     public function getLastName(): ?string
     {
         return $this->lastNameObj->getNominativeCase();
@@ -292,6 +305,10 @@ abstract class Person extends BaseClass
         $this->firstNameObj->setNominativeCase($firstName);
         return $this;
     }
+    /**
+     ** Имя в именительном падеже
+     * @return string|null
+     */
     public function getFirstName(): ?string
     {
         return $this->firstNameObj->getNominativeCase();
@@ -301,6 +318,10 @@ abstract class Person extends BaseClass
         $this->secondNameObj->setNominativeCase($secondName);
         return $this;
     }
+    /**
+     ** Отчество в именительном падеже
+     * @return string|null
+     */
     public function getSecondName(): ?string
     {
         return $this->secondNameObj->getNominativeCase();

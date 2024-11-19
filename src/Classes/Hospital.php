@@ -5,6 +5,9 @@ namespace MgermApiClasses\Classes;
 use MgermApiClasses\Base\BaseClass;
 use MgermApiClasses\Base\CaseString;
 
+/**
+ * Информация об ЛПУ
+ */
 class Hospital extends BaseClass
 {
     public const dummyArray
@@ -21,10 +24,12 @@ class Hospital extends BaseClass
      */
     private ?CaseString $nameObj = null;
     /**
+     ** Адрес ЛПУ
      * @var string|null|null
      */
     private ?string $address = null;
     /**
+     ** Телефон ЛПУ
      * @var string|null|null
      */
     private ?string $phone = null;
@@ -34,6 +39,7 @@ class Hospital extends BaseClass
         $this->nameObj = new CaseString();
     }
     /**
+     ** Наименование ЛПУ
      * @return string|null
      */
     public function getName(): ?string

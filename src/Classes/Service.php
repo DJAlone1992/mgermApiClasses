@@ -17,9 +17,25 @@ class Service extends IdNameClass
         'floatPrice' => 123.45,
         'price' => 12345
     ];
+    /**
+     ** Цена услуги в копейках
+     * @var int
+     */
     private int $price = 0;
+    /**
+     ** Цена услуги в рублях и копейках
+     * @var float
+     */
     private float $floatPrice = 0;
+    /**
+     ** Код услуги
+     * @var string|null|null
+     */
     private ?string $code = null;
+    /**
+     ** Индекс прайс-листа
+     * @var int|null
+     */
     private ?int $priceListId = 0;
 
     public function getFloatPrice(): float

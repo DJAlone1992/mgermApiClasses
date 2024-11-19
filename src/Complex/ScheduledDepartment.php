@@ -16,6 +16,7 @@ class ScheduledDepartment extends BaseClass
         'id' => 1
     ];
     /**
+     ** Данные отделения
      * @var Department|null|null
      */
     private ?Department $department = null;
@@ -38,6 +39,7 @@ class ScheduledDepartment extends BaseClass
         return $this;
     }
     /**
+     ** Список врачей
      * @return ScheduledDoctor[]|null
      */
     public function getDoctors(): ?array

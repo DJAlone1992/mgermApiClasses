@@ -5,6 +5,7 @@ namespace MgermApiClasses\Base;
 abstract class BaseClass
 {
     /**
+     ** Индекс
      * @var int|null
      */
     private ?int $id = null;

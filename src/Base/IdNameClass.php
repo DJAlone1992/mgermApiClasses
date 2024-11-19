@@ -12,6 +12,7 @@ abstract class IdNameClass extends BaseClass
         $this->nameObj = new CaseString();
     }
     /**
+     ** Наименование
      * @return CaseString|null
      */
     public function getNameObj(): ?CaseString
@@ -42,6 +43,7 @@ abstract class IdNameClass extends BaseClass
         return $this;
     }
     /**
+     ** Наименование в именительном падеже
      * @return string|null
      */
     public function getName(): ?string
