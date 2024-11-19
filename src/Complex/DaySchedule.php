@@ -74,10 +74,10 @@ class DaySchedule extends BaseClass
         return $this;
     }
 
-    public static function createDummy(): static
+    public static function createDummy(bool $imitateReal = false): static
     {
         $me = new static();
-        $me->setDate('2002-02-02')->appendDepartment(ScheduledDepartment::createDummy());
+        $me->setDate('2002-02-02')->appendDepartment(ScheduledDepartment::createDummy($imitateReal));
         return $me;
     }
 }

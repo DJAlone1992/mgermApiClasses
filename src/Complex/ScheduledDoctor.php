@@ -183,15 +183,15 @@ class ScheduledDoctor extends BaseClass
         return $this;
     }
 
-    public static function createDummy(): static
+    public static function createDummy(bool $imitateReal = false): static
     {
         $me = new static();
-        $doctor = Doctor::createDummy();
+        $doctor = Doctor::createDummy($imitateReal);
         $me->setId(1)
             ->setInterval(true)
             ->setDoctor($doctor)
-            ->appendCell(Cell::createDummy())
-            ->appendService(Service::createDummy())
+            ->appendCell(Cell::createDummy($imitateReal))
+            ->appendService(Service::createDummy($imitateReal))
             ->setIntervalDuration(60);
         return $me;
     }

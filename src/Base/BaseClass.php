@@ -30,5 +30,5 @@ abstract class BaseClass
         return $this;
     }
 
-    abstract public static function createDummy(): static;
+    abstract public static function createDummy(bool $imitateReal = false): static;
 }

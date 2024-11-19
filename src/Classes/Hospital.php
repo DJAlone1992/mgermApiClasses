@@ -21,7 +21,7 @@ class Hospital extends BaseClass
             'prepositionalCase' => '[Наименовании клиники]',
         ],
         'name'    => '[Наименование клиники]',
-        'phone'   => '+79998887755',
+        'phone'   => '[Телефон клиники]',
         'address' => '[Адрес клиники]',
         'id'      => 1,
     ];
@@ -105,21 +105,34 @@ class Hospital extends BaseClass
         return $this;
     }
 
-    public static function createDummy(): static
+    public static function createDummy(bool $imitateReal = false): static
     {
         $hospital = new static();
-        $hospital
-            ->setId(1)
-            ->setName('[Наименование клиники]')
-            ->setAddress('[Адрес клиники]')
-            ->setPhone('+79998887755');
-        $hospital->getNameObj()
-            ->setGenitiveCase('[Наименования клиники]')
-            ->setDativeCase('[Наименованию клиники]')
-            ->setAccusativeCase('[Наименование клиники]')
-            ->setCreativeCase('[Наименованием клиники]')
-            ->setPrepositionalCase('[Наименовании клиники]');
-
+        if ($imitateReal) {
+            $hospital
+                ->setId(1)
+                ->setName('Клиника "Здоровье"')
+                ->setAddress('Москва, ул. Пушкина, д. 896')
+                ->setPhone('+79998887755');
+            $hospital->getNameObj()
+                ->setGenitiveCase('Клиники "Здоровье"')
+                ->setDativeCase('Клинике "Здоровье"')
+                ->setAccusativeCase('Клинику "Здоровье"')
+                ->setCreativeCase('Клиникой "Здоровье"')
+                ->setPrepositionalCase('Клинике "Здоровье"');
+        } else {
+            $hospital
+                ->setId(1)
+                ->setName('[Наименование клиники]')
+                ->setAddress('[Адрес клиники]')
+                ->setPhone('[Телефон клиники]');
+            $hospital->getNameObj()
+                ->setGenitiveCase('[Наименования клиники]')
+                ->setDativeCase('[Наименованию клиники]')
+                ->setAccusativeCase('[Наименование клиники]')
+                ->setCreativeCase('[Наименованием клиники]')
+                ->setPrepositionalCase('[Наименовании клиники]');
+        }
         return $hospital;
     }
     /**

@@ -22,15 +22,25 @@ class Guid extends IdNameClass
         'name' => '[Администратор]',
         'id' => 1
     ];
-    public static function createDummy(): static
+    public static function createDummy(bool $imitateReal = false): static
     {
-        $me = self::SelfFactory(1, '[Администратор]');
-        $me->getNameObj()
-            ->setGenitiveCase('[Администратора]')
-            ->setDativeCase('[Администратору]')
-            ->setAccusativeCase('[Администратора]')
-            ->setCreativeCase('[Администратором]')
-            ->setPrepositionalCase('[Администраторе]');
+        if ($imitateReal) {
+            $me = self::SelfFactory(11, 'Врач-специалист');
+            $me->getNameObj()
+                ->setGenitiveCase('Врача-специалиста')
+                ->setDativeCase('Врачу-специалисту')
+                ->setAccusativeCase('Врача-специалиста')
+                ->setCreativeCase('Врачом-специалистом')
+                ->setPrepositionalCase('Враче-специалисте');
+        } else {
+            $me = self::SelfFactory(1, '[Администратор]');
+            $me->getNameObj()
+                ->setGenitiveCase('[Администратора]')
+                ->setDativeCase('[Администратору]')
+                ->setAccusativeCase('[Администратора]')
+                ->setCreativeCase('[Администратором]')
+                ->setPrepositionalCase('[Администраторе]');
+        }
         return $me;
     }
 

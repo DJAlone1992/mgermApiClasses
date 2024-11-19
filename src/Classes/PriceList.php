@@ -25,16 +25,26 @@ class PriceList extends IdNameClass
      */
     private array $services = [];
 
-    public static function createDummy(): static
+    public static function createDummy(bool $imitateReal = false): static
     {
         $me = new static();
-        $me->factory(1, '[Прайс-лист]');
-        $me->getNameObj()
-            ->setGenitiveCase('[Прайс-листа]')
-            ->setDativeCase('[Прайс-листу]')
-            ->setAccusativeCase('[Прайс-лист]')
-            ->setCreativeCase('[Прайс-листом]')
-            ->setPrepositionalCase('[Прайс-листе]');
+        if ($imitateReal) {
+            $me->factory(1, 'Консультации специалистов');
+            $me->getNameObj()
+                ->setGenitiveCase('Консультаций специалистов')
+                ->setDativeCase('Консультации специалистов')
+                ->setAccusativeCase('Консультации специалистов')
+                ->setCreativeCase('Консультациями специалистов')
+                ->setPrepositionalCase('Консультациях специалистов');
+        } else {
+            $me->factory(1, '[Прайс-лист]');
+            $me->getNameObj()
+                ->setGenitiveCase('[Прайс-листа]')
+                ->setDativeCase('[Прайс-листу]')
+                ->setAccusativeCase('[Прайс-лист]')
+                ->setCreativeCase('[Прайс-листом]')
+                ->setPrepositionalCase('[Прайс-листе]');
+        }
         return $me;
     }
     public static function SelfFactory(?int $id, ?string $name): static

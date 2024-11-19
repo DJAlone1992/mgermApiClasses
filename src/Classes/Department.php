@@ -28,15 +28,25 @@ class Department extends IdNameClass
         $department->setId($id)->setName($name);
         return $department;
     }
-    public static function createDummy(): static
+    public static function createDummy(bool $imitateReal = false): static
     {
-        $me = self::SelfFactory(1, 'Отделение');
-        $me->getNameObj()
-            ->setGenitiveCase('Отделения')
-            ->setDativeCase('Отделению')
-            ->setAccusativeCase('Отделение')
-            ->setCreativeCase('Отделением')
-            ->setPrepositionalCase('Отделении');
+        if ($imitateReal) {
+            $me = self::SelfFactory(1, 'Поликлиническое отделение');
+            $me->getNameObj()
+                ->setGenitiveCase('Поликлинического отделения')
+                ->setDativeCase('Поликлиническому отделению')
+                ->setAccusativeCase('Поликлиническое отделение')
+                ->setCreativeCase('Поликлиническим отделением')
+                ->setPrepositionalCase('Поликлиническом отделении');
+        } else {
+            $me = self::SelfFactory(1, 'Отделение');
+            $me->getNameObj()
+                ->setGenitiveCase('Отделения')
+                ->setDativeCase('Отделению')
+                ->setAccusativeCase('Отделение')
+                ->setCreativeCase('Отделением')
+                ->setPrepositionalCase('Отделении');
+        }
         return $me;
     }
 }

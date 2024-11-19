@@ -16,18 +16,7 @@ class Referral extends DateTimeStartTimeEndClass
         'cabinet'    => Cabinet::dummyArray,
         'service'    => Service::dummyArray,
         'id'         => 123456789,
-        'department' => [
-            'nameObj' => [
-                'nominativeCase'    => '[Отделение, куда направлен пациент]',
-                'genitiveCase'      => '[Отделения, куда направлен пациент]',
-                'dativeCase'        => '[Отделению, куда направлен пациент]',
-                'accusativeCase'    => '[Отделение, куда направлен пациент]',
-                'creativeCase'      => '[Отделением, куда направлен пациент]',
-                'prepositionalCase' => '[Отделении, куда направлен пациент]',
-            ],
-            'name'    => '[Отделение, куда направлен пациент]',
-            'id'      => 1,
-        ],
+        'department' => Department::dummyArray,
         'date'       => '1999-09-09 00:00:00',
         'timeStart'  => '1999-09-09 09:09:00',
         'timeEnd'    => '1999-09-09 10:10:00',
@@ -145,29 +134,24 @@ class Referral extends DateTimeStartTimeEndClass
      * Создание экземпляра объекта с тестовым наполнением параметров
      * @return static
      */
-    public static function createDummy(): static
+    public static function createDummy(bool $imitateReal = false): static
     {
         $referral = new static();
-        $patient  = Patient::createDummy();
-        $doctor   = Doctor::createDummy();
-        $hospital = Hospital::createDummy();
+        $patient  = Patient::createDummy($imitateReal);
+        $doctor   = Doctor::createDummy($imitateReal);
+        $hospital = Hospital::createDummy($imitateReal);
+        $department = Department::createDummy($imitateReal);
         $referral
             ->setId(123456789)
             ->setPatient($patient)
             ->setDoctor($doctor)
             ->setHospital($hospital)
-            ->departmentFactory(1, '[Отделение, куда направлен пациент]')
+            ->setDepartment($department)
             ->setDate('1999-09-09')
             ->setTimeStart('09:09')
             ->setTimeEnd('10:10')
-            ->setService(Service::createDummy())
-            ->setCabinet(Cabinet::createDummy());
-        $referral->getDepartment()->getNameObj()
-            ->setGenitiveCase('[Отделения, куда направлен пациент]')
-            ->setDativeCase('[Отделению, куда направлен пациент]')
-            ->setAccusativeCase('[Отделение, куда направлен пациент]')
-            ->setCreativeCase('[Отделением, куда направлен пациент]')
-            ->setPrepositionalCase('[Отделении, куда направлен пациент]');
+            ->setService(Service::createDummy($imitateReal))
+            ->setCabinet(Cabinet::createDummy($imitateReal));
         return $referral;
     }
 

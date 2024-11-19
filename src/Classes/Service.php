@@ -64,16 +64,26 @@ class Service extends IdNameClass
         return $this;
     }
 
-    public static function createDummy(): static
+    public static function createDummy(bool $imitateReal = false): static
     {
         $me = new static();
-        $me->setId(1)->setName('[Услуга]')->setFloatPrice('123.45')->setCode('[Код услуги]');
-        $me->getNameObj()
-            ->setGenitiveCase('[Услуги]')
-            ->setDativeCase('[Услугу]')
-            ->setAccusativeCase('[Услугу]')
-            ->setCreativeCase('[Услугой]')
-            ->setPrepositionalCase('[Услуге]');
+        if ($imitateReal) {
+            $me->setId(1)->setName('Прием (осмотр, консультация) врача общей практики (семейного врача) первичный')->setFloatPrice('123.45')->setCode('B01.026.001');
+            $me->getNameObj()
+                ->setGenitiveCase('Приема (осмотр, консультация) врача общей практики (семейного врача) первичного')
+                ->setDativeCase('Прием (осмотр, консультация) врача общей практики (семейного врача) первичный')
+                ->setAccusativeCase('Прием (осмотр, консультация) врача общей практики (семейного врача) первичный')
+                ->setCreativeCase('Приемом (осмотр, консультация) врача общей практики (семейного врача) первичным')
+                ->setPrepositionalCase('Приеме (осмотр, консультация) врача общей практики (семейного врача) первичном');
+        } else {
+            $me->setId(1)->setName('[Услуга]')->setFloatPrice('123.45')->setCode('[Код услуги]');
+            $me->getNameObj()
+                ->setGenitiveCase('[Услуги]')
+                ->setDativeCase('[Услугу]')
+                ->setAccusativeCase('[Услугу]')
+                ->setCreativeCase('[Услугой]')
+                ->setPrepositionalCase('[Услуге]');
+        }
         return $me;
     }
     public static function    SelfFactory(?int $id, ?string $name): static

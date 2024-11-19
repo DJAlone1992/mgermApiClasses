@@ -11,18 +11,7 @@ class Cabinet extends IdNameClass
 {
     public const dummyArray =
     [
-        'department' => [
-            'nameObj' => [
-                'nominativeCase'    => 'Отделение',
-                'genitiveCase'      => 'Отделения',
-                'dativeCase'        => 'Отделению',
-                'accusativeCase'    => 'Отделение',
-                'creativeCase'      => 'Отделением',
-                'prepositionalCase' => 'Отделении',
-            ],
-            'name'    => 'Отделение',
-            'id'      => 1,
-        ],
+        'department' => Department::dummyArray,
         'nameObj'    => [
             'nominativeCase'    => '[Кабинет]',
             'genitiveCase'      => '[Кабинета]',
@@ -68,16 +57,26 @@ class Cabinet extends IdNameClass
         $me->factory($id, $name);
         return $me;
     }
-    public static function createDummy(): static
+    public static function createDummy(bool $imitateReal = false): static
     {
-        $me = self::SelfFactory(1, '[Кабинет]')->setNumber(100);
-        $me->getNameObj()
-            ->setGenitiveCase('[Кабинета]')
-            ->setDativeCase('[Кабинету]')
-            ->setAccusativeCase('[Кабинет]')
-            ->setCreativeCase('[Кабинетом]')
-            ->setPrepositionalCase('[Кабинете]');
-        $me->department = Department::createDummy();
+        if ($imitateReal) {
+            $me = self::SelfFactory(1, 'Процедурный кабинет')->setNumber(100);
+            $me->getNameObj()
+                ->setGenitiveCase('Процедурного кабинета')
+                ->setDativeCase('Процедурному кабинету')
+                ->setAccusativeCase('Процедурный кабинет')
+                ->setCreativeCase('Процедурным кабинетом')
+                ->setPrepositionalCase('Процедурном кабинете');
+        } else {
+            $me = self::SelfFactory(1, '[Кабинет]')->setNumber(100);
+            $me->getNameObj()
+                ->setGenitiveCase('[Кабинета]')
+                ->setDativeCase('[Кабинету]')
+                ->setAccusativeCase('[Кабинет]')
+                ->setCreativeCase('[Кабинетом]')
+                ->setPrepositionalCase('[Кабинете]');
+        }
+        $me->department = Department::createDummy($imitateReal);
         return $me;
     }
 
