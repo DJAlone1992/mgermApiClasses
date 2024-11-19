@@ -4,22 +4,25 @@ namespace MgermApiClasses\Classes;
 
 use MgermApiClasses\Base\IdNameClass;
 
+/**
+ * Сущность кабинета
+ */
 class Cabinet extends IdNameClass
 {
     public const dummyArray =
     [
-        'department' => [
-            'nameObj' => [
-                'nominativeCase' => 'Отделение'
-            ],
-            'name' => 'Отделение',
-            'id' => 1
+        'department' => Department::dummyArray,
+        'nameObj'    => [
+            'nominativeCase'    => '[Кабинет]',
+            'genitiveCase'      => '[Кабинета]',
+            'dativeCase'        => '[Кабинету]',
+            'accusativeCase'    => '[Кабинет]',
+            'creativeCase'      => '[Кабинетом]',
+            'prepositionalCase' => '[Кабинете]',
         ],
-        'nameObj' => [
-            'nominativeCase' => '[Кабинет]'
-        ],
-        'name' => '[Кабинет]',
-        'id' => 1
+        'name'       => '[Кабинет]',
+        'number'     => 100,
+        'id'         => 1,
     ];
     /**
      * Номер кабинета
@@ -27,6 +30,7 @@ class Cabinet extends IdNameClass
      */
     private ?int $number = null;
     /**
+     * Отделение
      * @var Department|null
      */
     private ?Department $department;
@@ -56,25 +60,37 @@ class Cabinet extends IdNameClass
         $me->factory($id, $name);
         return $me;
     }
-    /**
-     * @return static
-     */
-    public static function createDummy()
+    public static function createDummy(bool $imitateReal = false): static
     {
-        $me = self::SelfFactory(1, '[Кабинет]');
-        $me->department = Department::createDummy();
+        if ($imitateReal) {
+            $me = self::SelfFactory(1, 'Процедурный кабинет')->setNumber(100);
+            $me->getNameObj()
+                ->setGenitiveCase('Процедурного кабинета')
+                ->setDativeCase('Процедурному кабинету')
+                ->setAccusativeCase('Процедурный кабинет')
+                ->setCreativeCase('Процедурным кабинетом')
+                ->setPrepositionalCase('Процедурном кабинете');
+        } else {
+            $me = self::SelfFactory(1, '[Кабинет]')->setNumber(100);
+            $me->getNameObj()
+                ->setGenitiveCase('[Кабинета]')
+                ->setDativeCase('[Кабинету]')
+                ->setAccusativeCase('[Кабинет]')
+                ->setCreativeCase('[Кабинетом]')
+                ->setPrepositionalCase('[Кабинете]');
+        }
+        $me->department = Department::createDummy($imitateReal);
         return $me;
     }
 
-
     /**
+     ** Отделение кабинета
      * @return Department|null
      */
     public function getDepartment(): ?Department
     {
         return $this->department;
     }
-
 
     /**
      * @param Department|null $department
@@ -87,7 +103,6 @@ class Cabinet extends IdNameClass
 
         return $this;
     }
-
 
     /**
      * @return int|null

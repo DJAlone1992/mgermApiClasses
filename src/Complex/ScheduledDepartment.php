@@ -16,6 +16,7 @@ class ScheduledDepartment extends BaseClass
         'id' => 1
     ];
     /**
+     ** Данные отделения
      * @var Department|null|null
      */
     private ?Department $department = null;
@@ -38,6 +39,7 @@ class ScheduledDepartment extends BaseClass
         return $this;
     }
     /**
+     ** Список врачей
      * @return ScheduledDoctor[]|null
      */
     public function getDoctors(): ?array
@@ -80,13 +82,10 @@ class ScheduledDepartment extends BaseClass
         return $this;
     }
 
-    /**
-     * @return static
-     */
-    public static function createDummy()
+    public static function createDummy(bool $imitateReal = false): static
     {
         $me = new static();
-        $me->setId(1)->setDepartment(Department::createDummy())->appendDoctor(ScheduledDoctor::createDummy());
+        $me->setId(1)->setDepartment(Department::createDummy($imitateReal))->appendDoctor(ScheduledDoctor::createDummy($imitateReal));
         return $me;
     }
 }

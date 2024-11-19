@@ -5,27 +5,21 @@ namespace MgermApiClasses\Classes;
 use MgermApiClasses\Base\DateTimeStartTimeEndClass;
 
 /**
- * Класс направления из MGERM
+ ** Класс направления из MGERM
  */
 class Referral extends DateTimeStartTimeEndClass
 {
     public const dummyArray = [
-        'patient' => Patient::dummyArray,
-        'doctor' => Doctor::dummyArray,
-        'hospital' => Hospital::dummyArray,
-        'cabinet' => Cabinet::dummyArray,
-        'service' => Service::dummyArray,
-        'id' => 123456789,
-        'department' => [
-            'nameObj' => [
-                'nominativeCase' => '[Отделение, куда направлен пациент]'
-            ],
-            'name' => '[Отделение, куда направлен пациент]',
-            'id' => 1
-        ],
-        'date' => '1999-09-09 00:00:00',
-        'timeStart' => '1999-09-09 09:09:00',
-        'timeEnd'   => '1999-09-09 10:10:00',
+        'patient'    => Patient::dummyArray,
+        'doctor'     => Doctor::dummyArray,
+        'hospital'   => Hospital::dummyArray,
+        'cabinet'    => Cabinet::dummyArray,
+        'service'    => Service::dummyArray,
+        'id'         => 123456789,
+        'department' => Department::dummyArray,
+        'date'       => '1999-09-09 00:00:00',
+        'timeStart'  => '1999-09-09 09:09:00',
+        'timeEnd'    => '1999-09-09 10:10:00',
 
     ];
     /**
@@ -55,16 +49,15 @@ class Referral extends DateTimeStartTimeEndClass
 
     public function __construct()
     {
-        $this->patient = new Patient();
-        $this->doctor = new Doctor();
+        $this->patient    = new Patient();
+        $this->doctor     = new Doctor();
         $this->department = new Department();
-        $this->hospital = new Hospital();
-        $this->service = new Service();
-        $this->cabinet = new Cabinet();
+        $this->hospital   = new Hospital();
+        $this->service    = new Service();
+        $this->cabinet    = new Cabinet();
     }
     /**
-     * getDepartment
-     *
+     ** Отделение направления
      * @return Department|null
      */
     public function getDepartment(): ?Department
@@ -84,25 +77,24 @@ class Referral extends DateTimeStartTimeEndClass
     }
 
     /**
-     * @param array|Department|null $department
+     * @param Department|null $department
      *
      * @return static
      */
-    public function setDepartment($department)
+    public function setDepartment(Department | null $department): static
     {
         $this->department = $department;
         return $this;
     }
 
-
     /**
+     ** Врач в направлении
      * @return Doctor|null
      */
     public function getDoctor(): ?Doctor
     {
         return $this->doctor;
     }
-
 
     /**
      * @param Doctor|null $doctor
@@ -116,15 +108,14 @@ class Referral extends DateTimeStartTimeEndClass
         return $this;
     }
 
-
     /**
+     ** Направленный пациент
      * @return Patient|null
      */
     public function getPatient(): ?Patient
     {
         return $this->patient;
     }
-
 
     /**
      * @param Patient|null $patient
@@ -143,36 +134,35 @@ class Referral extends DateTimeStartTimeEndClass
      * Создание экземпляра объекта с тестовым наполнением параметров
      * @return static
      */
-    public static function createDummy()
+    public static function createDummy(bool $imitateReal = false): static
     {
         $referral = new static();
-        $patient = Patient::createDummy();
-        $doctor = Doctor::createDummy();
-        $hospital = Hospital::createDummy();
+        $patient  = Patient::createDummy($imitateReal);
+        $doctor   = Doctor::createDummy($imitateReal);
+        $hospital = Hospital::createDummy($imitateReal);
+        $department = Department::createDummy($imitateReal);
         $referral
             ->setId(123456789)
             ->setPatient($patient)
             ->setDoctor($doctor)
             ->setHospital($hospital)
-            ->departmentFactory(1, '[Отделение, куда направлен пациент]')
+            ->setDepartment($department)
             ->setDate('1999-09-09')
             ->setTimeStart('09:09')
             ->setTimeEnd('10:10')
-            ->setService(Service::createDummy())
-            ->setCabinet(Cabinet::createDummy());
-
+            ->setService(Service::createDummy($imitateReal))
+            ->setCabinet(Cabinet::createDummy($imitateReal));
         return $referral;
     }
 
-
     /**
+     ** Данные ЛПУ
      * @return Hospital|null
      */
     public function getHospital(): ?Hospital
     {
         return $this->hospital;
     }
-
 
     /**
      * @param Hospital|null $hospital
@@ -187,7 +177,7 @@ class Referral extends DateTimeStartTimeEndClass
     }
 
     /**
-     * Получение услуги по направлению
+     ** Услуга по направлению
      * @return Service|null
      */
     public function getService(): ?Service
@@ -207,13 +197,13 @@ class Referral extends DateTimeStartTimeEndClass
         return $this;
     }
     /**
+     ** Кабинет в направлении
      * @return Cabinet|null
      */
     public function getCabinet(): ?Cabinet
     {
         return $this->cabinet;
     }
-
 
     /**
      * @param Cabinet|null $cabinet

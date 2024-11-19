@@ -5,6 +5,9 @@ namespace MgermApiClasses\Classes;
 use MgermApiClasses\Base\BaseClass;
 use MgermApiClasses\Enum\ContactType;
 
+/**
+ * Сущность контакта
+ */
 class Contact extends BaseClass
 {
     public const dummyArray
@@ -15,10 +18,12 @@ class Contact extends BaseClass
 
 
     /**
+     ** Значение
      * @var string|null
      */
     private ?string $value;
     /**
+     ** Тип
      * @var int|null
      */
     private ?int $type = ContactType::Unknown;
@@ -69,10 +74,7 @@ class Contact extends BaseClass
 
         return $this;
     }
-    /**
-     * @return static
-     */
-    public static function createDummy()
+    public static function createDummy(bool $imitateReal = false): static
     {
         $contact = new static();
         $contact->setType(ContactType::MobilePhone)->setValue('+79999999999');

@@ -23,6 +23,7 @@ class ScheduledDoctor extends BaseClass
         'id' => 1
     ];
     /**
+     *
      * @var Doctor|null|null
      */
     private ?Doctor $doctor = null;
@@ -39,6 +40,7 @@ class ScheduledDoctor extends BaseClass
      */
     private bool $interval = false;
     /**
+     ** Длительность интервала приема
      * @var int|null|null
      */
     private ?int $intervalDuration = null;
@@ -114,6 +116,7 @@ class ScheduledDoctor extends BaseClass
 
 
     /**
+     ** Список услуг
      * @return Service[]|null
      */
     public function getServices(): ?array
@@ -136,6 +139,7 @@ class ScheduledDoctor extends BaseClass
 
 
     /**
+     ** Ячейки для записи
      * @return Cell[]|null
      */
     public function getCells(): ?array
@@ -158,6 +162,7 @@ class ScheduledDoctor extends BaseClass
 
 
     /**
+     ** Данные врача
      * @return Doctor|null
      */
     public function getDoctor(): ?Doctor
@@ -178,18 +183,15 @@ class ScheduledDoctor extends BaseClass
         return $this;
     }
 
-    /**
-     * @return static
-     */
-    public static function createDummy()
+    public static function createDummy(bool $imitateReal = false): static
     {
         $me = new static();
-        $doctor = Doctor::createDummy();
+        $doctor = Doctor::createDummy($imitateReal);
         $me->setId(1)
             ->setInterval(true)
             ->setDoctor($doctor)
-            ->appendCell(Cell::createDummy())
-            ->appendService(Service::createDummy())
+            ->appendCell(Cell::createDummy($imitateReal))
+            ->appendService(Service::createDummy($imitateReal))
             ->setIntervalDuration(60);
         return $me;
     }

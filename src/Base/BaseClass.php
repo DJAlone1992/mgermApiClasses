@@ -5,6 +5,7 @@ namespace MgermApiClasses\Base;
 abstract class BaseClass
 {
     /**
+     ** Индекс
      * @var int|null
      */
     private ?int $id = null;
@@ -29,8 +30,5 @@ abstract class BaseClass
         return $this;
     }
 
-    /**
-     * @return static
-     */
-    abstract public static function createDummy();
+    abstract public static function createDummy(bool $imitateReal = false): static;
 }
