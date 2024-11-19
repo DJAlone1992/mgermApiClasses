@@ -26,22 +26,22 @@ class Service extends IdNameClass
      ** Цена услуги в копейках
      * @var int
      */
-    private int $price = 0;
+    private $price = 0;
     /**
      ** Цена услуги в рублях и копейках
      * @var float
      */
-    private float $floatPrice = 0;
+    private $floatPrice = 0;
     /**
      ** Код услуги
      * @var string|null|null
      */
-    private ?string $code = null;
+    private $code;
     /**
      ** Индекс прайс-листа
      * @var int|null
      */
-    private ?int $priceListId = 0;
+    private $priceListId = 0;
 
     public function getFloatPrice(): float
     {
@@ -70,7 +70,10 @@ class Service extends IdNameClass
         return $this;
     }
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         if ($imitateReal) {

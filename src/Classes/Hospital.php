@@ -105,7 +105,10 @@ class Hospital extends BaseClass
         return $this;
     }
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $hospital = new static();
         if ($imitateReal) {

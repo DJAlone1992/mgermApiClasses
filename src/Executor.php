@@ -104,7 +104,7 @@ class Executor
      *
      * @return array
      */
-    public static function getDescriptionArray(BaseClass|CaseString $class): array
+    public static function getDescriptionArray($class): array
     {
         return BaseClassDescriptor::getDescription($class);
     }
@@ -115,7 +115,7 @@ class Executor
      *
      * @return string
      */
-    public static function getDescriptionHtml(BaseClass|CaseString $class): string
+    public static function getDescriptionHtml($class): string
     {
         return BaseClassDescriptor::getDescriptionHtml($class);
     }

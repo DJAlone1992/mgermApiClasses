@@ -25,7 +25,10 @@ class PriceList extends IdNameClass
      */
     private $services = [];
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         if ($imitateReal) {

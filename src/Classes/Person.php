@@ -45,7 +45,7 @@ abstract class Person extends BaseClass
     /**
      * @var Contact[] $contacts
      */
-    private array $contacts = [];
+    private $contacts = [];
 
     /**
      * @var int

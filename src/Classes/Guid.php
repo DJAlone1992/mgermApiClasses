@@ -22,7 +22,10 @@ class Guid extends IdNameClass
         'name' => '[Администратор]',
         'id' => 1
     ];
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         if ($imitateReal) {
             $me = self::SelfFactory(11, 'Врач-специалист');
@@ -44,7 +47,10 @@ class Guid extends IdNameClass
         return $me;
     }
 
-    public static function SelfFactory(?int $id, ?string $name): static
+    /**
+     * @return static
+     */
+    public static function SelfFactory(?int $id, ?string $name)
     {
         $me = new static();
         $me->factory($id, $name);

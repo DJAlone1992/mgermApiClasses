@@ -37,12 +37,12 @@ class BaseClassDescriptor
      *
      * @return string
      */
-    private static function __getDocVar(ReflectionClass | ReflectionMethod | ReflectionProperty $reflectionVar, string $varPrefix = '**'): string
+    private static function __getDocVar($reflectionVar, string $varPrefix = '**'): string
     {
         $doc      = $reflectionVar->getDocComment();
         $docArray = explode("\n", $doc);
         foreach ($docArray as $docLine) {
-            if (str_contains($docLine, $varPrefix) && !str_contains($docLine, '/**')) {
+            if (strpos($docLine, $varPrefix) !== false && strpos($docLine, '/**') === false) {
                 return trim(preg_replace("#((\/)?(\*{1,2})(\/)?)#si", "", str_replace($varPrefix, '', $docLine)));
             }
         }
@@ -121,7 +121,7 @@ class BaseClassDescriptor
      *
      * @return array
      */
-    public static function getDescription(BaseClass | CaseString $class, string $varNamePrepend = ''): array
+    public static function getDescription($class, string $varNamePrepend = ''): array
     {
         $result = [];
 
@@ -130,7 +130,7 @@ class BaseClassDescriptor
         $objMethods = $reflection->getMethods();
         foreach ($objMethods as $method) {
             $callMethodName = $method->getName();
-            if (!str_contains($callMethodName, 'get')) {
+            if (strpos($callMethodName, 'get') === false) {
                 continue;
             }
             $varName = lcfirst(str_replace('get', '', $callMethodName));
@@ -294,7 +294,7 @@ class BaseClassDescriptor
      *
      * @return bool
      */
-    private static function __isExample(mixed $item): bool
+    private static function __isExample($item): bool
     {
         if (is_array($item)) {
             return false;
@@ -308,7 +308,7 @@ class BaseClassDescriptor
      *
      * @return string
      */
-    private static function __RussianType(mixed $item): string
+    private static function __RussianType($item): string
     {
         if ($item instanceof DateTime || $item instanceof DateTimeImmutable) {
             return 'Объект даты и времени';

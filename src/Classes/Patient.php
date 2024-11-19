@@ -78,7 +78,7 @@ class Patient extends Person
      ** Телефон пациента
      * @var string|null|null
      */
-    private ?string $phone = null;
+    private $phone;
 
     /**
      * @return int|null
@@ -120,7 +120,10 @@ class Patient extends Person
         return $this;
     }
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $patient = new static();
         if ($imitateReal) {

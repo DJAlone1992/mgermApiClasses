@@ -29,7 +29,10 @@ class Specialty extends IdNameClass
         $specialty->setId($id)->setName($name);
         return $specialty;
     }
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         if ($imitateReal) {
             $me = self::SelfFactory(1, 'Врач общей практики');

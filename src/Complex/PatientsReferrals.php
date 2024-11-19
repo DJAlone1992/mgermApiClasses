@@ -93,7 +93,10 @@ class PatientsReferrals extends BaseClass
         return $me;
     }
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         return self::createFromReferral(Referral::createDummy($imitateReal));
     }
