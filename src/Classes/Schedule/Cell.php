@@ -18,7 +18,10 @@ class Cell extends DateTimeStartTimeEndClass
     private bool $free = false;
     private ?bool $interval = false;
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         $me

@@ -120,7 +120,10 @@ class Patient extends Person
         return $this;
     }
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $patient = new static();
         if ($imitateReal) {

@@ -70,7 +70,10 @@ class Service extends IdNameClass
         return $this;
     }
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         if ($imitateReal) {

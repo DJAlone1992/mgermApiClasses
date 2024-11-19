@@ -60,7 +60,10 @@ class Cabinet extends IdNameClass
         $me->factory($id, $name);
         return $me;
     }
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         if ($imitateReal) {
             $me = self::SelfFactory(1, 'Процедурный кабинет')->setNumber(100);

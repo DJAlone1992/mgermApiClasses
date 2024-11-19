@@ -81,7 +81,7 @@ class Referral extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function setDepartment(Department | null $department): static
+    public function setDepartment(?Department $department)
     {
         $this->department = $department;
         return $this;
@@ -134,7 +134,7 @@ class Referral extends DateTimeStartTimeEndClass
      * Создание экземпляра объекта с тестовым наполнением параметров
      * @return static
      */
-    public static function createDummy(bool $imitateReal = false): static
+    public static function createDummy(bool $imitateReal = false)
     {
         $referral = new static();
         $patient  = Patient::createDummy($imitateReal);

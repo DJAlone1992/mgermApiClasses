@@ -74,7 +74,10 @@ class Contact extends BaseClass
 
         return $this;
     }
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $contact = new static();
         $contact->setType(ContactType::MobilePhone)->setValue('+79999999999');

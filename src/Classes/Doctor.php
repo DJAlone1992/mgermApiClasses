@@ -149,7 +149,7 @@ class Doctor extends Person
      * Создание экземпляра объекта с тестовым наполнением параметров
      * @return static
      */
-    public static function createDummy(bool $imitateReal = false): static
+    public static function createDummy(bool $imitateReal = false)
     {
         $doctor = new static();
         $doctor

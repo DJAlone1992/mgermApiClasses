@@ -31,7 +31,10 @@ class Department extends IdNameClass
         $department->setId($id)->setName($name);
         return $department;
     }
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         if ($imitateReal) {
             $me = self::SelfFactory(1, 'Поликлиническое отделение');
