@@ -134,7 +134,6 @@ class BaseClassDescriptor
             $result[] = [
                 'name'        => "{$varNamePrepend}{$varName}",
                 'description' => $description,
-                'example' => $child,
                 'filter' => $filter
             ];
         }
@@ -221,7 +220,7 @@ class BaseClassDescriptor
         $result = "<table class=\"table\"><thead><tr><th>Параметр</th><th>Наименование</th><th>Пример</th></tr></thead><tbody>";
         foreach ($items as $item) {
             $echoFilter = $item['filter'] . $filter;
-            $result .= "<tr><td class=\"insertParameter\">{{ {$item['name']}{$echoFilter} }}</td><td>{$item['description']}</td><td>{$item['example']}</td></tr>";
+            $result .= "<tr><td class=\"insertParameter\">{{ \"{{ {$item['name']}{$echoFilter} }}\"|raw }}</td><td>{$item['description']}</td><td>{{ {$item['name']}{$echoFilter} }}</td></tr>";
         }
         $result .= "</tbody></table>";
         return $result;
