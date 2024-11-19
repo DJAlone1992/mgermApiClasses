@@ -12,10 +12,15 @@ class Department extends IdNameClass
     public const dummyArray =
     [
         'nameObj' => [
-            'nominativeCase' => 'Отделение'
+            'nominativeCase'    => 'Отделение',
+            'genitiveCase'      => 'Отделения',
+            'dativeCase'        => 'Отделению',
+            'accusativeCase'    => 'Отделение',
+            'creativeCase'      => 'Отделением',
+            'prepositionalCase' => 'Отделении',
         ],
-        'name' => 'Отделение',
-        'id' => 1
+        'name'    => 'Отделение',
+        'id'      => 1,
     ];
     public static function SelfFactory(?int $id, ?string $name): static
     {
@@ -25,6 +30,13 @@ class Department extends IdNameClass
     }
     public static function createDummy(): static
     {
-        return self::SelfFactory(1, 'Отделение');
+        $me = self::SelfFactory(1, 'Отделение');
+        $me->getNameObj()
+            ->setGenitiveCase('Отделения')
+            ->setDativeCase('Отделению')
+            ->setAccusativeCase('Отделение')
+            ->setCreativeCase('Отделением')
+            ->setPrepositionalCase('Отделении');
+        return $me;
     }
 }

@@ -13,16 +13,26 @@ class Cabinet extends IdNameClass
     [
         'department' => [
             'nameObj' => [
-                'nominativeCase' => 'Отделение'
+                'nominativeCase'    => 'Отделение',
+                'genitiveCase'      => 'Отделения',
+                'dativeCase'        => 'Отделению',
+                'accusativeCase'    => 'Отделение',
+                'creativeCase'      => 'Отделением',
+                'prepositionalCase' => 'Отделении',
             ],
-            'name' => 'Отделение',
-            'id' => 1
+            'name'    => 'Отделение',
+            'id'      => 1,
         ],
-        'nameObj' => [
-            'nominativeCase' => '[Кабинет]'
+        'nameObj'    => [
+            'nominativeCase'    => '[Кабинет]',
+            'genitiveCase'      => '[Кабинета]',
+            'dativeCase'        => '[Кабинету]',
+            'accusativeCase'    => '[Кабинет]',
+            'creativeCase'      => '[Кабинетом]',
+            'prepositionalCase' => '[Кабинете]',
         ],
-        'name' => '[Кабинет]',
-        'id' => 1
+        'name'       => '[Кабинет]',
+        'id'         => 1,
     ];
     /**
      * Номер кабинета
@@ -60,10 +70,15 @@ class Cabinet extends IdNameClass
     public static function createDummy(): static
     {
         $me = self::SelfFactory(1, '[Кабинет]');
+        $me->getNameObj()
+            ->setGenitiveCase('[Кабинета]')
+            ->setDativeCase('[Кабинету]')
+            ->setAccusativeCase('[Кабинет]')
+            ->setCreativeCase('[Кабинетом]')
+            ->setPrepositionalCase('[Кабинете]');
         $me->department = Department::createDummy();
         return $me;
     }
-
 
     /**
      ** Отделение кабинета
@@ -73,7 +88,6 @@ class Cabinet extends IdNameClass
     {
         return $this->department;
     }
-
 
     /**
      * @param Department|null $department
@@ -86,7 +100,6 @@ class Cabinet extends IdNameClass
 
         return $this;
     }
-
 
     /**
      * @return int|null

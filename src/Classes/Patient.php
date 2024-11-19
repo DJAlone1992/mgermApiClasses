@@ -4,7 +4,6 @@ namespace MgermApiClasses\Classes;
 
 use MgermApiClasses\Enum\ContactType;
 use MgermApiClasses\Enum\Sex;
-use MgermApiClasses\lib\BaseClass;
 
 /**
  * Класс пациента из MGERM
@@ -13,40 +12,56 @@ class Patient extends Person
 {
     public const dummyArray
     = [
-        'lastNameObj' => [
-            'nominativeCase' => 'Фамилия пациента'
+        'lastNameObj'   => [
+            'nominativeCase'    => 'Фамилия пациента',
+            'genitiveCase'      => 'Фамилии пациента',
+            'dativeCase'        => 'Фамилии пациента',
+            'accusativeCase'    => 'Фамилию пациента',
+            'creativeCase'      => 'Фамилией пациента',
+            'prepositionalCase' => 'Фамилии пациента',
         ],
-        'lastName' => 'Фамилия пациента',
-        'firstNameObj' => [
-            'nominativeCase' => 'Имя пациента'
+        'lastName'      => 'Фамилия пациента',
+        'firstNameObj'  => [
+            'nominativeCase'    => 'Имя пациента',
+            'genitiveCase'      => 'Имени пациента',
+            'dativeCase'        => 'Имя пациента',
+            'accusativeCase'    => 'Имя пациента',
+            'creativeCase'      => 'Именем пациента',
+            'prepositionalCase' => 'Имени пациента',
         ],
-        'firstName' => 'Имя пациента',
+        'firstName'     => 'Имя пациента',
         'secondNameObj' => [
-            'nominativeCase' => 'Отчество пациента'
+            'nominativeCase'    => 'Отчество пациента',
+            'genitiveCase'      => 'Отчества пациента',
+            'dativeCase'        => 'Отчество пациента',
+            'accusativeCase'    => 'Отчество пациента',
+            'creativeCase'      => 'Отчеством пациента',
+            'prepositionalCase' => 'Отчестве пациента',
         ],
-        'secondName' => 'Отчество пациента',
-        'sex' => 1,
-        'id' => 1,
-        'birthDay' => '1991-01-01 00:00:00',
-        'phone' => '+79998887766',
-        'cardYear' => 11,
-        'cardNumber' => 1234,
+        'secondName'    => 'Отчество пациента',
+        'sex'           => 1,
+        'id'            => 1,
+        'birthDay'      => '1991-01-01 00:00:00',
+        'phone'         => '+79998887766',
+        'cardYear'      => 11,
+        'cardNumber'    => 1234,
         'contactsCount' => 3,
-        'sexName' => 'male',
-        'contacts' => [
+        'sexName'       => 'male',
+        'contacts'      => [
             [
                 'value' => '+7999888--66',
-                'type' => 2
+                'type'  => 2,
             ],
             [
                 'value' => 'patient@patient.ru',
-                'type' => 3
+                'type'  => 3,
             ],
             [
                 'value' => 'add@patient.ru',
-                'type' => 4
-            ]
-        ]
+                'type'  => 4,
+            ],
+        ],
+        'fullCardNumber' => '1234/11'
     ];
     /**
      ** Номер амбулаторной карты
@@ -64,7 +79,6 @@ class Patient extends Person
      */
     private ?string $phone = null;
 
-
     /**
      * @return int|null
      */
@@ -72,7 +86,6 @@ class Patient extends Person
     {
         return $this->cardNumber;
     }
-
 
     /**
      * @param int|null $cardNumber
@@ -86,7 +99,6 @@ class Patient extends Person
         return $this;
     }
 
-
     /**
      * @return int|null
      */
@@ -94,7 +106,6 @@ class Patient extends Person
     {
         return $this->cardYear;
     }
-
 
     /**
      * @param int|null $cardYear
@@ -107,8 +118,6 @@ class Patient extends Person
 
         return $this;
     }
-
-
 
     public static function createDummy(): static
     {
@@ -126,6 +135,24 @@ class Patient extends Person
             ->appendContactFactory(ContactType::Phone, '+7999888--66')
             ->appendContactFactory(ContactType::DefaultEmail, 'patient@patient.ru')
             ->appendContactFactory(ContactType::Email, 'add@patient.ru');
+        $patient->getLastNameObj()
+            ->setGenitiveCase('Фамилии пациента')
+            ->setDativeCase('Фамилии пациента')
+            ->setAccusativeCase('Фамилию пациента')
+            ->setCreativeCase('Фамилией пациента')
+            ->setPrepositionalCase('Фамилии пациента');
+        $patient->getFirstNameObj()
+            ->setGenitiveCase('Имени пациента')
+            ->setDativeCase('Имя пациента')
+            ->setAccusativeCase('Имя пациента')
+            ->setCreativeCase('Именем пациента')
+            ->setPrepositionalCase('Имени пациента');
+        $patient->getSecondNameObj()
+            ->setGenitiveCase('Отчества пациента')
+            ->setDativeCase('Отчество пациента')
+            ->setAccusativeCase('Отчество пациента')
+            ->setCreativeCase('Отчеством пациента')
+            ->setPrepositionalCase('Отчестве пациента');
         return $patient;
     }
 
@@ -136,7 +163,6 @@ class Patient extends Person
     {
         return $this->phone;
     }
-
 
     /**
      * @param string|null $phone

@@ -13,7 +13,12 @@ class Hospital extends BaseClass
     public const dummyArray
     = [
         'nameObj' => [
-            'nominativeCase' => '[Наименование клиники]'
+            'nominativeCase' => '[Наименование клиники]',
+            'genitiveCase'      => '[Наименования клиники]',
+            'dativeCase'        => '[Наименованию клиники]',
+            'accusativeCase'    => '[Наименование клиники]',
+            'creativeCase'      => '[Наименованием клиники]',
+            'prepositionalCase' => '[Наименовании клиники]',
         ],
         'name' => '[Наименование клиники]',
         'phone' => '+79998887755',
@@ -111,6 +116,12 @@ class Hospital extends BaseClass
             ->setName('[Наименование клиники]')
             ->setAddress('[Адрес клиники]')
             ->setPhone('+79998887755');
+        $hospital->getNameObj()
+            ->setGenitiveCase('[Наименования клиники]')
+            ->setDativeCase('[Наименованию клиники]')
+            ->setAccusativeCase('[Наименование клиники]')
+            ->setCreativeCase('[Наименованием клиники]')
+            ->setPrepositionalCase('[Наименовании клиники]');
 
         return $hospital;
     }

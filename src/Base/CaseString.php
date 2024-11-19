@@ -7,31 +7,37 @@ class CaseString
 {
     /**
      ** Именительный падеж
+     * есть кто/что?
      * @var string|null
      */
     private ?string $nominativeCase = null;
     /**
      ** Родительный падеж
+     * Нет кого/чего?
      * @var string|null
      */
     private ?string $genitiveCase = null;
     /**
      ** Дательный падеж
+     * даю кому/чему?
      * @var string|null
      */
     private ?string $dativeCase = null;
     /**
      ** Винительный падеж
+     * вижу кого/что?
      * @var string|null
      */
     private ?string $accusativeCase = null;
     /**
      ** Творительный падеж
+     * горжусь кем/чем?
      * @var string|null
      */
     private ?string $creativeCase = null;
     /**
      ** Предложный падеж
+     * думаю о ком/о чем?
      * @var string|null
      */
     private ?string $prepositionalCase = null;

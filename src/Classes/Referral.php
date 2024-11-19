@@ -10,22 +10,27 @@ use MgermApiClasses\Base\DateTimeStartTimeEndClass;
 class Referral extends DateTimeStartTimeEndClass
 {
     public const dummyArray = [
-        'patient' => Patient::dummyArray,
-        'doctor' => Doctor::dummyArray,
-        'hospital' => Hospital::dummyArray,
-        'cabinet' => Cabinet::dummyArray,
-        'service' => Service::dummyArray,
-        'id' => 123456789,
+        'patient'    => Patient::dummyArray,
+        'doctor'     => Doctor::dummyArray,
+        'hospital'   => Hospital::dummyArray,
+        'cabinet'    => Cabinet::dummyArray,
+        'service'    => Service::dummyArray,
+        'id'         => 123456789,
         'department' => [
             'nameObj' => [
-                'nominativeCase' => '[Отделение, куда направлен пациент]'
+                'nominativeCase'    => '[Отделение, куда направлен пациент]',
+                'genitiveCase'      => '[Отделения, куда направлен пациент]',
+                'dativeCase'        => '[Отделению, куда направлен пациент]',
+                'accusativeCase'    => '[Отделение, куда направлен пациент]',
+                'creativeCase'      => '[Отделением, куда направлен пациент]',
+                'prepositionalCase' => '[Отделении, куда направлен пациент]',
             ],
-            'name' => '[Отделение, куда направлен пациент]',
-            'id' => 1
+            'name'    => '[Отделение, куда направлен пациент]',
+            'id'      => 1,
         ],
-        'date' => '1999-09-09 00:00:00',
-        'timeStart' => '1999-09-09 09:09:00',
-        'timeEnd'   => '1999-09-09 10:10:00',
+        'date'       => '1999-09-09 00:00:00',
+        'timeStart'  => '1999-09-09 09:09:00',
+        'timeEnd'    => '1999-09-09 10:10:00',
 
     ];
     /**
@@ -55,12 +60,12 @@ class Referral extends DateTimeStartTimeEndClass
 
     public function __construct()
     {
-        $this->patient = new Patient();
-        $this->doctor = new Doctor();
+        $this->patient    = new Patient();
+        $this->doctor     = new Doctor();
         $this->department = new Department();
-        $this->hospital = new Hospital();
-        $this->service = new Service();
-        $this->cabinet = new Cabinet();
+        $this->hospital   = new Hospital();
+        $this->service    = new Service();
+        $this->cabinet    = new Cabinet();
     }
     /**
      ** Отделение направления
@@ -87,12 +92,11 @@ class Referral extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function setDepartment(array|Department|null $department): static
+    public function setDepartment(array | Department | null $department): static
     {
         $this->department = $department;
         return $this;
     }
-
 
     /**
      ** Врач в направлении
@@ -102,7 +106,6 @@ class Referral extends DateTimeStartTimeEndClass
     {
         return $this->doctor;
     }
-
 
     /**
      * @param Doctor|null $doctor
@@ -116,7 +119,6 @@ class Referral extends DateTimeStartTimeEndClass
         return $this;
     }
 
-
     /**
      ** Направленный пациент
      * @return Patient|null
@@ -125,7 +127,6 @@ class Referral extends DateTimeStartTimeEndClass
     {
         return $this->patient;
     }
-
 
     /**
      * @param Patient|null $patient
@@ -147,8 +148,8 @@ class Referral extends DateTimeStartTimeEndClass
     public static function createDummy(): static
     {
         $referral = new static();
-        $patient = Patient::createDummy();
-        $doctor = Doctor::createDummy();
+        $patient  = Patient::createDummy();
+        $doctor   = Doctor::createDummy();
         $hospital = Hospital::createDummy();
         $referral
             ->setId(123456789)
@@ -161,10 +162,14 @@ class Referral extends DateTimeStartTimeEndClass
             ->setTimeEnd('10:10')
             ->setService(Service::createDummy())
             ->setCabinet(Cabinet::createDummy());
-
+        $referral->getDepartment()->getNameObj()
+            ->setGenitiveCase('[Отделения, куда направлен пациент]')
+            ->setDativeCase('[Отделению, куда направлен пациент]')
+            ->setAccusativeCase('[Отделение, куда направлен пациент]')
+            ->setCreativeCase('[Отделением, куда направлен пациент]')
+            ->setPrepositionalCase('[Отделении, куда направлен пациент]');
         return $referral;
     }
-
 
     /**
      ** Данные ЛПУ
@@ -174,7 +179,6 @@ class Referral extends DateTimeStartTimeEndClass
     {
         return $this->hospital;
     }
-
 
     /**
      * @param Hospital|null $hospital
@@ -216,7 +220,6 @@ class Referral extends DateTimeStartTimeEndClass
     {
         return $this->cabinet;
     }
-
 
     /**
      * @param Cabinet|null $cabinet

@@ -8,7 +8,12 @@ class Service extends IdNameClass
 {
     public const dummyArray    = [
         'nameObj' => [
-            'nominativeCase' => '[Услуга]'
+            'nominativeCase' => '[Услуга]',
+            'genitiveCase'      => '[Услуги]',
+            'dativeCase'        => '[Услугу]',
+            'accusativeCase'    => '[Услугу]',
+            'creativeCase'      => '[Услугой]',
+            'prepositionalCase' => '[Услуге]',
         ],
         'name' => '[Услуга]',
         'code' => '[Код услуги]',
@@ -63,6 +68,12 @@ class Service extends IdNameClass
     {
         $me = new static();
         $me->setId(1)->setName('[Услуга]')->setFloatPrice('123.45')->setCode('[Код услуги]');
+        $me->getNameObj()
+            ->setGenitiveCase('[Услуги]')
+            ->setDativeCase('[Услугу]')
+            ->setAccusativeCase('[Услугу]')
+            ->setCreativeCase('[Услугой]')
+            ->setPrepositionalCase('[Услуге]');
         return $me;
     }
     public static function    SelfFactory(?int $id, ?string $name): static
