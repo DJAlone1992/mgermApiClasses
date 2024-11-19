@@ -13,16 +13,17 @@ class Hospital extends BaseClass
     public const dummyArray
     = [
         'nameObj' => [
-            'nominativeCase' => '[Наименование клиники]',
+            'nominativeCase'    => '[Наименование клиники]',
             'genitiveCase'      => '[Наименования клиники]',
             'dativeCase'        => '[Наименованию клиники]',
             'accusativeCase'    => '[Наименование клиники]',
             'creativeCase'      => '[Наименованием клиники]',
             'prepositionalCase' => '[Наименовании клиники]',
         ],
-        'name' => '[Наименование клиники]',
-        'phone' => '+79998887755',
-        'address' => '[Адрес клиники]'
+        'name'    => '[Наименование клиники]',
+        'phone'   => '+79998887755',
+        'address' => '[Адрес клиники]',
+        'id'      => 1,
     ];
     /**
      * @var CaseString|null
@@ -52,7 +53,6 @@ class Hospital extends BaseClass
         return $this->nameObj->getNominativeCase();
     }
 
-
     /**
      * @param string|null $name
      *
@@ -65,7 +65,6 @@ class Hospital extends BaseClass
         return $this;
     }
 
-
     /**
      * @return string|null
      */
@@ -73,7 +72,6 @@ class Hospital extends BaseClass
     {
         return $this->address;
     }
-
 
     /**
      * @param string|null $address
@@ -87,7 +85,6 @@ class Hospital extends BaseClass
         return $this;
     }
 
-
     /**
      * @return string|null
      */
@@ -95,7 +92,6 @@ class Hospital extends BaseClass
     {
         return $this->phone;
     }
-
 
     /**
      * @param string|null $phone
@@ -113,6 +109,7 @@ class Hospital extends BaseClass
     {
         $hospital = new static();
         $hospital
+            ->setId(1)
             ->setName('[Наименование клиники]')
             ->setAddress('[Адрес клиники]')
             ->setPhone('+79998887755');

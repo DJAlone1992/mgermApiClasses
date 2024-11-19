@@ -79,6 +79,7 @@ class Doctor extends Person
             'id'      => 11,
         ],
         'contactsCount' => 0,
+        'contacts'      => []
     ];
     /**
      ** Специальность

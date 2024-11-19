@@ -32,6 +32,7 @@ class Cabinet extends IdNameClass
             'prepositionalCase' => '[Кабинете]',
         ],
         'name'       => '[Кабинет]',
+        'number'     => 100,
         'id'         => 1,
     ];
     /**
@@ -69,7 +70,7 @@ class Cabinet extends IdNameClass
     }
     public static function createDummy(): static
     {
-        $me = self::SelfFactory(1, '[Кабинет]');
+        $me = self::SelfFactory(1, '[Кабинет]')->setNumber(100);
         $me->getNameObj()
             ->setGenitiveCase('[Кабинета]')
             ->setDativeCase('[Кабинету]')

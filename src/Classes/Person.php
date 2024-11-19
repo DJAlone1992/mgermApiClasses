@@ -43,9 +43,9 @@ abstract class Person extends BaseClass
      */
     private ?DateTime $birthDay = null;
     /**
-     * @var Contact[]|null|array $contacts
+     * @var Contact[] $contacts
      */
-    private ?array $contacts = null;
+    private array $contacts = [];
 
     /**
      * @var int
@@ -65,9 +65,7 @@ abstract class Person extends BaseClass
      */
     public function addContact(?Contact $contact): static
     {
-        if (is_null($this->contacts)) {
-            $this->contacts = [];
-        }
+
         $this->contacts[] = $contact;
         $this->contactsCount++;
         return $this;
@@ -249,15 +247,15 @@ abstract class Person extends BaseClass
      ** Контакты
      * @return  Contact[]
      */
-    public function getContacts(): ?array
+    public function getContacts(): array
     {
-        return $this->contacts;
+        return $this->contacts ?? [];
     }
 
     /**
      * Set $contacts
      *
-     * @param  Contact[]|null $contacts
+     * @param  Contact[] $contacts
      *
      * @return  self
      */

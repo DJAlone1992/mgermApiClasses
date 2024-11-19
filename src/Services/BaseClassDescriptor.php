@@ -2,6 +2,8 @@
 
 namespace MgermApiClasses\Services;
 
+use DateTime;
+use DateTimeImmutable;
 use Exception;
 use MgermApiClasses\Base\BaseClass;
 use MgermApiClasses\Base\CaseString;
@@ -14,6 +16,18 @@ use ReflectionProperty;
  */
 class BaseClassDescriptor
 {
+    private const RussianTypes = [
+        'bool' => 'Логический тип',
+        'int' => 'Целое число',
+        'integer' => 'Целое число',
+        'float' => 'Дробное число',
+        'double' => 'Дробное число',
+        'string' => 'Строка',
+        'array' => 'Массив',
+        'object' => 'Объект',
+        'callable' => 'Функции',
+        'resource' => 'Ресурс',
+    ];
 
 
     /**
@@ -81,6 +95,25 @@ class BaseClassDescriptor
 
         return trim($description);
     }
+
+    /**
+     * Проверка, есть ли такой параметр
+     * @param ReflectionClass $reflectionClass
+     * @param string $propertyName
+     *
+     * @return bool
+     */
+    private static function __hasProperty(ReflectionClass $reflectionClass, string $propertyName): bool
+    {
+        if ($reflectionClass->hasProperty($propertyName)) {
+            return true;
+        }
+        $parent = $reflectionClass->getParentClass();
+        if (!$parent) {
+            return false;
+        }
+        return self::__hasProperty($parent, $propertyName);
+    }
     /**
      * Получение массива описания
      * @param BaseClass|CaseString $class
@@ -101,7 +134,9 @@ class BaseClassDescriptor
                 continue;
             }
             $varName = lcfirst(str_replace('get', '', $callMethodName));
-
+            if (!self::__hasProperty($reflection, $varName)) {
+                continue;
+            }
             $child = $class->$callMethodName();
 
             $description = self::__getPropDescription($reflection, $method, $varName);
@@ -130,10 +165,11 @@ class BaseClassDescriptor
             }
 
 
-
             $result[] = [
                 'name'        => "{$varNamePrepend}{$varName}",
                 'description' => $description,
+                'type' => self::__RussianType($child),
+                'example' => self::__isExample($child),
                 'filter' => $filter
             ];
         }
@@ -217,10 +253,11 @@ class BaseClassDescriptor
     private static function __getTable(array $items, ?string $filter = null): string
     {
 
-        $result = "<table class=\"table\"><thead><tr><th>Параметр</th><th>Наименование</th><th>Пример</th></tr></thead><tbody>";
+        $result = "<table class=\"table\"><thead><tr><th>Параметр</th><th>Наименование</th><th>Тип</th><th>Пример</th></tr></thead><tbody>";
         foreach ($items as $item) {
             $echoFilter = $item['filter'] . $filter;
-            $result .= "<tr><td class=\"insertParameter\">{{ \"{{ {$item['name']}{$echoFilter} }}\"|raw }}</td><td>{$item['description']}</td><td>{{ {$item['name']}{$echoFilter} }}</td></tr>";
+            $example = $item['example'] ? "{{ {$item['name']}{$echoFilter} }}" : '';
+            $result .= "<tr><td class=\"insertParameter\">{{ \"{{ {$item['name']}{$echoFilter} }}\"|raw }}</td><td>{$item['description']}</td><td>{$item['type']}</td><td>{$example}</td></tr>";
         }
         $result .= "</tbody></table>";
         return $result;
@@ -249,5 +286,38 @@ class BaseClassDescriptor
       </div>
     </div>
   </div>";
+    }
+
+    /**
+     * Выводить ли пример на экран в HTML
+     * @param mixed $item
+     *
+     * @return bool
+     */
+    private static function __isExample(mixed $item): bool
+    {
+        if (is_array($item)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Получение русского наименования типа
+     * @param mixed $item
+     *
+     * @return string
+     */
+    private static function __RussianType(mixed $item): string
+    {
+        if ($item instanceof DateTime || $item instanceof DateTimeImmutable) {
+            return 'Объект даты и времени';
+        }
+
+        $type = gettype($item);
+        if (array_key_exists($type, self::RussianTypes)) {
+            return self::RussianTypes[$type];
+        }
+        return '';
     }
 }
