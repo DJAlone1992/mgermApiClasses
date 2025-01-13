@@ -282,7 +282,7 @@ abstract class Person extends BaseClass
     public function getLastNameWithInitials(): string
     {
         return
-            $this->getLastNameObj()->getNominativeCase() . ' ' . mb_substr($this->getFirstNameObj()->getNominativeCase(), 0, 1) . '. ' . mb_substr($this->getSecondNameObj()->getNominativeCase(), 0, 1) . '.';
+            $this->getLastNameObj()->getNominativeCase() . ' ' . mb_substr((string) $this->getFirstNameObj()->getNominativeCase(), 0, 1) . '. ' . mb_substr((string) $this->getSecondNameObj()->getNominativeCase(), 0, 1) . '.';
     }
 
     public function setLastName(?string $lastName): static

@@ -43,7 +43,7 @@ class BaseClassDescriptor
         $docArray = explode("\n", $doc);
         foreach ($docArray as $docLine) {
             if (str_contains($docLine, $varPrefix) && !str_contains($docLine, '/**')) {
-                return trim(preg_replace("#((\/)?(\*{1,2})(\/)?)#si", "", str_replace($varPrefix, '', $docLine)));
+                return trim((string) preg_replace("#((\/)?(\*{1,2})(\/)?)#si", "", str_replace($varPrefix, '', $docLine)));
             }
         }
         return '';
@@ -88,7 +88,7 @@ class BaseClassDescriptor
         if (!$description) {
             try {
                 $description = self::__getDocVar($reflectionClass->getProperty($varName), $varPrefix);
-            } catch (Exception $e) {
+            } catch (Exception) {
                 $description = '';
             }
         }
