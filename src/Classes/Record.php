@@ -23,20 +23,72 @@ class Record extends BaseClass
         'isIncorrect' => false,
     ];
     private ?Patient $patient = null;
+    /**
+     ** Запись заархивирована
+     * @var bool
+     */
     private bool $isArchived = false;
+    /**
+     ** Тип документа
+     * @var int
+     */
     private int $documentType = 1;
+    /**
+     ** Тип записи
+     * @var int
+     */
     private int $recordTypeId = 0;
+    /**
+     ** Дата создания записи
+     * @var DateTime
+     */
     private DateTime $creationDateTime;
+    /**
+     ** Номер истории болезни
+     * @var int|null|null
+     */
     private ?int $hospitalizationNumber = null;
     private Doctor $creator;
+    /**
+     ** Неформализованный текст записи
+     * @var string|null|null
+     */
     private ?string $text = null;
+    /**
+     ** Формализованные данные
+     * @var array|null|null
+     */
     private ?array $formalizedData =  null;
     private ?Doctor $author = null;
+    /**
+     ** Дата подписания записи
+     * @var DateTime|null|null
+     */
     private ?DateTime $signatureDateTime = null;
+    /**
+     ** Запись подписана
+     * @var bool
+     */
     private bool $isDigest = false;
+    /**
+     ** Запись удалена
+     * @var bool
+     */
     private bool $isDeleted = false;
+    /**
+     ** Запись неверна
+     * @var bool
+     */
     private bool $isIncorrect = false;
+    /**
+     ** Идентификатор связанной записи
+     * @var int|null|null
+     */
     private ?int $linkedRecordID = null;
+    /**
+     ** JSON данные
+     * @var array|null|null
+     */
     private ?array $jsonData = null;
 
     public static function createDummy(bool $imitateReal = false): static
@@ -66,6 +118,10 @@ class Record extends BaseClass
         $this->isArchived = $isArchived;
         return $this;
     }
+    /**
+     ** Пациент, которому принадлежит запись
+     * @return Patient|null
+     */
     public function getPatient(): ?Patient
     {
         return $this->patient;
@@ -118,6 +174,10 @@ class Record extends BaseClass
         $this->hospitalizationNumber = $hospitalizationNumber;
         return $this;
     }
+    /**
+     ** Создатель записи
+     * @return Doctor|null
+     */
     public function getCreator(): ?Doctor
     {
         return $this->creator;
@@ -145,6 +205,10 @@ class Record extends BaseClass
         $this->formalizedData = $formalizedData;
         return $this;
     }
+    /**
+     ** Автор записи
+     * @return Doctor|null
+     */
     public function getAuthor(): ?Doctor
     {
         return $this->author;
