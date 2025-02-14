@@ -85,6 +85,8 @@ class Record extends BaseClass
      * @var int|null|null
      */
     private ?int $linkedRecordID = null;
+
+    private ?Record $linkedRecord= null;
     /**
      ** JSON данные
      * @var array|null|null
@@ -113,9 +115,9 @@ class Record extends BaseClass
     {
         return $this->isArchived;
     }
-    public function setIsArchived(bool $isArchived): static
+    public function setIsArchived(?bool $isArchived): static
     {
-        $this->isArchived = $isArchived;
+        $this->isArchived = boolval($isArchived);
         return $this;
     }
     /**
@@ -135,9 +137,9 @@ class Record extends BaseClass
     {
         return $this->documentType;
     }
-    public function setDocumentType(int $documentType): static
+    public function setDocumentType(?int $documentType): static
     {
-        $this->documentType = $documentType;
+        $this->documentType = $documentType??1;
         return $this;
     }
     public function getRecordTypeId(): int
@@ -237,27 +239,27 @@ class Record extends BaseClass
     {
         return $this->isDigest;
     }
-    public function setIsDigest(bool $isDigest): static
+    public function setIsDigest(?bool $isDigest): static
     {
-        $this->isDigest = $isDigest;
+        $this->isDigest = boolval($isDigest);
         return $this;
     }
     public function getIsDeleted(): bool
     {
         return $this->isDeleted;
     }
-    public function setIsDeleted(bool $isDeleted): static
+    public function setIsDeleted(?bool $isDeleted): static
     {
-        $this->isDeleted = $isDeleted;
+        $this->isDeleted = boolval($isDeleted);
         return $this;
     }
     public function getIsIncorrect(): bool
     {
         return $this->isIncorrect;
     }
-    public function setIsIncorrect(bool $isIncorrect): static
+    public function setIsIncorrect(?bool $isIncorrect): static
     {
-        $this->isIncorrect = $isIncorrect;
+        $this->isIncorrect = boolval($isIncorrect);
         return $this;
     }
     public function getLinkedRecordID(): ?int
@@ -285,5 +287,14 @@ class Record extends BaseClass
         }
         $this->jsonData = $jsonData;
         return $this;
+    }
+
+    public function setLinkedRecord(Record $linkedRecord): static{
+        $this->linkedRecord = $linkedRecord;
+        return $this;
+    }
+
+    public function getLinkedRecord(): ?Record{
+        return $this->linkedRecord;
     }
 }

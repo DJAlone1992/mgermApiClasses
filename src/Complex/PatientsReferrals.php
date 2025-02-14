@@ -74,7 +74,7 @@ class PatientsReferrals extends BaseClass
      ** Данные пациента
      * @return Patient
      */
-    public function getPatient(): Patient
+    public function getPatient(): ?Patient
     {
         return $this->patient;
     }

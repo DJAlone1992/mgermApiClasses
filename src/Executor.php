@@ -10,6 +10,7 @@ use MgermApiClasses\Classes\Patient;
 use MgermApiClasses\Classes\Referral;
 use MgermApiClasses\Complex\PatientsReferrals;
 use MgermApiClasses\Services\BaseClassDescriptor;
+use MgermApiClasses\Services\RecordsArrayToPatientsRecordsArrayConverter;
 use MgermApiClasses\Services\ReferralArrayToPatientsReferralArrayConverter;
 use MgermApiClasses\Services\Serializer;
 
@@ -62,6 +63,14 @@ class Executor
     public static function convertPatientsReferralsArrayToReferralArray(array $patientsReferral): array
     {
         return ReferralArrayToPatientsReferralArrayConverter::reverse($patientsReferral);
+    }
+    public static function convertRecordsArrayToPatientsRecordsArray(array $records): array
+    {
+        return RecordsArrayToPatientsRecordsArrayConverter::convert($records);
+    }
+    public static function convertPatientsRecordsArrayToRecordsArray(array $patientsRecords): array
+    {
+        return RecordsArrayToPatientsRecordsArrayConverter::reverse($patientsRecords);
     }
     public static function createDummyReferral(): Referral
     {
