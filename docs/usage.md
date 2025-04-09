@@ -20,7 +20,7 @@ http://<your-server-address>/_mgerm_external
 Параметры: НЕТ
 
 #### Ответ
-В ответ получается массив подразделений MgermApiClasses\Classes\Department[]
+В ответ получается массив подразделений [MgermApiClasses\Classes\Department](/src/Classes/Department.php)
 
 ### /doctorServices.php
 
@@ -34,7 +34,7 @@ http://<your-server-address>/_mgerm_external
 * doctor - идентификатор врача
 
 #### Ответ
-В ответ получается массив услуг MgermApiClasses\Classes\Service[]
+В ответ получается массив услуг [MgermApiClasses\Classes\Service](/src/Classes/Service.php)
 
 ## /patientScheduledOnDate.php
 Точка входа, для получения массива направлений на данный день
@@ -55,7 +55,7 @@ http://<your-server-address>/_mgerm_external
 * Список прайс-листов клиники, для пропуска уведомления
 * Список услуг клиники, для пропуска уведомления
 
-В ответ получается массив услуг MgermApiClasses\Classes\Referral[]
+В ответ получается массив услуг [MgermApiClasses\Classes\Referral](/src/Classes/Referral.php)
 
 ## /appointment.php
 
