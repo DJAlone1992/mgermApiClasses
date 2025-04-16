@@ -668,6 +668,7 @@
 | Поле       | Тип                                | Описание                                      | Доступные методы |
 | ---------- | ---------------------------------- | --------------------------------------------- | ---------------- |
 | id         | int                                | Идентификатор записи направления              | set / get        |
+| record     | MgermApiClasses\Classes\Record     | Данные записи МИС                             | set / get        |
 | patient    | MgermApiClasses\Classes\Patient    | Данные пациента                               | set / get        |
 | doctor     | MgermApiClasses\Classes\Doctor     | Данные врача, к которому направлен пациент    | set / get        |
 | department | MgermApiClasses\Classes\Department | Данные отделения, в которое направлен пациент | set / get        |
@@ -814,6 +815,211 @@
 		"secondName": "Иванович",
 		"id": 1
 	},
+	"record": {
+		"isArchived": false,
+		"patient": {
+			"cardNumber": 1234,
+			"cardYear": 11,
+			"phone": "+79998887766",
+			"fullCardNumber": "1234\/11",
+			"contactsCount": 3,
+			"lastNameObj": {
+				"nominativeCase": "Иванов",
+				"genitiveCase": "Иванова",
+				"dativeCase": "Иванову",
+				"accusativeCase": "Иванова",
+				"creativeCase": "Ивановым",
+				"prepositionalCase": "Иванове"
+			},
+			"sex": 1,
+			"sexName": "male",
+			"birthDay": "1991-01-01 00:00:00",
+			"firstNameObj": {
+				"nominativeCase": "Иван",
+				"genitiveCase": "Ивана",
+				"dativeCase": "Ивану",
+				"accusativeCase": "Ивана",
+				"creativeCase": "Иваном",
+				"prepositionalCase": "Иване"
+			},
+			"secondNameObj": {
+				"nominativeCase": "Иванович",
+				"genitiveCase": "Ивановича",
+				"dativeCase": "Ивановичу",
+				"accusativeCase": "Ивановича",
+				"creativeCase": "Ивановичем",
+				"prepositionalCase": "Ивановиче"
+			},
+			"contacts": [
+				{
+					"value": "+7999888--66",
+					"type": 2
+				},
+				{
+					"value": "patient@patient.ru",
+					"type": 3
+				},
+				{
+					"value": "add@patient.ru",
+					"type": 4
+				}
+			],
+			"lastName": "Иванов",
+			"firstName": "Иван",
+			"secondName": "Иванович",
+			"id": 1
+		},
+		"documentType": 1,
+		"recordTypeId": 1,
+		"creationDateTime": "2020-10-20 11:12:13",
+		"creator": {
+			"specialty": {
+				"nameObj": {
+					"nominativeCase": "Врач общей практики",
+					"genitiveCase": "Врача общей практики",
+					"dativeCase": "Врачу общей практики",
+					"accusativeCase": "Врача общей практики",
+					"creativeCase": "Врачом общей практики",
+					"prepositionalCase": "Враче общей практики"
+				},
+				"name": "Врач общей практики",
+				"id": 1
+			},
+			"department": {
+				"nameObj": {
+					"nominativeCase": "Поликлиническое отделение",
+					"genitiveCase": "Поликлинического отделения",
+					"dativeCase": "Поликлиническому отделению",
+					"accusativeCase": "Поликлиническое отделение",
+					"creativeCase": "Поликлиническим отделением",
+					"prepositionalCase": "Поликлиническом отделении"
+				},
+				"name": "Поликлиническое отделение",
+				"id": 1
+			},
+			"guid": {
+				"nameObj": {
+					"nominativeCase": "Врач-специалист",
+					"genitiveCase": "Врача-специалиста",
+					"dativeCase": "Врачу-специалисту",
+					"accusativeCase": "Врача-специалиста",
+					"creativeCase": "Врачом-специалистом",
+					"prepositionalCase": "Враче-специалисте"
+				},
+				"name": "Врач-специалист",
+				"id": 11
+			},
+			"contactsCount": 0,
+			"lastNameObj": {
+				"nominativeCase": "Петров",
+				"genitiveCase": "Петрова",
+				"dativeCase": "Петрову",
+				"accusativeCase": "Петрова",
+				"creativeCase": "Петровым",
+				"prepositionalCase": "Петрове"
+			},
+			"sex": 1,
+			"sexName": "male",
+			"birthDay": "1992-02-02 00:00:00",
+			"firstNameObj": {
+				"nominativeCase": "Петр",
+				"genitiveCase": "Петра",
+				"dativeCase": "Петру",
+				"accusativeCase": "Петра",
+				"creativeCase": "Петром",
+				"prepositionalCase": "Петре"
+			},
+			"secondNameObj": {
+				"nominativeCase": "Петрович",
+				"genitiveCase": "Петровича",
+				"dativeCase": "Петровичу",
+				"accusativeCase": "Петровича",
+				"creativeCase": "Петровичем",
+				"prepositionalCase": "Петровиче"
+			},
+			"contacts": [],
+			"lastName": "Петров",
+			"firstName": "Петр",
+			"secondName": "Петрович",
+			"id": 2
+		},
+		"author": {
+			"specialty": {
+				"nameObj": {
+					"nominativeCase": "Врач общей практики",
+					"genitiveCase": "Врача общей практики",
+					"dativeCase": "Врачу общей практики",
+					"accusativeCase": "Врача общей практики",
+					"creativeCase": "Врачом общей практики",
+					"prepositionalCase": "Враче общей практики"
+				},
+				"name": "Врач общей практики",
+				"id": 1
+			},
+			"department": {
+				"nameObj": {
+					"nominativeCase": "Поликлиническое отделение",
+					"genitiveCase": "Поликлинического отделения",
+					"dativeCase": "Поликлиническому отделению",
+					"accusativeCase": "Поликлиническое отделение",
+					"creativeCase": "Поликлиническим отделением",
+					"prepositionalCase": "Поликлиническом отделении"
+				},
+				"name": "Поликлиническое отделение",
+				"id": 1
+			},
+			"guid": {
+				"nameObj": {
+					"nominativeCase": "Врач-специалист",
+					"genitiveCase": "Врача-специалиста",
+					"dativeCase": "Врачу-специалисту",
+					"accusativeCase": "Врача-специалиста",
+					"creativeCase": "Врачом-специалистом",
+					"prepositionalCase": "Враче-специалисте"
+				},
+				"name": "Врач-специалист",
+				"id": 11
+			},
+			"contactsCount": 0,
+			"lastNameObj": {
+				"nominativeCase": "Петров",
+				"genitiveCase": "Петрова",
+				"dativeCase": "Петрову",
+				"accusativeCase": "Петрова",
+				"creativeCase": "Петровым",
+				"prepositionalCase": "Петрове"
+			},
+			"sex": 1,
+			"sexName": "male",
+			"birthDay": "1992-02-02 00:00:00",
+			"firstNameObj": {
+				"nominativeCase": "Петр",
+				"genitiveCase": "Петра",
+				"dativeCase": "Петру",
+				"accusativeCase": "Петра",
+				"creativeCase": "Петром",
+				"prepositionalCase": "Петре"
+			},
+			"secondNameObj": {
+				"nominativeCase": "Петрович",
+				"genitiveCase": "Петровича",
+				"dativeCase": "Петровичу",
+				"accusativeCase": "Петровича",
+				"creativeCase": "Петровичем",
+				"prepositionalCase": "Петровиче"
+			},
+			"contacts": [],
+			"lastName": "Петров",
+			"firstName": "Петр",
+			"secondName": "Петрович",
+			"id": 2
+		},
+		"signatureDateTime": "2020-10-20 12:13:14",
+		"isDigest": true,
+		"isDeleted": false,
+		"isIncorrect": false,
+		"id": 1
+	},
 	"hospital": {
 		"name": "Клиника \"Здоровье\"",
 		"address": "Москва, ул. Пушкина, д. 896",
@@ -872,7 +1078,7 @@
 	"timeStart": "1999-09-09 09:09:00",
 	"timeEnd": "1999-09-09 10:10:00",
 	"date": "1999-09-09 00:00:00",
-	"id": 123456789
+	"id": 1
 }
 ```
 
