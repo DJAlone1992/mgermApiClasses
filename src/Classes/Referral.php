@@ -147,7 +147,7 @@ class Referral extends DateTimeStartTimeEndClass
      *
      * @return static
      */
-    public function setRecord(?Record $record): static
+    public function setRecord(?Record $record)
     {
         $this->record = $record;
 

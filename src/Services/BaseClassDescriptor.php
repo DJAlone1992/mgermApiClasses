@@ -88,7 +88,7 @@ class BaseClassDescriptor
         if (!$description) {
             try {
                 $description = self::__getDocVar($reflectionClass->getProperty($varName), $varPrefix);
-            } catch (Exception) {
+            } catch (Exception $exception) {
                 $description = '';
             }
         }

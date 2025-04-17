@@ -111,7 +111,7 @@ class Serializer
             if (in_array($key, $seen)) {
                 continue;
             }
-            if (str_contains($key, '_')) {
+            if (strpos($key, '_') !== false) {
                 $keys = explode('_', $key);
                 $inKey = $keys[0];
                 $subArray = [];
