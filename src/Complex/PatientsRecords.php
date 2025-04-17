@@ -20,22 +20,25 @@ class PatientsRecords extends BaseClass{
     /**
      * @var Patient|null|null
      */
-    private ?Patient $patient = null;
+    private $patient;
     /**
      * @var Record[] $records
      */
-    private array $records=[];
+    private $records=[];
 
     /**
      * @param Record[] $records
      *
      * @return static
      */
-    public function setRecords(array $records):static{
+    public function setRecords(array $records){
         $this->records = $records;
         return $this;
     }
-    public function appendRecord(Record $record):static{
+    /**
+     * @return static
+     */
+    public function appendRecord(Record $record){
         if($record->getPatient()->getId()==$this->patient->getId() || !$this->patient){
  $this->records[]=$record;
         }
@@ -55,7 +58,7 @@ class PatientsRecords extends BaseClass{
      *
      * @return static
      */
-    public function setPatient(Patient $patient):static{
+    public function setPatient(Patient $patient){
         $this->patient = $patient;
         $this->setId($patient->getId());
         return $this;
@@ -65,13 +68,19 @@ class PatientsRecords extends BaseClass{
         return $this->patient;
     }
 
-    public static function createFromRecord(Record $record):static{
+    /**
+     * @return static
+     */
+    public static function createFromRecord(Record $record){
         $me = new static();
         $me->setPatient($record->getPatient());
         $me->appendRecord($record);
         return $me;
     }
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         return self::createFromRecord(Record::createDummy($imitateReal));
     }

@@ -22,78 +22,93 @@ class Record extends BaseClass
         'isDeleted' => false,
         'isIncorrect' => false,
     ];
-    private ?Patient $patient = null;
+    /**
+     * @var \MgermApiClasses\Classes\Patient|null
+     */
+    private $patient;
     /**
      ** Запись заархивирована
      * @var bool
      */
-    private bool $isArchived = false;
+    private $isArchived = false;
     /**
      ** Тип документа
      * @var int
      */
-    private int $documentType = 1;
+    private $documentType = 1;
     /**
      ** Тип записи
      * @var int
      */
-    private int $recordTypeId = 0;
+    private $recordTypeId = 0;
     /**
      ** Дата создания записи
      * @var DateTime
      */
-    private DateTime $creationDateTime;
+    private $creationDateTime;
     /**
      ** Номер истории болезни
      * @var int|null|null
      */
-    private ?int $hospitalizationNumber = null;
-    private Doctor $creator;
+    private $hospitalizationNumber;
+    /**
+     * @var \MgermApiClasses\Classes\Doctor
+     */
+    private $creator;
     /**
      ** Неформализованный текст записи
      * @var string|null|null
      */
-    private ?string $text = null;
+    private $text;
     /**
      ** Формализованные данные
      * @var array|null|null
      */
-    private ?array $formalizedData =  null;
-    private ?Doctor $author = null;
+    private $formalizedData;
+    /**
+     * @var \MgermApiClasses\Classes\Doctor|null
+     */
+    private $author;
     /**
      ** Дата подписания записи
      * @var DateTime|null|null
      */
-    private ?DateTime $signatureDateTime = null;
+    private $signatureDateTime;
     /**
      ** Запись подписана
      * @var bool
      */
-    private bool $isDigest = false;
+    private $isDigest = false;
     /**
      ** Запись удалена
      * @var bool
      */
-    private bool $isDeleted = false;
+    private $isDeleted = false;
     /**
      ** Запись неверна
      * @var bool
      */
-    private bool $isIncorrect = false;
+    private $isIncorrect = false;
     /**
      ** Идентификатор связанной записи
      * @var int|null|null
      */
-    private ?int $linkedRecordID = null;
+    private $linkedRecordID;
 
-    private ?Record $linkedRecord= null;
+    /**
+     * @var \MgermApiClasses\Classes\Record|null
+     */
+    private $linkedRecord;
     /**
      ** JSON данные
      * @var array|null|null
      */
-    private ?array $jsonData = null;
+    private $jsonData;
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $record = new static();
         $record
@@ -115,7 +130,10 @@ class Record extends BaseClass
     {
         return $this->isArchived;
     }
-    public function setIsArchived(?bool $isArchived): static
+    /**
+     * @return static
+     */
+    public function setIsArchived(?bool $isArchived)
     {
         $this->isArchived = boolval($isArchived);
         return $this;
@@ -128,7 +146,10 @@ class Record extends BaseClass
     {
         return $this->patient;
     }
-    public function setPatient(?Patient $patient): static
+    /**
+     * @return static
+     */
+    public function setPatient(?Patient $patient)
     {
         $this->patient = $patient;
         return $this;
@@ -137,7 +158,10 @@ class Record extends BaseClass
     {
         return $this->documentType;
     }
-    public function setDocumentType(?int $documentType): static
+    /**
+     * @return static
+     */
+    public function setDocumentType(?int $documentType)
     {
         $this->documentType = $documentType??1;
         return $this;
@@ -146,7 +170,10 @@ class Record extends BaseClass
     {
         return $this->recordTypeId;
     }
-    public function setRecordTypeId(int $recordTypeId): static
+    /**
+     * @return static
+     */
+    public function setRecordTypeId(int $recordTypeId)
     {
         $this->recordTypeId = $recordTypeId;
         return $this;
@@ -155,7 +182,11 @@ class Record extends BaseClass
     {
         return $this->creationDateTime;
     }
-    public function setCreationDateTime(null|string|int|DateTime $creationDateTime): static
+    /**
+     * @param null|string|int|\DateTime $creationDateTime
+     * @return static
+     */
+    public function setCreationDateTime($creationDateTime)
     {
         if (is_string($creationDateTime)) {
             $creationDateTime = new DateTime($creationDateTime);
@@ -171,7 +202,10 @@ class Record extends BaseClass
     {
         return $this->hospitalizationNumber;
     }
-    public function setHospitalizationNumber(?int $hospitalizationNumber): static
+    /**
+     * @return static
+     */
+    public function setHospitalizationNumber(?int $hospitalizationNumber)
     {
         $this->hospitalizationNumber = $hospitalizationNumber;
         return $this;
@@ -184,7 +218,10 @@ class Record extends BaseClass
     {
         return $this->creator;
     }
-    public function setCreator(?Doctor $creator): static
+    /**
+     * @return static
+     */
+    public function setCreator(?Doctor $creator)
     {
         $this->creator = $creator;
         return $this;
@@ -193,7 +230,10 @@ class Record extends BaseClass
     {
         return $this->text;
     }
-    public function setText(?string $text): static
+    /**
+     * @return static
+     */
+    public function setText(?string $text)
     {
         $this->text = $text;
         return $this;
@@ -202,7 +242,10 @@ class Record extends BaseClass
     {
         return $this->formalizedData;
     }
-    public function setFormalizedData(?array $formalizedData): static
+    /**
+     * @return static
+     */
+    public function setFormalizedData(?array $formalizedData)
     {
         $this->formalizedData = $formalizedData;
         return $this;
@@ -215,7 +258,10 @@ class Record extends BaseClass
     {
         return $this->author;
     }
-    public function setAuthor(?Doctor $author): static
+    /**
+     * @return static
+     */
+    public function setAuthor(?Doctor $author)
     {
         $this->author = $author;
         return $this;
@@ -224,7 +270,11 @@ class Record extends BaseClass
     {
         return $this->signatureDateTime;
     }
-    public function setSignatureDateTime(null|string|int|DateTime $signatureDateTime): static
+    /**
+     * @param null|string|int|\DateTime $signatureDateTime
+     * @return static
+     */
+    public function setSignatureDateTime($signatureDateTime)
     {
         if (is_string($signatureDateTime)) {
             $signatureDateTime = new DateTime($signatureDateTime);
@@ -239,7 +289,10 @@ class Record extends BaseClass
     {
         return $this->isDigest;
     }
-    public function setIsDigest(?bool $isDigest): static
+    /**
+     * @return static
+     */
+    public function setIsDigest(?bool $isDigest)
     {
         $this->isDigest = boolval($isDigest);
         return $this;
@@ -248,7 +301,10 @@ class Record extends BaseClass
     {
         return $this->isDeleted;
     }
-    public function setIsDeleted(?bool $isDeleted): static
+    /**
+     * @return static
+     */
+    public function setIsDeleted(?bool $isDeleted)
     {
         $this->isDeleted = boolval($isDeleted);
         return $this;
@@ -257,7 +313,10 @@ class Record extends BaseClass
     {
         return $this->isIncorrect;
     }
-    public function setIsIncorrect(?bool $isIncorrect): static
+    /**
+     * @return static
+     */
+    public function setIsIncorrect(?bool $isIncorrect)
     {
         $this->isIncorrect = boolval($isIncorrect);
         return $this;
@@ -266,7 +325,10 @@ class Record extends BaseClass
     {
         return $this->linkedRecordID;
     }
-    public function setLinkedRecordID(?int $linkedRecordID): static
+    /**
+     * @return static
+     */
+    public function setLinkedRecordID(?int $linkedRecordID)
     {
         $this->linkedRecordID = $linkedRecordID;
         return $this;
@@ -275,12 +337,16 @@ class Record extends BaseClass
     {
         return $this->jsonData;
     }
-    public function setJsonData(string|array|null $jsonData): static
+    /**
+     * @param string|mixed[]|null $jsonData
+     * @return static
+     */
+    public function setJsonData($jsonData)
     {
         if (is_string($jsonData)) {
             try {
-                $parsed = json_decode($jsonData, true, 512, JSON_THROW_ON_ERROR);
-            } catch (Exception) {
+                $parsed = json_decode($jsonData, true, 512, 0);
+            } catch (Exception $exception) {
                 $parsed = null;
             }
             $jsonData = $parsed;
@@ -289,7 +355,10 @@ class Record extends BaseClass
         return $this;
     }
 
-    public function setLinkedRecord(Record $linkedRecord): static{
+    /**
+     * @return static
+     */
+    public function setLinkedRecord(Record $linkedRecord){
         $this->linkedRecord = $linkedRecord;
         return $this;
     }
