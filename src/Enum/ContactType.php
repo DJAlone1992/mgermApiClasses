@@ -12,5 +12,7 @@ final class ContactType
     public const Phone = 2;
     public const DefaultEmail = 3;
     public const Email = 4;
+    public const TelegramId = 5;
+    public const VkId = 6;
     public const Unknown = 0;
 }

@@ -21,7 +21,7 @@ class Contact extends BaseClass
      ** Значение
      * @var string|null
      */
-    private ?string $value;
+    private ?string $value = null;
     /**
      ** Тип
      * @var int|null

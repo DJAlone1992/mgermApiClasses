@@ -1,0 +1,32 @@
+{
+  "name": "mgermapiclasses",
+  "version": "3.2.0",
+  "description": "Список классов для взаимодействия с API МИС Mgerm",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DJAlone1992/mgermApiClasses.git"
+  },
+  "author": "Егор Ермилов eermilov@mgerm.ru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DJAlone1992/mgermApiClasses/issues"
+  },
+  "homepage": "https://github.com/DJAlone1992/mgermApiClasses#readme",
+  "devDependencies": {
+    "@afshinhaghighat/prettier-plugin-twig-melody": "^2.0.2",
+    "@nsetyo/prettier-plugin-twig": "^0.1.4",
+    "@prettier/plugin-php": "^0.22.4",
+    "@prettier/plugin-xml": "^3.4.1",
+    "prettier": "^3.4.2",
+    "prettier-plugin-multiline-arrays": "^4.0.2",
+    "prettier-plugin-sh": "^0.14.0",
+    "prettier-plugin-sql": "^0.18.1"
+  }
+}

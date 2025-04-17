@@ -132,7 +132,7 @@ class Patient extends Person
                 ->setCardYear('11')
                 ->setPhone('+79998887766')
                 ->setLastName('Иванов')
-                ->setFirstName('Иван]')
+                ->setFirstName('Иван')
                 ->setSecondName('Иванович')
                 ->setBirthDay('1991-01-01')
                 ->setSex(Sex::Male)
