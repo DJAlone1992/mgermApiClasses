@@ -9,14 +9,14 @@ use PHPUnit\Framework\TestCase;
 class PriceListTest extends TestCase
 {
 
-    public function testDummyToArray()
+    public function testDummyToArray(): void
     {
         $dummy = PriceList::createDummy();
         $actual = Executor::prepareResponseArray($dummy);
         $this->assertEquals(PriceList::dummyArray, $actual);
     }
 
-    public function testArrayToDummy()
+    public function testArrayToDummy(): void
     {
         $expected = PriceList::createDummy();
         $actual = Executor::parseResponseArray(PriceList::dummyArray, PriceList::class);

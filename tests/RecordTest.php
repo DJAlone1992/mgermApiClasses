@@ -10,14 +10,14 @@ class RecordTest extends TestCase
 {
 
 
-    public function testDummyToArray()
+    public function testDummyToArray(): void
     {
         $dummy = Record::createDummy();
         $actual = Executor::prepareResponseArray($dummy);
         $this->assertEquals(Record::dummyArray, $actual);
     }
 
-    public function testArrayToDummy()
+    public function testArrayToDummy(): void
     {
         $expected = Record::createDummy();
         $actual = Executor::parseResponseArray(Record::dummyArray, Record::class);

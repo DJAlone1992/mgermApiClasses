@@ -26,7 +26,7 @@ class Referral extends DateTimeStartTimeEndClass
     /**
      * @var Record|null
      */
-    private ?Record $record;
+    private ?Record $record = null;
     /**
      * @var Patient|null
      */

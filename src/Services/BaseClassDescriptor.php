@@ -290,7 +290,6 @@ class BaseClassDescriptor
 
     /**
      * Выводить ли пример на экран в HTML
-     * @param mixed $item
      *
      * @return bool
      */
@@ -304,7 +303,6 @@ class BaseClassDescriptor
 
     /**
      * Получение русского наименования типа
-     * @param mixed $item
      *
      * @return string
      */

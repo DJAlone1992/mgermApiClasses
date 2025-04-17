@@ -280,7 +280,7 @@ class Record extends BaseClass
         if (is_string($jsonData)) {
             try {
                 $parsed = json_decode($jsonData, true, 512, JSON_THROW_ON_ERROR);
-            } catch (Exception $e) {
+            } catch (Exception) {
                 $parsed = null;
             }
             $jsonData = $parsed;

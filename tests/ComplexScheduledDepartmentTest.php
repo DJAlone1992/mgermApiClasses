@@ -8,14 +8,14 @@ use PHPUnit\Framework\TestCase;
 
 class ComplexScheduledDepartmentTest extends TestCase
 {
-    public function testDummyToArray()
+    public function testDummyToArray(): void
     {
         $dummy = ScheduledDepartment::createDummy();
         $actual = Executor::prepareResponseArray($dummy);
         $this->assertEquals(ScheduledDepartment::dummyArray, $actual);
     }
 
-    public function testArrayToDummy()
+    public function testArrayToDummy(): void
     {
         $expected = ScheduledDepartment::createDummy();
         $actual = Executor::parseResponseArray(ScheduledDepartment::dummyArray, ScheduledDepartment::class);

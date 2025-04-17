@@ -10,14 +10,14 @@ class ComplexScheduledDoctorTest extends TestCase
 {
 
 
-    public function testDummyToArray()
+    public function testDummyToArray(): void
     {
         $dummy = ScheduledDoctor::createDummy();
         $actual = Executor::prepareResponseArray($dummy);
         $this->assertEquals(ScheduledDoctor::dummyArray, $actual);
     }
 
-    public function testArrayToDummy()
+    public function testArrayToDummy(): void
     {
         $expected = ScheduledDoctor::createDummy();
         $actual = Executor::parseResponseArray(ScheduledDoctor::dummyArray, ScheduledDoctor::class);

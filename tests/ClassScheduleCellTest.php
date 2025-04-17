@@ -10,14 +10,14 @@ class ClassScheduleCellTest extends TestCase
 {
 
 
-    public function testDummyToArray()
+    public function testDummyToArray(): void
     {
         $dummy = Cell::createDummy();
         $actual = Executor::prepareResponseArray($dummy);
         $this->assertEquals(Cell::dummyArray, $actual);
     }
 
-    public function testArrayToDummy()
+    public function testArrayToDummy(): void
     {
         $expected = Cell::createDummy();
         $actual = Executor::parseResponseArray(Cell::dummyArray, Cell::class);

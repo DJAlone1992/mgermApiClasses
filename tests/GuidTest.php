@@ -9,14 +9,14 @@ use PHPUnit\Framework\TestCase;
 class GuidTest extends TestCase
 {
 
-    public function testDummyToArray()
+    public function testDummyToArray(): void
     {
         $dummy = Guid::createDummy();
         $actual = Executor::prepareResponseArray($dummy);
         $this->assertEquals(Guid::dummyArray, $actual);
     }
 
-    public function testArrayToDummy()
+    public function testArrayToDummy(): void
     {
         $expected = Guid::createDummy();
         $actual = Executor::parseResponseArray(Guid::dummyArray, Guid::class);
