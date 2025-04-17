@@ -10,18 +10,23 @@ use MgermApiClasses\Base\DateTimeStartTimeEndClass;
 class Referral extends DateTimeStartTimeEndClass
 {
     public const dummyArray = [
+        'record'     => Record::dummyArray,
         'patient'    => Patient::dummyArray,
         'doctor'     => Doctor::dummyArray,
         'hospital'   => Hospital::dummyArray,
         'cabinet'    => Cabinet::dummyArray,
         'service'    => Service::dummyArray,
-        'id'         => 123456789,
+        'id'         => 1,
         'department' => Department::dummyArray,
         'date'       => '1999-09-09 00:00:00',
         'timeStart'  => '1999-09-09 09:09:00',
         'timeEnd'    => '1999-09-09 10:10:00',
 
     ];
+    /**
+     * @var Record|null
+     */
+    private ?Record $record = null;
     /**
      * @var Patient|null
      */
@@ -128,6 +133,26 @@ class Referral extends DateTimeStartTimeEndClass
 
         return $this;
     }
+    /**
+     ** Запись направления
+     * @return Record|null
+     */
+    public function getRecord(): ?Record
+    {
+        return $this->record;
+    }
+
+    /**
+     * @param Record|null $record
+     *
+     * @return static
+     */
+    public function setRecord(?Record $record): static
+    {
+        $this->record = $record;
+
+        return $this;
+    }
 
     /**
      * createDummy
@@ -141,8 +166,10 @@ class Referral extends DateTimeStartTimeEndClass
         $doctor   = Doctor::createDummy($imitateReal);
         $hospital = Hospital::createDummy($imitateReal);
         $department = Department::createDummy($imitateReal);
+        $record = Record::createDummy($imitateReal);
         $referral
-            ->setId(123456789)
+            ->setRecord($record)
+            ->setId(1)
             ->setPatient($patient)
             ->setDoctor($doctor)
             ->setHospital($hospital)

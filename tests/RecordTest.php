@@ -2,25 +2,25 @@
 
 namespace MgermApiClasses\Tests;
 
-use MgermApiClasses\Classes\Schedule\Cell;
+use MgermApiClasses\Classes\Record;
 use MgermApiClasses\Executor;
 use PHPUnit\Framework\TestCase;
 
-class ClassScheduleCellTest extends TestCase
+class RecordTest extends TestCase
 {
 
 
     public function testDummyToArray(): void
     {
-        $dummy = Cell::createDummy();
+        $dummy = Record::createDummy();
         $actual = Executor::prepareResponseArray($dummy);
-        $this->assertEquals(Cell::dummyArray, $actual);
+        $this->assertEquals(Record::dummyArray, $actual);
     }
 
     public function testArrayToDummy(): void
     {
-        $expected = Cell::createDummy();
-        $actual = Executor::parseResponseArray(Cell::dummyArray, Cell::class);
+        $expected = Record::createDummy();
+        $actual = Executor::parseResponseArray(Record::dummyArray, Record::class);
         $this->assertEquals($expected, $actual);
     }
 }

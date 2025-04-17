@@ -10,14 +10,14 @@ use PHPUnit\Framework\TestCase;
 class ClassServiceTest extends TestCase
 {
 
-    public function testDummyToArray()
+    public function testDummyToArray(): void
     {
         $dummy = Service::createDummy();
         $actual = Executor::prepareResponseArray($dummy);
         $this->assertEquals(Service::dummyArray, $actual);
     }
 
-    public function testArrayToDummy()
+    public function testArrayToDummy(): void
     {
         $expected = Service::createDummy();
         $actual = Executor::parseResponseArray(Service::dummyArray, Service::class);

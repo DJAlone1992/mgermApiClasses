@@ -9,14 +9,14 @@ use PHPUnit\Framework\TestCase;
 class ClassReferralTest extends TestCase
 {
 
-    public function testDummyToArray()
+    public function testDummyToArray(): void
     {
         $dummy = Referral::createDummy();
         $actual = Executor::prepareResponseArray($dummy);
         $this->assertEquals(Referral::dummyArray, $actual);
     }
 
-    public function testArrayToDummy()
+    public function testArrayToDummy(): void
     {
         $expected = Referral::createDummy();
         $actual = Executor::parseResponseArray(Referral::dummyArray, Referral::class);
