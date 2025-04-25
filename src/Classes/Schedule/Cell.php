@@ -17,9 +17,18 @@ class Cell extends DateTimeStartTimeEndClass
         'interval' => true,
         'referral' => null
     ];
-    private bool $free = false;
-    private ?bool $interval = false;
-    private ?Referral $referral = null;
+    /**
+     * @var bool
+     */
+    private $free = false;
+    /**
+     * @var bool|null
+     */
+    private $interval = false;
+    /**
+     * @var \MgermApiClasses\Classes\Referral|null
+     */
+    private $referral;
 
     /**
      * @return static
@@ -81,7 +90,10 @@ class Cell extends DateTimeStartTimeEndClass
     {
         return $this->referral;
     }
-    public function setReferral($referral): static
+    /**
+     * @return static
+     */
+    public function setReferral($referral)
     {
         $this->referral = $referral;
 

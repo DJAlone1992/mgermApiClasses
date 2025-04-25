@@ -50,8 +50,11 @@ class Record extends BaseClass
      ** Номер истории болезни
      * @var int|null|null
      */
-    private ?int $hospitalizationNumber = null;
-    private ?Doctor $creator;
+    private $hospitalizationNumber;
+    /**
+     * @var \MgermApiClasses\Classes\Doctor|null
+     */
+    private $creator;
     /**
      ** Неформализованный текст записи
      * @var string|null|null
@@ -92,7 +95,10 @@ class Record extends BaseClass
      */
     private $linkedRecordID;
 
-    private ?Record $linkedRecord = null;
+    /**
+     * @var \MgermApiClasses\Classes\Record|null
+     */
+    private $linkedRecord;
     /**
      ** JSON данные
      * @var array|null|null
@@ -349,7 +355,10 @@ class Record extends BaseClass
         return $this;
     }
 
-    public function setLinkedRecord(Record $linkedRecord): static
+    /**
+     * @return static
+     */
+    public function setLinkedRecord(Record $linkedRecord)
     {
         $this->linkedRecord = $linkedRecord;
         return $this;
