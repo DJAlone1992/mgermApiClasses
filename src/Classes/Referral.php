@@ -60,6 +60,7 @@ class Referral extends DateTimeStartTimeEndClass
         $this->hospital   = new Hospital();
         $this->service    = new Service();
         $this->cabinet    = new Cabinet();
+        $this->record     = new Record();
     }
     /**
      ** Отделение направления
