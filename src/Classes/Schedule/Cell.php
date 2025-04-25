@@ -78,7 +78,7 @@ class Cell extends DateTimeStartTimeEndClass
     {
         return $this->referral;
     }
-    public function setReferral($referral): static
+    public function setReferral(?Referral $referral): static
     {
         $this->referral = $referral;
 
