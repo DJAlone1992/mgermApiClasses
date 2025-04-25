@@ -4,6 +4,7 @@ namespace MgermApiClasses\Classes\Schedule;
 
 
 use MgermApiClasses\Base\DateTimeStartTimeEndClass;
+use MgermApiClasses\Classes\Referral;
 
 class Cell extends DateTimeStartTimeEndClass
 {
@@ -13,16 +14,12 @@ class Cell extends DateTimeStartTimeEndClass
         'timeStart' => '1999-09-09 09:09:00',
         'timeEnd'   => '1999-09-09 10:10:00',
         'free' => true,
-        'interval' => true
+        'interval' => true,
+        'referral' => null
     ];
-    /**
-     * @var bool
-     */
-    private $free = false;
-    /**
-     * @var bool|null
-     */
-    private $interval = false;
+    private bool $free = false;
+    private ?bool $interval = false;
+    private ?Referral $referral = null;
 
     /**
      * @return static
@@ -34,6 +31,7 @@ class Cell extends DateTimeStartTimeEndClass
             ->setDate('1999-09-09')
             ->setTimeStart('09:09')
             ->setTimeEnd('10:10')
+            ->setReferral(null)
             ->setFree(true)
             ->setInterval(true);
         return $me;
@@ -76,6 +74,16 @@ class Cell extends DateTimeStartTimeEndClass
     public function setInterval(bool $interval)
     {
         $this->interval = $interval;
+
+        return $this;
+    }
+    public function getReferral(): ?Referral
+    {
+        return $this->referral;
+    }
+    public function setReferral($referral): static
+    {
+        $this->referral = $referral;
 
         return $this;
     }

@@ -50,11 +50,8 @@ class Record extends BaseClass
      ** Номер истории болезни
      * @var int|null|null
      */
-    private $hospitalizationNumber;
-    /**
-     * @var \MgermApiClasses\Classes\Doctor
-     */
-    private $creator;
+    private ?int $hospitalizationNumber = null;
+    private ?Doctor $creator;
     /**
      ** Неформализованный текст записи
      * @var string|null|null
@@ -95,10 +92,7 @@ class Record extends BaseClass
      */
     private $linkedRecordID;
 
-    /**
-     * @var \MgermApiClasses\Classes\Record|null
-     */
-    private $linkedRecord;
+    private ?Record $linkedRecord = null;
     /**
      ** JSON данные
      * @var array|null|null
@@ -163,7 +157,7 @@ class Record extends BaseClass
      */
     public function setDocumentType(?int $documentType)
     {
-        $this->documentType = $documentType??1;
+        $this->documentType = $documentType ?? 1;
         return $this;
     }
     public function getRecordTypeId(): int
@@ -355,15 +349,14 @@ class Record extends BaseClass
         return $this;
     }
 
-    /**
-     * @return static
-     */
-    public function setLinkedRecord(Record $linkedRecord){
+    public function setLinkedRecord(Record $linkedRecord): static
+    {
         $this->linkedRecord = $linkedRecord;
         return $this;
     }
 
-    public function getLinkedRecord(): ?Record{
+    public function getLinkedRecord(): ?Record
+    {
         return $this->linkedRecord;
     }
 }
