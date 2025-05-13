@@ -107,7 +107,10 @@ class ScheduledDepartment extends BaseClass
     {
         return $this->indexing;
     }
-    public function setIndexing(bool $indexing): static
+    /**
+     * @return static
+     */
+    public function setIndexing(bool $indexing)
     {
         $this->indexing = $indexing;
 
