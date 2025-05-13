@@ -13,14 +13,21 @@ class ScheduledDepartment extends BaseClass
         'doctors' => [
             0 => ScheduledDoctor::dummyArray,
         ],
+        'indexing' => false,
         'id' => 1
     ];
+    /**
+     ** Включает индексацию по id врача
+     * @var bool
+     */
+    private bool $indexing = false;
     /**
      ** Данные отделения
      * @var Department|null|null
      */
     private $department;
     /**
+     ** Список врачей с расписанием
      * @var ScheduledDoctor[]|null|null
      */
     private $doctors;
@@ -35,7 +42,11 @@ class ScheduledDepartment extends BaseClass
         if (is_null($this->doctors)) {
             $this->doctors = [];
         }
-        $this->doctors[] = $doctor;
+        if ($this->indexing) {
+            $this->doctors[$doctor->getId()] = $doctor;
+        } else {
+            $this->doctors[] = $doctor;
+        }
         return $this;
     }
     /**
@@ -90,5 +101,16 @@ class ScheduledDepartment extends BaseClass
         $me = new static();
         $me->setId(1)->setDepartment(Department::createDummy($imitateReal))->appendDoctor(ScheduledDoctor::createDummy($imitateReal));
         return $me;
+    }
+
+    public function getIndexing(): bool
+    {
+        return $this->indexing;
+    }
+    public function setIndexing(bool $indexing): static
+    {
+        $this->indexing = $indexing;
+
+        return $this;
     }
 }

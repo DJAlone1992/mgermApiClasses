@@ -50,11 +50,13 @@ class Record extends BaseClass
      ** Номер истории болезни
      * @var int|null|null
      */
-    private $hospitalizationNumber;
+    private ?int $hospitalizationNumber = null;
+
     /**
-     * @var \MgermApiClasses\Classes\Doctor|null
+     ** Создатель записи
+     * @var Doctor|null|null
      */
-    private $creator;
+    private ?Doctor $creator = null;
     /**
      ** Неформализованный текст записи
      * @var string|null|null
