@@ -4,6 +4,7 @@ namespace MgermApiClasses\Complex;
 
 use MgermApiClasses\Base\BaseClass;
 use MgermApiClasses\Classes\Doctor;
+use MgermApiClasses\Classes\Referral;
 use MgermApiClasses\Classes\Schedule\Cell;
 use MgermApiClasses\Classes\Service;
 

@@ -48,7 +48,12 @@ class Record extends BaseClass
      * @var int|null|null
      */
     private ?int $hospitalizationNumber = null;
-    private ?Doctor $creator;
+
+    /**
+     ** Создатель записи
+     * @var Doctor|null|null
+     */
+    private ?Doctor $creator = null;
     /**
      ** Неформализованный текст записи
      * @var string|null|null

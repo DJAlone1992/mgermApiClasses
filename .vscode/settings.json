@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "MGERM"
-    ]
+    ],
+    "markdown.validate.enabled": true
 }
