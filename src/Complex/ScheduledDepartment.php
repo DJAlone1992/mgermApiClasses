@@ -20,7 +20,7 @@ class ScheduledDepartment extends BaseClass
      ** Включает индексацию по id врача
      * @var bool
      */
-    private bool $indexing = false;
+    private $indexing = false;
     /**
      ** Данные отделения
      * @var Department|null|null
@@ -107,7 +107,10 @@ class ScheduledDepartment extends BaseClass
     {
         return $this->indexing;
     }
-    public function setIndexing(bool $indexing): static
+    /**
+     * @return static
+     */
+    public function setIndexing(bool $indexing)
     {
         $this->indexing = $indexing;
 

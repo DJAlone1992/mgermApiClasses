@@ -24,44 +24,47 @@ class Cell extends DateTimeStartTimeEndClass
      ** Признак свободной ячейки
      * @var bool
      */
-    private bool $free = false;
+    private $free = false;
     /**
      ** Признак того, что ячейка является интервалом
      * @var bool|null
      */
-    private ?bool $interval = false;
+    private $interval = false;
     /**
      ** Объект направления, занимающий ячейку
      * @var Referral|null|null
      */
-    private ?Referral $referral = null;
+    private $referral;
     /**
      ** Признак того, что ячейка зарезервирована. Запись невозможна
      * @var bool
      */
-    private bool $isReserved = false;
+    private $isReserved = false;
     /**
      ** Признак того, что ячейка отмечена как "Нет приема".  Запись невозможна
      * @var bool
      */
-    private bool $isBlocked = false;
+    private $isBlocked = false;
     /**
      ** Признак того, что ячейка занята направлением, которое занимает более одной ячейки в расписании. Индекс данного направления находится в поле referralID
      * @var bool
      */
-    private bool $isProlongation = false;
+    private $isProlongation = false;
     /**
      ** Признак направления, которое занимает ячейку
      * @var int|null|null
      */
-    private ?int $referralID = null;
+    private $referralID;
     /**
      ** Признак того, что ячейка отмечена как перерыв в работе врача.  Запись невозможна
      * @var bool
      */
-    private bool $isBreak = false;
+    private $isBreak = false;
 
-    public function setIsBreak(bool $isBreak): static
+    /**
+     * @return static
+     */
+    public function setIsBreak(bool $isBreak)
     {
         $this->isBreak = $isBreak;
         return $this;
@@ -71,13 +74,19 @@ class Cell extends DateTimeStartTimeEndClass
         return $this->isBreak;
     }
 
-    public function setBreak(): static
+    /**
+     * @return static
+     */
+    public function setBreak()
     {
         $this->isBreak = true;
         return $this;
     }
 
-    public function setReferralID(int $referralID): static
+    /**
+     * @return static
+     */
+    public function setReferralID(int $referralID)
     {
         $this->referralID = $referralID;
         return $this;
@@ -87,7 +96,10 @@ class Cell extends DateTimeStartTimeEndClass
         return $this->referralID;
     }
 
-    public function setProlongation(?int $referralID = null): static
+    /**
+     * @return static
+     */
+    public function setProlongation(?int $referralID = null)
     {
         if (!is_null($referralID)) {
             $this->setReferralID($referralID);
@@ -95,7 +107,10 @@ class Cell extends DateTimeStartTimeEndClass
         $this->isProlongation = true;
         return $this;
     }
-    public function setIsProlongation(?bool $isProlongation): static
+    /**
+     * @return static
+     */
+    public function setIsProlongation(?bool $isProlongation)
     {
         $this->isProlongation = $isProlongation;
         return $this;
@@ -105,7 +120,10 @@ class Cell extends DateTimeStartTimeEndClass
     {
         return $this->isProlongation;
     }
-    public function setReserved(?int $referralID = null): static
+    /**
+     * @return static
+     */
+    public function setReserved(?int $referralID = null)
     {
         if (!is_null($referralID)) {
             $this->setReferralID($referralID);
@@ -113,7 +131,10 @@ class Cell extends DateTimeStartTimeEndClass
         $this->isReserved = true;
         return $this;
     }
-    public function setBlocked(?int $referralID = null): static
+    /**
+     * @return static
+     */
+    public function setBlocked(?int $referralID = null)
     {
         if (!is_null($referralID)) {
             $this->setReferralID($referralID);
@@ -126,12 +147,18 @@ class Cell extends DateTimeStartTimeEndClass
         return $this->isReserved;
     }
 
-    public function setIsReserved(?bool $isReserved): static
+    /**
+     * @return static
+     */
+    public function setIsReserved(?bool $isReserved)
     {
         $this->isReserved = $isReserved;
         return $this;
     }
-    public function setIsBlocked(?bool $isBlocked): static
+    /**
+     * @return static
+     */
+    public function setIsBlocked(?bool $isBlocked)
     {
         $this->isBlocked = $isBlocked;
         return $this;
@@ -140,7 +167,10 @@ class Cell extends DateTimeStartTimeEndClass
     {
         return $this->isBlocked;
     }
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         $me

@@ -50,13 +50,13 @@ class Record extends BaseClass
      ** Номер истории болезни
      * @var int|null|null
      */
-    private ?int $hospitalizationNumber = null;
+    private $hospitalizationNumber;
 
     /**
      ** Создатель записи
      * @var Doctor|null|null
      */
-    private ?Doctor $creator = null;
+    private $creator;
     /**
      ** Неформализованный текст записи
      * @var string|null|null
