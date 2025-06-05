@@ -20,6 +20,86 @@ class Cell extends DateTimeStartTimeEndClass
         'isProlongation' => false,
         'isBreak' => false,
     ];
+
+    public const dummyArrayAll = [
+        [
+            //  'comment' => 'Свободная ячейка c периодом (комментарий не присутствует в реальной выдаче данных)',
+            'date' => '1999-09-09 00:00:00',
+            'timeStart' => '1999-09-09 09:09:00',
+            'timeEnd'   => '1999-09-09 10:10:00',
+            'free' => true,
+            'interval' => true,
+            'isReserved' => false,
+            'isBlocked' => false,
+            'isProlongation' => false,
+            'isBreak' => false,
+
+        ],
+        [
+            //  'comment' => 'Зарезервированная ячейка (комментарий не присутствует в реальной выдаче данных)',
+            'date' => '1999-09-09 00:00:00',
+            'timeStart' => '1999-09-09 09:09:00',
+            'timeEnd'   => '1999-09-09 10:10:00',
+            'free' => false,
+            'interval' => true,
+            'isReserved' => true,
+            'isBlocked' => false,
+            'isProlongation' => false,
+            'isBreak' => false,
+
+        ],
+        [
+            //      'comment' => 'Заблокированная ячейка (комментарий не присутствует в реальной выдаче данных)',
+            'date' => '1999-09-09 00:00:00',
+            'timeStart' => '1999-09-09 09:09:00',
+            'timeEnd'   => '1999-09-09 10:10:00',
+            'free' => false,
+            'interval' => true,
+            'isReserved' => false,
+            'isBlocked' => true,
+            'isProlongation' => false,
+            'isBreak' => false,
+
+        ],
+        [
+            //   'comment' => 'Ячейка перерыва (комментарий не присутствует в реальной выдаче данных)',
+            'date' => '1999-09-09 00:00:00',
+            'timeStart' => '1999-09-09 09:09:00',
+            'timeEnd'   => '1999-09-09 10:10:00',
+            'free' => false,
+            'interval' => true,
+            'isReserved' => false,
+            'isBlocked' => false,
+            'isProlongation' => false,
+            'isBreak' => true,
+        ],
+        [
+            //    'comment' => 'Ячейка продления (комментарий не присутствует в реальной выдаче данных)',
+            'date' => '1999-09-09 00:00:00',
+            'timeStart' => '1999-09-09 09:09:00',
+            'timeEnd'   => '1999-09-09 10:10:00',
+            'free' => false,
+            'interval' => true,
+            'isReserved' => false,
+            'isBlocked' => false,
+            'isProlongation' => true,
+            'referralID' => 123,
+            'isBreak' => false,
+        ],
+        [
+            //  'comment' => 'Занятая ячейка (комментарий не присутствует в реальной выдаче данных)',
+            'date' => '1999-09-09 00:00:00',
+            'timeStart' => '1999-09-09 09:09:00',
+            'timeEnd'   => '1999-09-09 10:10:00',
+            'free' => false,
+            'interval' => true,
+            'isReserved' => false,
+            'isBlocked' => false,
+            'isProlongation' => false,
+            'referral' => Referral::dummyArray,
+            'isBreak' => false,
+        ]
+    ];
     /**
      ** Признак свободной ячейки
      * @var bool
@@ -181,6 +261,44 @@ class Cell extends DateTimeStartTimeEndClass
             ->setFree(true)
             ->setInterval(true);
         return $me;
+    }
+
+    public static function createDummyAll(bool $imitateReal = false): array
+    {
+        $result = [];
+        $free = self::createDummy($imitateReal);
+        $result[] = $free;
+
+        $reserved = self::createDummy($imitateReal);
+        $reserved
+            ->setFree(false)
+            ->setReserved();
+        $result[] = $reserved;
+
+        $blocked = self::createDummy($imitateReal);
+        $blocked
+            ->setFree(false)
+            ->setBlocked();
+        $result[] = $blocked;
+
+        $break = self::createDummy($imitateReal);
+        $break
+            ->setFree(false)
+            ->setBreak();
+        $result[] = $break;
+
+        $prolongation = self::createDummy($imitateReal);
+        $prolongation
+            ->setFree(false)
+            ->setProlongation(123);
+        $result[] = $prolongation;
+
+        $notFree = self::createDummy($imitateReal);
+        $notFree
+            ->setFree(false)
+            ->setReferral(Referral::createDummy($imitateReal));
+        $result[] = $notFree;
+        return $result;
     }
 
     /**
