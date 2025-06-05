@@ -151,7 +151,10 @@ class Service extends IdNameClass
         return $this;
     }
 
-    public function setDuration(?int $duration): static
+    /**
+     * @return static
+     */
+    public function setDuration(?int $duration)
     {
         $this->duration = $duration;
         return $this;
