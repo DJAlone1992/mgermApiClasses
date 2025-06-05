@@ -43,7 +43,10 @@ class Service extends IdNameClass
      */
     private $priceListId = 0;
 
-    private ?int $duration = null;
+    /**
+     * @var int|null
+     */
+    private $duration;
 
     public function getFloatPrice(): float
     {
@@ -151,7 +154,10 @@ class Service extends IdNameClass
         return $this;
     }
 
-    public function setDuration(?int $duration): static
+    /**
+     * @return static
+     */
+    public function setDuration(?int $duration)
     {
         $this->duration = $duration;
         return $this;
