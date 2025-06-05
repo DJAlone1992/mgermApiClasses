@@ -23,7 +23,7 @@ class Cell extends DateTimeStartTimeEndClass
 
     public const dummyArrayAll = [
         [
-            'comment' => 'Свободная ячейка c периодом (комментарий не присутствует в реальной выдаче данных)',
+            //  'comment' => 'Свободная ячейка c периодом (комментарий не присутствует в реальной выдаче данных)',
             'date' => '1999-09-09 00:00:00',
             'timeStart' => '1999-09-09 09:09:00',
             'timeEnd'   => '1999-09-09 10:10:00',
@@ -36,7 +36,7 @@ class Cell extends DateTimeStartTimeEndClass
 
         ],
         [
-            'comment' => 'Зарезервированная ячейка (комментарий не присутствует в реальной выдаче данных)',
+            //  'comment' => 'Зарезервированная ячейка (комментарий не присутствует в реальной выдаче данных)',
             'date' => '1999-09-09 00:00:00',
             'timeStart' => '1999-09-09 09:09:00',
             'timeEnd'   => '1999-09-09 10:10:00',
@@ -49,7 +49,7 @@ class Cell extends DateTimeStartTimeEndClass
 
         ],
         [
-            'comment' => 'Заблокированная ячейка (комментарий не присутствует в реальной выдаче данных)',
+            //      'comment' => 'Заблокированная ячейка (комментарий не присутствует в реальной выдаче данных)',
             'date' => '1999-09-09 00:00:00',
             'timeStart' => '1999-09-09 09:09:00',
             'timeEnd'   => '1999-09-09 10:10:00',
@@ -62,7 +62,7 @@ class Cell extends DateTimeStartTimeEndClass
 
         ],
         [
-            'comment' => 'Ячейка перерыва (комментарий не присутствует в реальной выдаче данных)',
+            //   'comment' => 'Ячейка перерыва (комментарий не присутствует в реальной выдаче данных)',
             'date' => '1999-09-09 00:00:00',
             'timeStart' => '1999-09-09 09:09:00',
             'timeEnd'   => '1999-09-09 10:10:00',
@@ -74,7 +74,7 @@ class Cell extends DateTimeStartTimeEndClass
             'isBreak' => true,
         ],
         [
-            'comment' => 'Ячейка продления (комментарий не присутствует в реальной выдаче данных)',
+            //    'comment' => 'Ячейка продления (комментарий не присутствует в реальной выдаче данных)',
             'date' => '1999-09-09 00:00:00',
             'timeStart' => '1999-09-09 09:09:00',
             'timeEnd'   => '1999-09-09 10:10:00',
@@ -83,11 +83,11 @@ class Cell extends DateTimeStartTimeEndClass
             'isReserved' => false,
             'isBlocked' => false,
             'isProlongation' => true,
-            'referralID' => 1,
+            'referralID' => 123,
             'isBreak' => false,
         ],
         [
-            'comment' => 'Занятая ячейка (комментарий не присутствует в реальной выдаче данных)',
+            //  'comment' => 'Занятая ячейка (комментарий не присутствует в реальной выдаче данных)',
             'date' => '1999-09-09 00:00:00',
             'timeStart' => '1999-09-09 09:09:00',
             'timeEnd'   => '1999-09-09 10:10:00',
@@ -95,7 +95,7 @@ class Cell extends DateTimeStartTimeEndClass
             'interval' => true,
             'isReserved' => false,
             'isBlocked' => false,
-            'isProlongation' => true,
+            'isProlongation' => false,
             'referral' => Referral::dummyArray,
             'isBreak' => false,
         ]
@@ -233,34 +233,40 @@ class Cell extends DateTimeStartTimeEndClass
         return $me;
     }
 
-    public static function createDummyAll(bool $imitateReal = false): array{
+    public static function createDummyAll(bool $imitateReal = false): array
+    {
         $result = [];
         $free = self::createDummy($imitateReal);
         $result[] = $free;
-        $blocked = self::createDummy($imitateReal);
-        $blocked
-        ->setFree(false)
-        ->setBlocked();
-        $result[] = $blocked;
+
         $reserved = self::createDummy($imitateReal);
         $reserved
-        ->setFree(false)
-        ->setReserved();
+            ->setFree(false)
+            ->setReserved();
         $result[] = $reserved;
+
+        $blocked = self::createDummy($imitateReal);
+        $blocked
+            ->setFree(false)
+            ->setBlocked();
+        $result[] = $blocked;
+
         $break = self::createDummy($imitateReal);
         $break
-        ->setFree(false)
-        ->setBreak();
+            ->setFree(false)
+            ->setBreak();
         $result[] = $break;
+
         $prolongation = self::createDummy($imitateReal);
         $prolongation
-        ->setFree(false)
-        ->setProlongation(123);
+            ->setFree(false)
+            ->setProlongation(123);
         $result[] = $prolongation;
+
         $notFree = self::createDummy($imitateReal);
         $notFree
-        ->setFree(false)
-        ->setReferral(Referral::createDummy($imitateReal));
+            ->setFree(false)
+            ->setReferral(Referral::createDummy($imitateReal));
         $result[] = $notFree;
         return $result;
     }
