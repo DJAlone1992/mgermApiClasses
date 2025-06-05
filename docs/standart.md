@@ -1115,3 +1115,85 @@
 	"date": "1999-09-09 00:00:00"
 }
 ```
+
+#### Пример ячейки расписания, зарезервированной для записи
+
+```json
+{
+	"isBreak": false,
+	"isProlongation": false,
+	"isReserved": true,
+	"isBlocked": false,
+	"free": false,
+	"interval": true,
+	"timeStart": "2025-05-13 09:15:00",
+	"timeEnd": "2025-05-13 09:30:00",
+	"date": "2025-05-13 00:00:00"
+}
+```
+
+#### Пример ячейки, с флагом "Нет приема"
+
+```json
+{
+	"isBreak": false,
+	"isProlongation": false,
+	"isReserved": false,
+	"isBlocked": true,
+	"free": false,
+	"interval": true,
+	"timeStart": "2025-05-13 09:30:00",
+	"timeEnd": "2025-05-13 09:45:00",
+	"date": "2025-05-13 00:00:00"
+}
+```
+
+#### Пример ячейки с перерывом в расписании у врача
+
+```json
+{
+	"isBreak": true,
+	"isProlongation": false,
+	"isReserved": false,
+	"isBlocked": false,
+	"free": false,
+	"interval": true,
+	"timeStart": "2025-05-13 09:00:00",
+	"timeEnd": "2025-05-13 09:15:00",
+	"date": "2025-05-13 00:00:00"
+}
+```
+
+#### Пример занятой ячейки
+
+```json
+{
+	"isBreak": false,
+	"isProlongation": false,
+	"isReserved": false,
+	"isBlocked": false,
+	"free": false,
+	"interval": true,
+	"referral": "<Объект MgermApiClasses\\Classes\\Referral >",
+	"timeStart": "2025-05-13 08:30:00",
+	"timeEnd": "2025-05-13 08:45:00",
+	"date": "2025-05-13 00:00:00"
+}
+```
+
+#### Пример ячейки пролонгации
+
+```json
+{
+	"isBreak": false,
+	"referralID": "<Индекс направления, которое пролонгируется на ячейку>",
+	"isProlongation": true,
+	"isReserved": false,
+	"isBlocked": false,
+	"free": false,
+	"interval": true,
+	"timeStart": "2025-05-13 08:45:00",
+	"timeEnd": "2025-05-13 09:00:00",
+	"date": "2025-05-13 00:00:00"
+}
+```

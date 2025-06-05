@@ -13,9 +13,7 @@ class ScheduledDoctor extends BaseClass
     public const dummyArray =
     [
         'doctor' => Doctor::dummyArray,
-        'cells' => [
-            0 => Cell::dummyArray,
-        ],
+        'cells' => Cell::dummyArrayAll,
         'services' => [
             0 => Service::dummyArray
         ],
@@ -194,7 +192,7 @@ class ScheduledDoctor extends BaseClass
         $me->setId(1)
             ->setInterval(true)
             ->setDoctor($doctor)
-            ->appendCell(Cell::createDummy($imitateReal))
+            ->setCells(Cell::createDummyAll($imitateReal))
             ->appendService(Service::createDummy($imitateReal))
             ->setIntervalDuration(60);
         return $me;

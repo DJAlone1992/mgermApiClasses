@@ -26,6 +26,7 @@ class Hospital extends BaseClass
         'id'      => 1,
     ];
     /**
+     ** Наименование ЛПУ
      * @var CaseString|null
      */
     private $nameObj;
@@ -45,7 +46,6 @@ class Hospital extends BaseClass
         $this->nameObj = new CaseString();
     }
     /**
-     ** Наименование ЛПУ
      * @return string|null
      */
     public function getName(): ?string
