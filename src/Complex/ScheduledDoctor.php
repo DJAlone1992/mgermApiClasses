@@ -19,7 +19,8 @@ class ScheduledDoctor extends BaseClass
         ],
         'interval' => true,
         'intervalDuration' => 60,
-        'id' => 1
+        'id' => 1,
+        'callOnly' => false,
     ];
     /**
      *
@@ -44,6 +45,7 @@ class ScheduledDoctor extends BaseClass
      */
     private ?int $intervalDuration = null;
 
+    private bool $isCallOnly = false;
     /**
      * @param Service $service
      *
@@ -220,5 +222,32 @@ class ScheduledDoctor extends BaseClass
             ->appendService(Service::createDummy($imitateReal))
             ->setIntervalDuration(60);
         return $me;
+    }
+
+    /**
+     * Устанавливает признак врача, что к нему запись только по звонку
+     * @return static
+     */
+    public function setCallOnly(): static
+    {
+        $this->isCallOnly = true;
+        return $this;
+    }
+    /**
+     ** Запись только по звонку
+     * @return bool
+     */
+    public function isCallOnly(): bool
+    {
+        return $this->isCallOnly;
+    }
+    /**
+     * Удаляет признак врача, что к нему запись только по звонку
+     * @return static
+     */
+    public function unsetCallOnly(): static
+    {
+        $this->isCallOnly = false;
+        return $this;
     }
 }
