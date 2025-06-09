@@ -135,7 +135,34 @@ class ScheduledDoctor extends BaseClass
 
         return $this;
     }
+    /**
+     * Установка минимального количества периодов для всех услуг врача
+     * @param int $periods Количество периодов
+     *
+     * @return static
+     */
+    public function setMinimumServicesPeriods(int $periods): static
+    {
+        $doctorMinimumDuration = $this->intervalDuration * $periods;
+        $this->setMinimumServiceDuration($doctorMinimumDuration);
+        return $this;
+    }
 
+    /**
+     * Установка минимальной длительности приема
+     * @param int $duration Минимальная длительность приема в минутах
+     *
+     * @return static
+     */
+    public function setMinimumServiceDuration(int $duration): static
+    {
+        foreach ($this->services as $service) {
+            if ($service->getDuration() < $duration) {
+                $service->setDuration($duration);
+            }
+        }
+        return $this;
+    }
 
     /**
      ** Ячейки для записи

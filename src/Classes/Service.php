@@ -159,7 +159,7 @@ class Service extends IdNameClass
         $this->duration = $duration;
         return $this;
     }
-    public function getDuration0(): ?int
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
