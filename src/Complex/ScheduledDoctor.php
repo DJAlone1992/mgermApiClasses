@@ -45,7 +45,10 @@ class ScheduledDoctor extends BaseClass
      */
     private $intervalDuration;
 
-    private bool $isCallOnly = false;
+    /**
+     * @var bool
+     */
+    private $isCallOnly = false;
     /**
      * @param Service $service
      *
@@ -231,7 +234,7 @@ class ScheduledDoctor extends BaseClass
      * Устанавливает признак врача, что к нему запись только по звонку
      * @return static
      */
-    public function setCallOnly(): static
+    public function setCallOnly()
     {
         $this->isCallOnly = true;
         return $this;
@@ -248,7 +251,7 @@ class ScheduledDoctor extends BaseClass
      * Удаляет признак врача, что к нему запись только по звонку
      * @return static
      */
-    public function unsetCallOnly(): static
+    public function unsetCallOnly()
     {
         $this->isCallOnly = false;
         return $this;
