@@ -141,7 +141,7 @@ class ScheduledDoctor extends BaseClass
      *
      * @return static
      */
-    public function setMinimumServicesPeriods(int $periods): static
+    public function setMinimumServicesPeriods(int $periods)
     {
         $doctorMinimumDuration = $this->intervalDuration * $periods;
         $this->setMinimumServiceDuration($doctorMinimumDuration);
@@ -154,7 +154,7 @@ class ScheduledDoctor extends BaseClass
      *
      * @return static
      */
-    public function setMinimumServiceDuration(int $duration): static
+    public function setMinimumServiceDuration(int $duration)
     {
         foreach ($this->services as $service) {
             if ($service->getDuration() < $duration) {
