@@ -30,13 +30,13 @@
 ## MgermApiClasses\Base\IdNameClass
 
 Абстрактный класс содержащий в себе только индекс и наименование.
-Наследник MgermApiClasses\Base\BaseClass
+Наследник [MgermApiClasses\Base\BaseClass](abstract.md#mgermapiclassesbasebaseclass)
 
 ### Описание полей
 
-| Поле    | Тип                             | Описание     | Доступные методы |
-| ------- | ------------------------------- | ------------ | ---------------- |
-| nameObj | MgermApiClasses\Base\CaseString | Наименование | set / get        |
+| Поле    | Тип                                                                          | Описание     | Доступные методы |
+| ------- | ---------------------------------------------------------------------------- | ------------ | ---------------- |
+| nameObj | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Наименование | set / get        |
 
 ### Описание дополнительных функций
 
@@ -49,7 +49,7 @@
 ## MgermApiClasses\Base\DateClass
 
 Абстрактный класс содержащий в себе только индекс и дату.
-Наследник MgermApiClasses\Base\BaseClass
+Наследник [MgermApiClasses\Base\BaseClass](abstract.md#mgermapiclassesbasebaseclass)
 
 ### Описание полей
 
@@ -67,7 +67,7 @@
 ## MgermApiClasses\Base\DateTimeStartTimeEndClass
 
 Абстрактный класс содержащий в себе только индекс и дату.
-Наследник MgermApiClasses\Base\DateClass
+Наследник [MgermApiClasses\Base\DateClass](abstract.md#mgermapiclassesbasedateclass)
 
 ### Описание полей
 
@@ -88,25 +88,46 @@
 ## MgermApiClasses\Classes\Person
 
 Абстрактный класс содержащий в себе информацию о человеке.
-Наследник MgermApiClasses\Base\DateClass
+Наследник [MgermApiClasses\Base\DateClass](abstract.md#mgermapiclassesbasedateclass)
 
 ### Описание полей
 
-| Поле          | Тип                               | Описание                                                                        | Доступные методы |
-| ------------- | --------------------------------- | ------------------------------------------------------------------------------- | ---------------- |
-| lastNameObj   | MgermApiClasses\Base\CaseString   | Фамилия                                                                         | set/get          |
-| firstNameObj  | MgermApiClasses\Base\CaseString   | Имя                                                                             | set/get          |
-| secondNameObj | MgermApiClasses\Base\CaseString   | Отчество                                                                        | set/get          |
-| sex           | int                               | Идентификатор поля 1 - мужской 2 - женский 3 - неизвестен                       | set/get          |
-| sexName       | string                            | Строковое обозначение пола male - мужской female - женский unknown - неизвестен | set/get          |
-| birthDay      | DateTime                          | Дата рождения                                                                   | set/get          |
-| contacts      | MgermApiClasses\Classes\Contact[] | Массив контактов                                                                | set/get          |
-| contactsCount | int                               | Количество доступных контактов                                                  | set/get          |
+| Поле          | Тип                                                                          | Описание                                                                        | Доступные методы |
+| ------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------- |
+| lastNameObj   | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Фамилия                                                                         | set/get          |
+| firstNameObj  | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Имя                                                                             | set/get          |
+| secondNameObj | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Отчество                                                                        | set/get          |
+| sex           | int                                                                          | Идентификатор поля 1 - мужской 2 - женский 3 - неизвестен                       | set/get          |
+| sexName       | string                                                                       | Строковое обозначение пола male - мужской female - женский unknown - неизвестен | set/get          |
+| birthDay      | DateTime                                                                     | Дата рождения                                                                   | set/get          |
+| contacts      | [MgermApiClasses\Classes\Contact](standart.md#mgermapiclassesclassescontact)[]                                            | Массив контактов                                                                | set/get          |
+| contactsCount | int                                                                          | Количество доступных контактов                                                  | set/get          |
 
 ### Описание дополнительных функций
 
 | Функция                 | Аргументы функции                       | Тип возвращаемого значение | Описание                                                                      | Дополнительная информация                         |
 | ----------------------- | --------------------------------------- | -------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------- |
-| addContact              | contact:MgermApiClasses\Classes\Contact | static                     | Добавление нового контакта                                                    | Автоматически увеличивает счетчик контактов       |
+| addContact              | contact:[MgermApiClasses\Classes\Contact](standart.md#mgermapiclassesclassescontact) | static                     | Добавление нового контакта                                                    | Автоматически увеличивает счетчик контактов       |
 | getFullName             | -                                       | string                     | Возвращает фамилию имя и отчество разделенных пробелами в именительном падеже |                                                   |
 | getLastNameWithInitials | -                                       | string                     | Возвращает фамилию и инициалы                                                 | Инициалы завершены точкой. Все разделено пробелом |
+
+## MgermApiClasses\Complex\ScheduledObject
+
+Класс для передачи объекта (врач или кабинет) с его расписанием.
+Является наследником [MgermApiClasses\Base\BaseClass](abstract.md#mgermapiclassesbasebaseclass)
+
+### Описание полей
+
+| Поле             | Тип                                                                            | Описание                                                | Доступные методы |
+| ---------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------- | ---------------- |
+| cells            | [MgermApiClasses\Classes\Schedule\Cell](standart.md#mgermapiclassesclassesschedulecell)[]                                        | Список ячеек для записи                                 | set / get        |
+| services         | [MgermApiClasses\Classes\Service](standart.md#mgermapiclassesclassesservice)[] | Список услуг врача                                      | set / get        |
+| interval         | bool                                                                           | Флаг указания того, что расписание разбито на интервалы | set / get        |
+| intervalDuration | int                                                                            | Длительность интервала в минутах                        | set / get        |
+
+### Описание дополнительных функций
+
+| Функция       | Аргументы функции                                                                    | Тип возвращаемого значение | Описание                           | Дополнительная информация |
+| ------------- | ------------------------------------------------------------------------------------ | -------------------------- | ---------------------------------- | ------------------------- |
+| appendService | service:[MgermApiClasses\Classes\Service](standart.md#mgermapiclassesclassesservice) | static                     | Добавление новой услуги в список   |                           |
+| appendCell    | cell:[MgermApiClasses\Classes\Schedule\Cell](standart.md#mgermapiclassesclassesschedulecell)                                           | static                     | Добавление новой ячейки расписания |                           |

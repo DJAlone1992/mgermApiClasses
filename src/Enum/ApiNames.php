@@ -15,4 +15,5 @@ final class ApiNames
     public const MangoTelecom = 'mangotelecom';
     public const UIS = 'uis';
     public const ChatPush = 'chatpush';
+    public const NaPopravku = 'napopravku';
 }
