@@ -24,7 +24,7 @@ class ScheduledDoctor extends ScheduledObject
      *
      * @var Doctor|null|null
      */
-    private ?Doctor $doctor = null;
+    private $doctor;
 
 
     /**

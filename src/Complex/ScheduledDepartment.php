@@ -33,12 +33,12 @@ class ScheduledDepartment extends BaseClass
      ** Список врачей с расписанием
      * @var ScheduledDoctor[]|null|null
      */
-    private ?array $doctors = null;
+    private $doctors;
     /**
      ** Список кабинетов с расписанием
      * @var ScheduledCabinet[]|null|null
      */
-    private ?array $cabinets = null;
+    private $cabinets;
 
     /**
      * @param ScheduledDoctor $doctor
@@ -84,7 +84,7 @@ class ScheduledDepartment extends BaseClass
      *
      * @return static
      */
-    public function appendCabinet(ScheduledCabinet $cabinet): static
+    public function appendCabinet(ScheduledCabinet $cabinet)
     {
         if (is_null($this->cabinets)) {
             $this->cabinets = [];
@@ -111,7 +111,7 @@ class ScheduledDepartment extends BaseClass
      *
      * @return static
      */
-    public function setCabinets(?array $cabinets): static
+    public function setCabinets(?array $cabinets)
     {
         $this->cabinets = $cabinets;
 
@@ -166,7 +166,7 @@ class ScheduledDepartment extends BaseClass
      *
      * @return static
      */
-    public function appendScheduledObject(ScheduledObject $object): static
+    public function appendScheduledObject(ScheduledObject $object)
     {
         if ($object instanceof ScheduledDoctor) {
             $this->appendDoctor($object);
