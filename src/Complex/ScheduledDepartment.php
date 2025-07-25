@@ -13,6 +13,9 @@ class ScheduledDepartment extends BaseClass
         'doctors' => [
             0 => ScheduledDoctor::dummyArray,
         ],
+        'cabinets' => [
+            0 => ScheduledCabinet::dummyArray,
+        ],
         'indexing' => false,
         'id' => 1
     ];
@@ -31,6 +34,11 @@ class ScheduledDepartment extends BaseClass
      * @var ScheduledDoctor[]|null|null
      */
     private ?array $doctors = null;
+    /**
+     ** Список кабинетов с расписанием
+     * @var ScheduledCabinet[]|null|null
+     */
+    private ?array $cabinets = null;
 
     /**
      * @param ScheduledDoctor $doctor
@@ -71,7 +79,44 @@ class ScheduledDepartment extends BaseClass
         return $this;
     }
 
+    /**
+     * @param ScheduledCabinet $cabinet
+     *
+     * @return static
+     */
+    public function appendCabinet(ScheduledCabinet $cabinet): static
+    {
+        if (is_null($this->cabinets)) {
+            $this->cabinets = [];
+        }
+        if ($this->indexing) {
+            $this->cabinets[$cabinet->getId()] = $cabinet;
+        } else {
+            $this->cabinets[] = $cabinet;
+        }
+        return $this;
+    }
+    /**
+     ** Список кабинетов
+     * @return ScheduledCabinet[]|null
+     */
+    public function getCabinets(): ?array
+    {
+        return $this->cabinets;
+    }
 
+
+    /**
+     * @param ScheduledCabinet[]|null $cabinets
+     *
+     * @return static
+     */
+    public function setCabinets(?array $cabinets): static
+    {
+        $this->cabinets = $cabinets;
+
+        return $this;
+    }
     /**
      * @return Department|null
      */
@@ -96,7 +141,7 @@ class ScheduledDepartment extends BaseClass
     public static function createDummy(bool $imitateReal = false): static
     {
         $me = new static();
-        $me->setId(1)->setDepartment(Department::createDummy($imitateReal))->appendDoctor(ScheduledDoctor::createDummy($imitateReal));
+        $me->setId(1)->setDepartment(Department::createDummy($imitateReal))->appendDoctor(ScheduledDoctor::createDummy($imitateReal))->appendCabinet(ScheduledCabinet::createDummy($imitateReal));
         return $me;
     }
 
@@ -108,6 +153,21 @@ class ScheduledDepartment extends BaseClass
     {
         $this->indexing = $indexing;
 
+        return $this;
+    }
+    /**
+     * @param ScheduledObject $object
+     *
+     * @return static
+     */
+    public function appendScheduledObject(ScheduledObject $object): static
+    {
+        if ($object instanceof ScheduledDoctor) {
+            $this->appendDoctor($object);
+        }
+        if ($object instanceof ScheduledCabinet) {
+            $this->appendCabinet($object);
+        }
         return $this;
     }
 }

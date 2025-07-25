@@ -2,15 +2,15 @@
 
 namespace MgermApiClasses\Complex;
 
-use MgermApiClasses\Classes\Doctor;
+use MgermApiClasses\Classes\Cabinet;
 use MgermApiClasses\Classes\Schedule\Cell;
 use MgermApiClasses\Classes\Service;
 
-class ScheduledDoctor extends ScheduledObject
+class ScheduledCabinet extends ScheduledObject
 {
-    public const dummyArray =
-    [
-        'doctor' => Doctor::dummyArray,
+
+    public const dummyArray = [
+        'cabinet' => Cabinet::dummyArray,
         'cells' => Cell::dummyArrayAll,
         'services' => [
             0 => Service::dummyArray
@@ -20,45 +20,39 @@ class ScheduledDoctor extends ScheduledObject
         'id' => 1,
         'callOnly' => false,
     ];
-    /**
-     *
-     * @var Doctor|null|null
-     */
-    private ?Doctor $doctor = null;
 
+    private ?Cabinet $cabinet = null;
 
     /**
-     ** Данные врача
-     * @return Doctor|null
+     ** Данные кабинета
+     * @return Cabinet|null
      */
-    public function getDoctor(): ?Doctor
+    public function getCabinet(): ?Cabinet
     {
-        return $this->doctor;
+        return $this->cabinet;
     }
-
-
     /**
-     * @param Doctor|null $doctor
+     * @param Cabinet|null $cabinet
      *
      * @return static
      */
-    public function setDoctor(?Doctor $doctor): static
+    public function setCabinet(?Cabinet $cabinet): static
     {
-        $this->doctor = $doctor;
-
+        $this->cabinet = $cabinet;
         return $this;
     }
 
     public static function createDummy(bool $imitateReal = false): static
     {
         $me = new static();
-        $doctor = Doctor::createDummy($imitateReal);
+        $cabinet = Cabinet::createDummy($imitateReal);
         $me->setId(1)
             ->setInterval(true)
-            ->setDoctor($doctor)
+            ->setCabinet($cabinet)
             ->setCells(Cell::createDummyAll($imitateReal))
             ->appendService(Service::createDummy($imitateReal))
             ->setIntervalDuration(60);
         return $me;
     }
+
 }
