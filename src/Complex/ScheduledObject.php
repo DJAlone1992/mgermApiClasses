@@ -33,7 +33,7 @@ abstract class ScheduledObject extends BaseClass
      *
      * @return static
      */
-    public function appendService(Service $service): static
+    public function appendService(Service $service)
     {
         if (is_null($this->services)) {
             $this->services = [];
@@ -46,7 +46,7 @@ abstract class ScheduledObject extends BaseClass
      *
      * @return static
      */
-    public function appendCell(Cell $cell): static
+    public function appendCell(Cell $cell)
     {
         if (is_null($this->cells)) {
             $this->cells = [];
@@ -69,7 +69,7 @@ abstract class ScheduledObject extends BaseClass
      *
      * @return static
      */
-    public function setIntervalDuration(?int $intervalDuration): static
+    public function setIntervalDuration(?int $intervalDuration)
     {
         $this->intervalDuration = $intervalDuration;
 
@@ -90,7 +90,7 @@ abstract class ScheduledObject extends BaseClass
      *
      * @return static
      */
-    public function setInterval(bool $interval): static
+    public function setInterval(bool $interval)
     {
         $this->interval = $interval;
 
@@ -113,7 +113,7 @@ abstract class ScheduledObject extends BaseClass
      *
      * @return static
      */
-    public function setServices(?array $services): static
+    public function setServices(?array $services)
     {
         $this->services = $services;
 
@@ -125,7 +125,7 @@ abstract class ScheduledObject extends BaseClass
      *
      * @return static
      */
-    public function setMinimumServicesPeriods(int $periods): static
+    public function setMinimumServicesPeriods(int $periods)
     {
         $doctorMinimumDuration = $this->intervalDuration * $periods;
         $this->setMinimumServiceDuration($doctorMinimumDuration);
@@ -138,7 +138,7 @@ abstract class ScheduledObject extends BaseClass
      *
      * @return static
      */
-    public function setMinimumServiceDuration(int $duration): static
+    public function setMinimumServiceDuration(int $duration)
     {
         foreach ($this->services as $service) {
             if ($service->getDuration() < $duration) {
@@ -161,7 +161,7 @@ abstract class ScheduledObject extends BaseClass
      *
      * @return static
      */
-    public function setCells(?array $cells): static
+    public function setCells(?array $cells)
     {
         $this->cells = $cells;
 
@@ -171,7 +171,7 @@ abstract class ScheduledObject extends BaseClass
      * Устанавливает признак врача, что к нему запись только по звонку
      * @return static
      */
-    public function setCallOnly(): static
+    public function setCallOnly()
     {
         $this->isCallOnly = true;
         return $this;
@@ -188,7 +188,7 @@ abstract class ScheduledObject extends BaseClass
      * Удаляет признак врача, что к нему запись только по звонку
      * @return static
      */
-    public function unsetCallOnly(): static
+    public function unsetCallOnly()
     {
         $this->isCallOnly = false;
         return $this;

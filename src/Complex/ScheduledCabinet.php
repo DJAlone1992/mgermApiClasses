@@ -36,13 +36,16 @@ class ScheduledCabinet extends ScheduledObject
      *
      * @return static
      */
-    public function setCabinet(?Cabinet $cabinet): static
+    public function setCabinet(?Cabinet $cabinet)
     {
         $this->cabinet = $cabinet;
         return $this;
     }
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         $cabinet = Cabinet::createDummy($imitateReal);
