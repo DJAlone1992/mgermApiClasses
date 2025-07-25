@@ -2,7 +2,8 @@
 
 ## MgermApiClasses\Classes\Contact
 
-Класс для описания данных подразделения. Является наследником MgermApiClasses\Base\BaseClass
+Класс для описания данных подразделения.
+Является наследником [MgermApiClasses\Base\BaseClass](abstract.md#mgermapiclassesbasebaseclass)
 
 ### Описание полей
 
@@ -37,10 +38,10 @@
 
 ### Описание полей
 
-| Поле    | Тип                             | Описание                    | Доступные методы |
-| ------- | ------------------------------- | --------------------------- | ---------------- |
-| id      | int                             | Идентификатор подразделения | set / get        |
-| nameObj | MgermApiClasses\Base\CaseString | Наименование подразделения  | set / get        |
+| Поле    | Тип                                                                          | Описание                    | Доступные методы |
+| ------- | ---------------------------------------------------------------------------- | --------------------------- | ---------------- |
+| id      | int                                                                          | Идентификатор подразделения | set / get        |
+| nameObj | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Наименование подразделения  | set / get        |
 
 ### Тестовый набор данных для класса в формате JSON
 
@@ -65,10 +66,10 @@
 
 ### Описание полей
 
-| Поле    | Тип                             | Описание                    | Доступные методы |
-| ------- | ------------------------------- | --------------------------- | ---------------- |
-| id      | int                             | Идентификатор специальности | set / get        |
-| nameObj | MgermApiClasses\Base\CaseString | Наименование специальности  | set / get        |
+| Поле    | Тип                                                                          | Описание                    | Доступные методы |
+| ------- | ---------------------------------------------------------------------------- | --------------------------- | ---------------- |
+| id      | int                                                                          | Идентификатор специальности | set / get        |
+| nameObj | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Наименование специальности  | set / get        |
 
 ### Тестовый набор данных для класса в формате JSON
 
@@ -90,14 +91,14 @@
 ## MgermApiClasses\Classes\Guid
 
 Класс для описания данных группы пользователя.
-Является наследником MgermApiClasses\Base\IdNameClass
+Является наследником [MgermApiClasses\Base\IdNameClass](abstract.md#mgermapiclassesbaseidnameclass)
 
 ### Описание полей
 
-| Поле    | Тип                             | Описание                          | Доступные методы |
-| ------- | ------------------------------- | --------------------------------- | ---------------- |
-| id      | int                             | Идентификатор группы пользователя | set / get        |
-| nameObJ | MgermApiClasses\Base\CaseString | Наименование группы пользователя  | set / get        |
+| Поле    | Тип                                                                          | Описание                          | Доступные методы |
+| ------- | ---------------------------------------------------------------------------- | --------------------------------- | ---------------- |
+| id      | int                                                                          | Идентификатор группы пользователя | set / get        |
+| nameObJ | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Наименование группы пользователя  | set / get        |
 
 ### Тестовый набор данных для класса в формате JSON
 
@@ -119,16 +120,16 @@
 ## MgermApiClasses\Classes\Cabinet
 
 Класс для описания данных кабинета.
-Является наследником MgermApiClasses\Base\IdNameClass
+Является наследником [MgermApiClasses\Base\IdNameClass](abstract.md#mgermapiclassesbaseidnameclass)
 
 ### Описание полей
 
-| Поле       | Тип                                | Описание                                   | Доступные методы |
-| ---------- | ---------------------------------- | ------------------------------------------ | ---------------- |
-| id         | int                                | Идентификатор кабинета                     | set / get        |
-| nameObj    | MgermApiClasses\Base\CaseString    | Наименование кабинета                      | set / get        |
-| number     | int                                | Номер кабинета                             | set / get        |
-| department | MgermApiClasses\Classes\Department | Подразделение, в котором находится кабинет | set / get        |
+| Поле       | Тип                                                                                | Описание                                   | Доступные методы |
+| ---------- | ---------------------------------------------------------------------------------- | ------------------------------------------ | ---------------- |
+| id         | int                                                                                | Идентификатор кабинета                     | set / get        |
+| nameObj    | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring)       | Наименование кабинета                      | set / get        |
+| number     | int                                                                                | Номер кабинета                             | set / get        |
+| department | [MgermApiClasses\Classes\Department](standart.md#mgermapiclassesclassesdepartment) | Подразделение, в котором находится кабинет | set / get        |
 
 ### Тестовый набор данных для класса в формате JSON
 
@@ -163,7 +164,7 @@
 ## MgermApiClasses\Classes\Patient
 
 Класс для описания данных пациента.
-Является наследником MgermApiClasses\Classes\Person
+Является наследником [MgermApiClasses\Classes\Person](abstract.md#mgermapiclassesclassesperson)
 
 ### Описание полей
 
@@ -233,16 +234,16 @@
 ## MgermApiClasses\Classes\Hospital
 
 Класс для описания данных ЛПУ.
-Является наследником MgermApiClasses\Base\IdNameClass
+Является наследником [MgermApiClasses\Base\IdNameClass](abstract.md#mgermapiclassesbaseidnameclass)
 
 ### Описание полей
 
-| Поле    | Тип                             | Описание                           | Доступные методы |
-| ------- | ------------------------------- | ---------------------------------- | ---------------- |
-| id      | int                             | Идентификатор ЛПУ. Смысла не имеет | set / get        |
-| nameObj | MgermApiClasses\Base\CaseString | Наименование ЛПУ                   | set / get        |
-| address | string                          | Адрес ЛПУ                          | set / get        |
-| phone   | string                          | Номер телефона ЛПУ                 | set / get        |
+| Поле    | Тип                                                                          | Описание                           | Доступные методы |
+| ------- | ---------------------------------------------------------------------------- | ---------------------------------- | ---------------- |
+| id      | int                                                                          | Идентификатор ЛПУ. Смысла не имеет | set / get        |
+| nameObj | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Наименование ЛПУ                   | set / get        |
+| address | string                                                                       | Адрес ЛПУ                          | set / get        |
+| phone   | string                                                                       | Номер телефона ЛПУ                 | set / get        |
 
 ### Тестовый набор данных для класса в формате JSON
 
@@ -266,15 +267,15 @@
 ## MgermApiClasses\Classes\Doctor
 
 Класс для описания данных врача.
-Является наследником MgermApiClasses\Classes\Person
+Является наследником [MgermApiClasses\Classes\Person](abstract.md#mgermapiclassesclassesperson)
 
 ### Описание полей
 
-| Поле       | Тип                                | Описание                  | Доступные методы |
-| ---------- | ---------------------------------- | ------------------------- | ---------------- |
-| specialty  | MgermApiClasses\Classes\Specialty  | Специальность врача       | set / get        |
-| department | MgermApiClasses\Classes\Department | Подразделение врача       | set / get        |
-| guid       | MgermApiClasses\Classes\Guid       | Группа пользователя врача | set / get        |
+| Поле       | Тип                                                                                | Описание                  | Доступные методы |
+| ---------- | ---------------------------------------------------------------------------------- | ------------------------- | ---------------- |
+| specialty  | [MgermApiClasses\Classes\Specialty](standart.md#mgermapiclassesclassesspecialty)   | Специальность врача       | set / get        |
+| department | [MgermApiClasses\Classes\Department](standart.md#mgermapiclassesclassesdepartment) | Подразделение врача       | set / get        |
+| guid       | [MgermApiClasses\Classes\Guid](standart.md#mgermapiclassesclassesguid)             | Группа пользователя врача | set / get        |
 
 ### Тестовый набор данных для класса в формате JSON
 
@@ -355,15 +356,15 @@
 ## MgermApiClasses\Classes\PriceList
 
 Класс для описания данных прайс-листа.
-Является наследником MgermApiClasses\Base\IdNameClass
+Является наследником [MgermApiClasses\Base\IdNameClass](abstract.md#mgermapiclassesbaseidnameclass)
 
 ### Описание полей
 
-| Поле     | Тип                               | Описание                  | Доступные методы |
-| -------- | --------------------------------- | ------------------------- | ---------------- |
-| id       | int                               | Идентификатор прайс-листа | set / get        |
-| nameObj  | MgermApiClasses\Base\CaseString   | Наименование прайс-листа  | set / get        |
-| services | MgermApiClasses\Classes\Service[] | Список услуг              | set / get        |
+| Поле     | Тип                                                                            | Описание                  | Доступные методы |
+| -------- | ------------------------------------------------------------------------------ | ------------------------- | ---------------- |
+| id       | int                                                                            | Идентификатор прайс-листа | set / get        |
+| nameObj  | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring)   | Наименование прайс-листа  | set / get        |
+| services | [MgermApiClasses\Classes\Service](standart.md#mgermapiclassesclassesservice)[] | Список услуг              | set / get        |
 
 ### Тестовый набор данных для класса в формате JSON
 
@@ -386,19 +387,19 @@
 ## MgermApiClasses\Classes\Service
 
 Класс для описания данных услуги.
-Является наследником MgermApiClasses\Base\IdNameClass
+Является наследником [MgermApiClasses\Base\IdNameClass](abstract.md#mgermapiclassesbaseidnameclass)
 
 ### Описание полей
 
-| Поле        | Тип                             | Описание                      | Доступные методы |
-| ----------- | ------------------------------- | ----------------------------- | ---------------- |
-| id          | int                             | Идентификатор услуги          | set / get        |
-| nameObj     | MgermApiClasses\Base\CaseString | Наименование услуги           | set / get        |
-| price       | int                             | Стоимость услуги в копейках   | set / get        |
-| floatPrice  | float                           | Стоимость услуги в рублях     | set / get        |
-| code        | string                          | Код услуги                    | set / get        |
-| priceListId | int                             | Идентификатор прайс-листа     | set / get        |
-| duration    | ?int                            | Длительность услуги в минутах | set / get        |
+| Поле        | Тип                                                                          | Описание                      | Доступные методы |
+| ----------- | ---------------------------------------------------------------------------- | ----------------------------- | ---------------- |
+| id          | int                                                                          | Идентификатор услуги          | set / get        |
+| nameObj     | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Наименование услуги           | set / get        |
+| price       | int                                                                          | Стоимость услуги в копейках   | set / get        |
+| floatPrice  | float                                                                        | Стоимость услуги в рублях     | set / get        |
+| code        | string                                                                       | Код услуги                    | set / get        |
+| priceListId | int                                                                          | Идентификатор прайс-листа     | set / get        |
+| duration    | ?int                                                                         | Длительность услуги в минутах | set / get        |
 
 #### Примечание
 
@@ -436,30 +437,30 @@
 ## MgermApiClasses\Classes\Record
 
 Класс для описания данных медицинской записи.
-Является наследником MgermApiClasses\Base\BaseClass
+Является наследником [MgermApiClasses\Base\BaseClass](abstract.md#mgermapiclassesbasebaseclass)
 
 ### Описание полей
 
-| Поле                  | Тип                             | Описание                                                  | Доступные методы |
-| --------------------- | ------------------------------- | --------------------------------------------------------- | ---------------- |
-| id                    | int                             | Идентификатор записи                                      | set / get        |
-| patient               | MgermApiClasses\Classes\Patient | Данные пациента                                           | set / get        |
-| isArchived            | bool                            | Признак архивной записи                                   | set / get        |
-| documentType          | int                             | Тип документа: 1 - Амбулаторная карта 2 - История болезни | set / get        |
-| recordTypeId          | int                             | Идентификатор типа записи                                 | set / get        |
-| creationDateTime      | DateTime                        | Дата и время создания записи                              | set / get        |
-| hospitalizationNumber | int                             | Идентификатор истории болезни                             | set / get        |
-| creator               | MgermApiClasses\Classes\Doctor  | Идентификатор врача, создавший запись                     | set / get        |
-| text                  | string                          | Текст записи                                              | set / get        |
-| formalizedData        | array                           | Массив данных записи                                      | set / get        |
-| author                | MgermApiClasses\Classes\Doctor  | Идентификатор врача, подписавший запись                   | set / get        |
-| signatureDateTime     | DateTime                        | Дата и время подписания записи                            | set / get        |
-| isDigest              | bool                            | Признак того, что запись была подписана                   | set / get        |
-| isDeleted             | bool                            | Признак удаленной записи                                  | set / get        |
-| isIncorrect           | bool                            | Признак того, что запись отмечена как неверная            | set / get        |
-| linkedRecordID        | int                             | Идентификатор связанной записи                            | set / get        |
-| linkedRecord          | MgermApiClasses\Classes\Record  | Данные связанной записи                                   | set / get        |
-| jsonData              | array                           | Дополнительные данные записи                              | set / get        |
+| Поле                  | Тип                                                                          | Описание                                                  | Доступные методы |
+| --------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------- | ---------------- |
+| id                    | int                                                                          | Идентификатор записи                                      | set / get        |
+| patient               | [MgermApiClasses\Classes\Patient](standart.md#mgermapiclassesclassespatient) | Данные пациента                                           | set / get        |
+| isArchived            | bool                                                                         | Признак архивной записи                                   | set / get        |
+| documentType          | int                                                                          | Тип документа: 1 - Амбулаторная карта 2 - История болезни | set / get        |
+| recordTypeId          | int                                                                          | Идентификатор типа записи                                 | set / get        |
+| creationDateTime      | DateTime                                                                     | Дата и время создания записи                              | set / get        |
+| hospitalizationNumber | int                                                                          | Идентификатор истории болезни                             | set / get        |
+| creator               | [MgermApiClasses\Classes\Doctor](standart.md#mgermapiclassesclassesdoctor)   | Идентификатор врача, создавший запись                     | set / get        |
+| text                  | string                                                                       | Текст записи                                              | set / get        |
+| formalizedData        | array                                                                        | Массив данных записи                                      | set / get        |
+| author                | [MgermApiClasses\Classes\Doctor](standart.md#mgermapiclassesclassesdoctor)   | Идентификатор врача, подписавший запись                   | set / get        |
+| signatureDateTime     | DateTime                                                                     | Дата и время подписания записи                            | set / get        |
+| isDigest              | bool                                                                         | Признак того, что запись была подписана                   | set / get        |
+| isDeleted             | bool                                                                         | Признак удаленной записи                                  | set / get        |
+| isIncorrect           | bool                                                                         | Признак того, что запись отмечена как неверная            | set / get        |
+| linkedRecordID        | int                                                                          | Идентификатор связанной записи                            | set / get        |
+| linkedRecord          | [MgermApiClasses\Classes\Doctor](standart.md#mgermapiclassesclassesdoctor)   | Данные связанной записи                                   | set / get        |
+| jsonData              | array                                                                        | Дополнительные данные записи                              | set / get        |
 
 ### Тестовый набор данных для класса в формате JSON
 
@@ -674,20 +675,20 @@
 ## MgermApiClasses\Classes\Referral
 
 Класс для описания данных направления.
-Является наследником MgermApiClasses\Base\DateTimeStartTimeEndClass
+Является наследником [MgermApiClasses\Base\DateTimeStartTimeEndClass](abstract.md#mgermapiclassesbasedatetimestarttimeendclass)
 
 ### Описание полей
 
-| Поле       | Тип                                | Описание                                      | Доступные методы |
-| ---------- | ---------------------------------- | --------------------------------------------- | ---------------- |
-| id         | int                                | Идентификатор записи направления              | set / get        |
-| record     | MgermApiClasses\Classes\Record     | Данные записи МИС                             | set / get        |
-| patient    | MgermApiClasses\Classes\Patient    | Данные пациента                               | set / get        |
-| doctor     | MgermApiClasses\Classes\Doctor     | Данные врача, к которому направлен пациент    | set / get        |
-| department | MgermApiClasses\Classes\Department | Данные отделения, в которое направлен пациент | set / get        |
-| hospital   | MgermApiClasses\Classes\Hospital   | Данные ЛПУ                                    | set / get        |
-| service    | MgermApiClasses\Classes\Service    | Услуга, на которую направлен пациент          | set / get        |
-| cabinet    | MgermApiClasses\Classes\Cabinet    | Кабинет, в который направлен пациент          | set / get        |
+| Поле       | Тип                                                                                | Описание                                      | Доступные методы |
+| ---------- | ---------------------------------------------------------------------------------- | --------------------------------------------- | ---------------- |
+| id         | int                                                                                | Идентификатор записи направления              | set / get        |
+| record     | [MgermApiClasses\Classes\Record](standart.md#mgermapiclassesclassesrecord)         | Данные записи МИС                             | set / get        |
+| patient    | [MgermApiClasses\Classes\Patient](standart.md#mgermapiclassesclassespatient)       | Данные пациента                               | set / get        |
+| doctor     | [MgermApiClasses\Classes\Doctor](standart.md#mgermapiclassesclassesdoctor)         | Данные врача, к которому направлен пациент    | set / get        |
+| department | [MgermApiClasses\Classes\Department](standart.md#mgermapiclassesclassesdepartment) | Данные отделения, в которое направлен пациент | set / get        |
+| hospital   | [MgermApiClasses\Classes\Hospital](standart.md#mgermapiclassesclasseshospital)     | Данные ЛПУ                                    | set / get        |
+| service    | [MgermApiClasses\Classes\Service](standart.md#mgermapiclassesclassesservice)       | Услуга, на которую направлен пациент          | set / get        |
+| cabinet    | [MgermApiClasses\Classes\Cabinet](standart.md#mgermapiclassesclassescabinet)       | Кабинет, в который направлен пациент          | set / get        |
 
 ### Тестовый набор данных для класса в формате JSON
 
@@ -1098,20 +1099,20 @@
 ## MgermApiClasses\Classes\Schedule\Cell
 
 Класс для описания ячейки расписания
-Является наследником MgermApiClasses\Base\DateTimeStartTimeEndClass
+Является наследником [MgermApiClasses\Base\DateTimeStartTimeEndClass](abstract.md#mgermapiclassesbasedatetimestarttimeendclass)
 
 ### Описание полей
 
-| Поле           | Тип                              | Описание                                                                                                                                               | Доступные методы |
-| -------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
-| free           | bool                             | Признак того, что ячейка не занята                                                                                                                     | set / get        |
-| interval       | bool                             | Признак того, что ячейка является интервалом                                                                                                           | set / get        |
-| referral       | MgermApiClasses\Classes\Referral | Объект направления пациента                                                                                                                            | set / get        |
-| isReserved     | bool                             | Признак того, что ячейка зарезервирована. Запись невозможна                                                                                            | set / get        |
-| isBlocked      | bool                             | Признак того, что ячейка отмечена как "Нет приема". Запись невозможна                                                                                  | set / get        |
-| isProlongation | bool                             | Признак того, что ячейка занята направлением, которое занимает более одной ячейки в расписании. Индекс данного направления находится в поле referralID | set / get        |
-| referralID     | int                              | Признак направления, которое занимает ячейку                                                                                                           | set / get        |
-| isBreak        | bool                             | Признак того, что ячейка отмечена как перерыв в работе врача. Запись невозможна                                                                        | set / get        |
+| Поле           | Тип                                                                            | Описание                                                                                                                                               | Доступные методы |
+| -------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
+| free           | bool                                                                           | Признак того, что ячейка не занята                                                                                                                     | set / get        |
+| interval       | bool                                                                           | Признак того, что ячейка является интервалом                                                                                                           | set / get        |
+| referral       | [MgermApiClasses\Classes\Referral](standart.md#mgermapiclassesclassesreferral) | Объект направления пациента                                                                                                                            | set / get        |
+| isReserved     | bool                                                                           | Признак того, что ячейка зарезервирована. Запись невозможна                                                                                            | set / get        |
+| isBlocked      | bool                                                                           | Признак того, что ячейка отмечена как "Нет приема". Запись невозможна                                                                                  | set / get        |
+| isProlongation | bool                                                                           | Признак того, что ячейка занята направлением, которое занимает более одной ячейки в расписании. Индекс данного направления находится в поле referralID | set / get        |
+| referralID     | int                                                                            | Признак направления, которое занимает ячейку                                                                                                           | set / get        |
+| isBreak        | bool                                                                           | Признак того, что ячейка отмечена как перерыв в работе врача. Запись невозможна                                                                        | set / get        |
 
 ### Тестовый набор данных для класса в формате JSON
 
