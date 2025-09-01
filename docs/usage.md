@@ -74,7 +74,7 @@ http://<your-server-address>/_mgerm_external
 
 #### Параметры
 
-Метод: GET
+Метод: POST
 Параметры:
 
 - action = checkAppointment
@@ -108,7 +108,7 @@ http://<your-server-address>/_mgerm_external
 
 #### Параметры
 
-Метод: GET
+Метод: POST
 Параметры:
 
 - action = cancelAppointment
@@ -133,7 +133,7 @@ HTTP 400
 
 #### Параметры
 
-Метод: GET
+Метод: POST
 Параметры:
 
 - action = makeAppointment
@@ -181,7 +181,7 @@ HTTP 400
 
 #### Параметры
 
-Метод: GET
+Метод: POST
 Параметры:
 
 - action = editAppointment
