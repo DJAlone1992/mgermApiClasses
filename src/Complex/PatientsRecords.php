@@ -32,12 +32,15 @@ class PatientsRecords extends BaseClass
      *
      * @return static
      */
-    public function setRecords(array $records): static
+    public function setRecords(array $records)
     {
         $this->records = $records;
         return $this;
     }
-    public function appendRecord(Record $record): static
+    /**
+     * @return static
+     */
+    public function appendRecord(Record $record)
     {
         if ($record->getPatient()->getId() == $this->patient->getId() || !$this->patient) {
             $record->setPatient(null);
@@ -60,7 +63,7 @@ class PatientsRecords extends BaseClass
      *
      * @return static
      */
-    public function setPatient(Patient $patient): static
+    public function setPatient(Patient $patient)
     {
         $this->patient = $patient;
         $this->setId($patient->getId());
@@ -71,7 +74,10 @@ class PatientsRecords extends BaseClass
         return $this->patient;
     }
 
-    public static function createFromRecord(Record $record): static
+    /**
+     * @return static
+     */
+    public static function createFromRecord(Record $record)
     {
         $me = new static();
         $me->setPatient($record->getPatient());

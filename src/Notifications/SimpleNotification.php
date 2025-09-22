@@ -12,7 +12,10 @@ class SimpleNotification extends BaseClass
         'patient' => Patient::dummyArray
     ];
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         $me->setMessage('Текст сообщения')->setPatient(Patient::createDummy($imitateReal));
@@ -30,7 +33,10 @@ class SimpleNotification extends BaseClass
      */
     private Patient $patient;
 
-    public function setPatient(Patient $patient): static
+    /**
+     * @return static
+     */
+    public function setPatient(Patient $patient)
     {
         $this->patient = $patient;
         return $this;
@@ -39,7 +45,10 @@ class SimpleNotification extends BaseClass
     {
         return $this->patient;
     }
-    public function setMessage(string $message): static
+    /**
+     * @return static
+     */
+    public function setMessage(string $message)
     {
         $this->message = $message;
         return $this;
@@ -57,7 +66,7 @@ class SimpleNotification extends BaseClass
      *
      * @return static
      */
-    public static function createFromData(string $message, string $phone, int $patientID): static
+    public static function createFromData(string $message, string $phone, int $patientID)
     {
         $me = new static();
         $patient = new Patient();
