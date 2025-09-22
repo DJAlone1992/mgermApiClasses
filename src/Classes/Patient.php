@@ -4,11 +4,12 @@ namespace MgermApiClasses\Classes;
 
 use MgermApiClasses\Enum\ContactType;
 use MgermApiClasses\Enum\Sex;
+use MgermApiClasses\Interfaces\PatientNecessaryNotificationDataInterface;
 
 /**
  * Класс пациента из MGERM
  */
-class Patient extends Person
+class Patient extends Person implements PatientNecessaryNotificationDataInterface
 {
     public const dummyArray
     = [
