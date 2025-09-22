@@ -1,5 +1,7 @@
 # Классы простых объектов
 
+[Назад в меню](../README.md)
+
 ## MgermApiClasses\Classes\Contact
 
 Класс для описания данных подразделения.
@@ -32,6 +34,8 @@
 }
 ```
 
+[Назад в меню](../README.md)
+
 ## MgermApiClasses\Classes\Department
 
 Класс для описания данных подразделения. Является наследником MgermApiClasses\Base\IdNameClass
@@ -59,6 +63,8 @@
 	"id": 1
 }
 ```
+
+[Назад в меню](../README.md)
 
 ## MgermApiClasses\Classes\Specialty
 
@@ -88,6 +94,8 @@
 }
 ```
 
+[Назад в меню](../README.md)
+
 ## MgermApiClasses\Classes\Guid
 
 Класс для описания данных группы пользователя.
@@ -116,6 +124,8 @@
 	"id": 11
 }
 ```
+
+[Назад в меню](../README.md)
 
 ## MgermApiClasses\Classes\Cabinet
 
@@ -161,10 +171,13 @@
 }
 ```
 
+[Назад в меню](../README.md)
+
 ## MgermApiClasses\Classes\Patient
 
 Класс для описания данных пациента.
 Является наследником [MgermApiClasses\Classes\Person](abstract.md#mgermapiclassesclassesperson)
+Реализует интерфейс [PatientNecessaryNotificationDataInterface](interfaces.md#mgermapiclassesinterfacespatientnecessarynotificationdatainterface)
 
 ### Описание полей
 
@@ -231,6 +244,8 @@
 }
 ```
 
+[Назад в меню](../README.md)
+
 ## MgermApiClasses\Classes\Hospital
 
 Класс для описания данных ЛПУ.
@@ -263,6 +278,8 @@
 	"id": 1
 }
 ```
+
+[Назад в меню](../README.md)
 
 ## MgermApiClasses\Classes\Doctor
 
@@ -353,6 +370,8 @@
 }
 ```
 
+[Назад в меню](../README.md)
+
 ## MgermApiClasses\Classes\PriceList
 
 Класс для описания данных прайс-листа.
@@ -383,6 +402,8 @@
 	"id": 1
 }
 ```
+
+[Назад в меню](../README.md)
 
 ## MgermApiClasses\Classes\Service
 
@@ -433,6 +454,8 @@
 	"id": 1
 }
 ```
+
+[Назад в меню](../README.md)
 
 ## MgermApiClasses\Classes\Record
 
@@ -671,6 +694,8 @@
 	"id": 1
 }
 ```
+
+[Назад в меню](../README.md)
 
 ## MgermApiClasses\Classes\Referral
 
@@ -1096,6 +1121,8 @@
 }
 ```
 
+[Назад в меню](../README.md)
+
 ## MgermApiClasses\Classes\Schedule\Cell
 
 Класс для описания ячейки расписания
@@ -1211,3 +1238,5 @@
 	"date": "2025-05-13 00:00:00"
 }
 ```
+
+[Назад в меню](../README.md)

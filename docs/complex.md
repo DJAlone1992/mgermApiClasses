@@ -1,5 +1,7 @@
 # Комплексные классы
 
+[Назад в меню](../README.md)
+
 ## MgermApiClasses\Complex\PatientsReferrals
 
 Класс для передачи всех направлений пациента сгруппированных по пациенту.
@@ -473,6 +475,8 @@
 	"id": 1
 }
 ```
+
+[Назад в меню](../README.md)
 
 ## MgermApiClasses\Complex\PatientsRecords
 
@@ -966,6 +970,8 @@
 }
 ```
 
+[Назад в меню](../README.md)
+
 ## MgermApiClasses\Complex\ScheduledDoctor
 
 Класс для передачи врача с его расписанием.
@@ -1084,6 +1090,8 @@
 	"id": 1
 }
 ```
+
+[Назад в меню](../README.md)
 
 ## MgermApiClasses\Complex\ScheduledDepartment
 
@@ -1230,6 +1238,8 @@
 	"id": 1
 }
 ```
+
+[Назад в меню](../README.md)
 
 ## MgermApiClasses\Complex\ScheduledCabinet
 
@@ -1765,3 +1775,5 @@
 	"id": 1
 }
 ```
+
+[Назад в меню](../README.md)
