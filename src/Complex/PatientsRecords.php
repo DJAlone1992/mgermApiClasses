@@ -7,15 +7,16 @@ use MgermApiClasses\Base\BaseClass;
 use MgermApiClasses\Classes\Patient;
 use MgermApiClasses\Classes\Record;
 
-class PatientsRecords extends BaseClass{
+class PatientsRecords extends BaseClass
+{
 
-    public const dummyArray=[
-        'patient'=>Patient::dummyArray,
-        'records'=>[
-            0=>Record::dummyArray,
+    public const dummyArray = [
+        'patient' => Patient::dummyArray,
+        'records' => [
+            0 => Record::dummyArray,
         ],
-        'id'=>Patient::dummyArray['id'],
-        'firstRecord'=>Record::dummyArray
+        'id' => Patient::dummyArray['id'],
+        'firstRecord' => Record::dummyArray
     ];
     /**
      * @var Patient|null|null
@@ -24,23 +25,23 @@ class PatientsRecords extends BaseClass{
     /**
      * @var Record[] $records
      */
-    private array $records=[];
+    private array $records = [];
 
     /**
      * @param Record[] $records
      *
      * @return static
      */
-    public function setRecords(array $records){
+    public function setRecords(array $records): static
+    {
         $this->records = $records;
         return $this;
     }
-    /**
-     * @return static
-     */
-    public function appendRecord(Record $record){
-        if($record->getPatient()->getId()==$this->patient->getId() || !$this->patient){
- $this->records[]=$record;
+    public function appendRecord(Record $record): static
+    {
+        if ($record->getPatient()->getId() == $this->patient->getId() || !$this->patient) {
+            $record->setPatient(null);
+            $this->records[] = $record;
         }
         return $this;
     }
@@ -49,7 +50,8 @@ class PatientsRecords extends BaseClass{
      ** Записи
      * @return Record[]
      */
-    public function getRecords():array{
+    public function getRecords(): array
+    {
         return $this->records;
     }
 
@@ -58,20 +60,19 @@ class PatientsRecords extends BaseClass{
      *
      * @return static
      */
-    public function setPatient(Patient $patient){
+    public function setPatient(Patient $patient): static
+    {
         $this->patient = $patient;
         $this->setId($patient->getId());
         return $this;
-
     }
-    public function getPatient():?Patient{
+    public function getPatient(): ?Patient
+    {
         return $this->patient;
     }
 
-    /**
-     * @return static
-     */
-    public static function createFromRecord(Record $record){
+    public static function createFromRecord(Record $record): static
+    {
         $me = new static();
         $me->setPatient($record->getPatient());
         $me->appendRecord($record);
@@ -89,12 +90,13 @@ class PatientsRecords extends BaseClass{
      ** Поиск самой ранней записи по дате подписания или создания
      * @return Record|null
      */
-    public function getFirstRecord():?Record{
+    public function getFirstRecord(): ?Record
+    {
         $minDateTime = new DateTime('+20 years');
         $selected = null;
-        foreach($this->records as $record){
-            $recordDate = $record->getSignatureDateTime()??$record->getCreationDateTime();
-            if( $recordDate < $minDateTime){
+        foreach ($this->records as $record) {
+            $recordDate = $record->getSignatureDateTime() ?? $record->getCreationDateTime();
+            if ($recordDate < $minDateTime) {
                 $minDateTime = $recordDate;
                 $selected = $record;
             }

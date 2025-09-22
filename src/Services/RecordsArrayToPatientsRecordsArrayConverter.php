@@ -13,14 +13,15 @@ class RecordsArrayToPatientsRecordsArrayConverter
      *
      * @return array
      */
-    public static function convert(array $records):array{
+    public static function convert(array $records): array
+    {
         $result = [];
         /** @var Record $record */
-        foreach($records as $record){
+        foreach ($records as $record) {
             $pid = $record->getPatient()->getId();
-            if(isset($result[$pid])){
+            if (isset($result[$pid])) {
                 $result[$pid]->appendRecord($record);
-            }else{
+            } else {
                 $result[$pid] = PatientsRecords::createFromRecord($record);
             }
         }
@@ -33,10 +34,11 @@ class RecordsArrayToPatientsRecordsArrayConverter
      *
      * @return array
      */
-    public static function reverse(array $patientsRecordsArray):array{
-        $result=[];
+    public static function reverse(array $patientsRecordsArray): array
+    {
+        $result = [];
         /** @var PatientsRecords $patientsRecords */
-        foreach($patientsRecordsArray as $patientsRecords){
+        foreach ($patientsRecordsArray as $patientsRecords) {
             $result = array_merge($result, $patientsRecords->getRecords());
         }
         return $result;
