@@ -60,5 +60,4 @@ class ScheduledCabinet extends ScheduledObject
             ->setIntervalDuration(60);
         return $me;
     }
-
 }
