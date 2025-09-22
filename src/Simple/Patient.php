@@ -12,7 +12,10 @@ class Patient extends BaseClass implements PatientNecessaryNotificationDataInter
         'id' => 1,
         'phone' => '[Телефон пациента]'
     ];
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $patient = new static();
         if ($imitateReal) {
@@ -30,7 +33,7 @@ class Patient extends BaseClass implements PatientNecessaryNotificationDataInter
      ** Телефон пациента
      * @var string|null|null
      */
-    private ?string $phone = null;
+    private $phone;
     /**
      * @return string|null
      */
@@ -44,7 +47,7 @@ class Patient extends BaseClass implements PatientNecessaryNotificationDataInter
      *
      * @return static
      */
-    public function setPhone(?string $phone): static
+    public function setPhone(?string $phone)
     {
 
         $this->phone = $phone;

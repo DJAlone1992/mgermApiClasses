@@ -12,7 +12,10 @@ class TemplatedNotification extends BaseClass
         'patient' => Patient::dummyArray,
     ];
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         $me->setTemplate('Привет, {{ firstName }}!')->setPatient(Patient::createDummy($imitateReal));
@@ -22,14 +25,17 @@ class TemplatedNotification extends BaseClass
      ** Шаблон сообщения
      * @var string
      */
-    private string $template;
+    private $template;
     /**
      ** Пациент
      * @var Patient
      */
-    private Patient $patient;
+    private $patient;
 
-    public function setPatient(Patient $patient): static
+    /**
+     * @return static
+     */
+    public function setPatient(Patient $patient)
     {
         $this->patient = $patient;
         return $this;
@@ -38,7 +44,10 @@ class TemplatedNotification extends BaseClass
     {
         return $this->patient;
     }
-    public function setTemplate(string $template): static
+    /**
+     * @return static
+     */
+    public function setTemplate(string $template)
     {
         $this->template = $template;
         return $this;
