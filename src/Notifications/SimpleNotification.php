@@ -1,0 +1,68 @@
+<?php
+
+namespace MgermApiClasses\Notifications;
+
+use MgermApiClasses\Base\BaseClass;
+use MgermApiClasses\Simple\Patient;
+
+class SimpleNotification extends BaseClass
+{
+    public const dummyArray = [
+        'message' => 'Текст сообщения',
+        'patient' => Patient::dummyArray
+    ];
+
+    public static function createDummy(bool $imitateReal = false): static
+    {
+        $me = new static();
+        $me->setMessage('Текст сообщения')->setPatient(Patient::createDummy($imitateReal));
+        return $me;
+    }
+
+    /**
+     ** Текст сообщения
+     * @var string
+     */
+    private string $message;
+    /**
+     ** Упрощенные данные пациента
+     * @var Patient
+     */
+    private Patient $patient;
+
+    public function setPatient(Patient $patient): static
+    {
+        $this->patient = $patient;
+        return $this;
+    }
+    public function getPatient(): Patient
+    {
+        return $this->patient;
+    }
+    public function setMessage(string $message): static
+    {
+        $this->message = $message;
+        return $this;
+    }
+    public function getMessage(): string
+    {
+        return $this->message;
+    }
+
+    /**
+     ** Создание уведомления из данных
+     * @param string $message Текст сообщения
+     * @param string $phone Номер телефона
+     * @param int $patientID ID пациента
+     *
+     * @return static
+     */
+    public static function createFromData(string $message, string $phone, int $patientID): static
+    {
+        $me = new static();
+        $patient = new Patient();
+        $patient->setId($patientID)->setPhone($phone);
+        $me->setMessage($message)->setPatient($patient);
+        return $me;
+    }
+}
