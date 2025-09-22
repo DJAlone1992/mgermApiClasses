@@ -126,3 +126,85 @@
 ```
 
 [Назад в меню](../README.md)
+
+## MgermApiClasses\Notifications\Complex\TemplatedNotificationForMultiplePatients
+
+Класс для передачи уведомления в механизмы, которое предусматривает обработку через шаблонизатор. Предполагается отправка одного шаблона сразу нескольким пациентам
+Является наследником [MgermApiClasses\Base\BaseClass](abstract.md#mgermapiclassesbasebaseclass)
+
+### Описание полей
+
+| Поле     | Тип                                                                            | Описание                               | Доступные методы |
+| -------- | ------------------------------------------------------------------------------ | -------------------------------------- | ---------------- |
+| patients | [MgermApiClasses\Classes\Patient](standart.md#mgermapiclassesclassespatient)[] | Массив пациентов                       | set / get        |
+| template | string                                                                         | Шаблон уведомления, совместимый с Twig | set / get        |
+
+### Описание дополнительных функций
+
+| Функция    | Аргументы функции                                                                    | Тип возвращаемого значение | Описание                            | Дополнительная информация |
+| ---------- | ------------------------------------------------------------------------------------ | -------------------------- | ----------------------------------- | ------------------------- |
+| addPatient | patient:[MgermApiClasses\Classes\Patient](standart.md#mgermapiclassesclassespatient) | static                     | Добавление нового пациента в список |
+
+### Тестовый набор данных для класса в формате JSON
+
+```json
+{
+	"patients": [
+		{
+			"cardNumber": 1234,
+			"cardYear": 11,
+			"phone": "+79998887766",
+			"fullCardNumber": "1234\/11",
+			"contactsCount": 3,
+			"lastNameObj": {
+				"nominativeCase": "Иванов",
+				"genitiveCase": "Иванова",
+				"dativeCase": "Иванову",
+				"accusativeCase": "Иванова",
+				"creativeCase": "Ивановым",
+				"prepositionalCase": "Иванове"
+			},
+			"sex": 1,
+			"sexName": "male",
+			"birthDay": "1991-01-01 00:00:00",
+			"firstNameObj": {
+				"nominativeCase": "Иван",
+				"genitiveCase": "Ивана",
+				"dativeCase": "Ивану",
+				"accusativeCase": "Ивана",
+				"creativeCase": "Иваном",
+				"prepositionalCase": "Иване"
+			},
+			"secondNameObj": {
+				"nominativeCase": "Иванович",
+				"genitiveCase": "Ивановича",
+				"dativeCase": "Ивановичу",
+				"accusativeCase": "Ивановича",
+				"creativeCase": "Ивановичем",
+				"prepositionalCase": "Ивановиче"
+			},
+			"contacts": [
+				{
+					"value": "+7999888--66",
+					"type": 2
+				},
+				{
+					"value": "patient@patient.ru",
+					"type": 3
+				},
+				{
+					"value": "add@patient.ru",
+					"type": 4
+				}
+			],
+			"lastName": "Иванов",
+			"firstName": "Иван",
+			"secondName": "Иванович",
+			"id": 1
+		}
+	],
+	"template": "Привет, {{ firstName }}!"
+}
+```
+
+[Назад в меню](../README.md)
