@@ -42,15 +42,29 @@
 
 ### Описание полей
 
-| Поле    | Тип                                                                          | Описание                    | Доступные методы |
-| ------- | ---------------------------------------------------------------------------- | --------------------------- | ---------------- |
-| id      | int                                                                          | Идентификатор подразделения | set / get        |
-| nameObj | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Наименование подразделения  | set / get        |
+| Поле         | Тип                                                                          | Описание                           | Доступные методы |
+| ------------ | ---------------------------------------------------------------------------- | ---------------------------------- | ---------------- |
+| id           | int                                                                          | Идентификатор подразделения        | set / get        |
+| nameObj      | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Наименование подразделения         | set / get        |
+| shortNameObj | [MgermApiClasses\Base\CaseString](abstract.md#mgermapiclassesbasecasestring) | Краткое наименование специальности | set / get        |
+| phone        | string                                                                       | Телефон подразделения              | set / get        |
+| address      | string                                                                       | Адрес подразделения                | set / get        |
 
 ### Тестовый набор данных для класса в формате JSON
 
 ```json
 {
+	"shortNameObj": {
+		"nominativeCase": "Поликл. отд.",
+		"genitiveCase": "Поликл. отд.",
+		"dativeCase": "Поликл. отд.",
+		"accusativeCase": "Поликл. отд.",
+		"creativeCase": "Поликл. отд.",
+		"prepositionalCase": "Поликл. отд."
+	},
+	"shortName": "Поликл. отд.",
+	"phone": "+79998887766",
+	"address": "г. Москва, ул. Пушкина, д. 1",
 	"nameObj": {
 		"nominativeCase": "Поликлиническое отделение",
 		"genitiveCase": "Поликлинического отделения",
