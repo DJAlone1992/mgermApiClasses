@@ -60,12 +60,18 @@ class Department extends IdNameClass
     {
         return $this->shortNameObj->getNominativeCase();
     }
-    public function setShortName(?string $shortName): static
+    /**
+     * @return static
+     */
+    public function setShortName(?string $shortName)
     {
         $this->shortNameObj->setNominativeCase($shortName);
         return $this;
     }
-    public function setShortNameObj(CaseString $shortNameObj): static
+    /**
+     * @return static
+     */
+    public function setShortNameObj(CaseString $shortNameObj)
     {
         $this->shortNameObj = $shortNameObj;
         return $this;
@@ -83,7 +89,7 @@ class Department extends IdNameClass
      *
      * @return static
      */
-    public function setPhone(?string $phone): static
+    public function setPhone(?string $phone)
     {
 
         $this->phone = $phone;
@@ -103,12 +109,15 @@ class Department extends IdNameClass
      *
      * @return static
      */
-    public function setAddress(?string $address): static
+    public function setAddress(?string $address)
     {
         $this->address = $address;
         return $this;
     }
-    public static function SelfFactory(?int $id, ?string $name): static
+    /**
+     * @return static
+     */
+    public static function SelfFactory(?int $id, ?string $name)
     {
         $department = new static();
         $department->setId($id)->setName($name);
