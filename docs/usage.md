@@ -24,5 +24,6 @@ http://<your-server-address>/_mgerm_external
 - [/schedule.php](/docs/entryPoints/schedule/schedule.php.md) - Полное расписание на дату
 - [/patientScheduledOnDate.php](/docs/entryPoints/schedule/patientScheduledOnDate.php.md) - Список всех пациентов записанных на определенную дату
 - [/appointment.php](/docs/entryPoints/schedule/appointment.php.md) - Работа с направлением
+- [/appointmentCallHistory.php](/docs/entryPoints/schedule/appointmentCallHistory.md) - Работа со статусом подтверждения направления
 
 [Назад в меню](../README.md)
