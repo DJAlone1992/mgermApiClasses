@@ -15,6 +15,6 @@
 
 ## Ответ
 
-В ответ получается массив услуг [MgermApiClasses\Classes\Doctor](/src/Classes/Doctor.php)
+В ответ получается массив врачей ведущих прием по расписанию [MgermApiClasses\Classes\Doctor](/src/Classes/Doctor.php)
 
 [Назад к описанию функций](/docs/usage.md)
