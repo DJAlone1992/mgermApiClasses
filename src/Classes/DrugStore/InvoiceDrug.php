@@ -27,9 +27,35 @@ class InvoiceDrug extends BaseClass
             'group' => 'Drugstore->manufacturer',
             'value' => '119'
         ],
-        'createdAt' => '2025-05-21 00:00:00',
+        'createdAt' => '2025-05-21 13:28:01',
         'incomeDate'        => '2025-05-21 00:00:00',
         'invoiceNumber' => 'contract_3346',
+        'quantityFloat' => 36.0,
+        'sumFloat' => 98784.0,
+        'priceFloat' => 2744.0
+    ];
+    public const IncomeDummyArray = [
+        'id' => 136582,
+        'invoiceID' => 27988,
+        'drug' => Drug::dummyArray,
+        'quantity' => 36_0000,
+        'sum' => 98784_00,
+        'price' => 2744_00,
+        'fundingSource' => [
+            'id' => 1,
+            'text' => 'Внебюджетные средства',
+            'group' => 'Drugstore->source',
+            'value' => '3'
+        ],
+        'manufacturer' => [
+            'id' => 1,
+            'text' => 'Эском НПК ОАО',
+            'group' => 'Drugstore->manufacturer',
+            'value' => '119'
+        ],
+        'createdAt' => '2025-05-23 09:49:54',
+        'incomeDate'        => '2025-05-22 00:00:00',
+        'invoiceNumber' => '65/05',
         'quantityFloat' => 36.0,
         'sumFloat' => 98784.0,
         'priceFloat' => 2744.0
@@ -267,8 +293,23 @@ class InvoiceDrug extends BaseClass
             ->setPrice(2744_00)
             ->setFundingSource((new Constant)->setId(1)->setText('Внебюджетные средства')->setGroup('Drugstore->source')->setValue(3))
             ->setManufacturer((new Constant)->setId(1)->setText('Эском НПК ОАО')->setGroup('Drugstore->manufacturer')->setValue(119))
-            ->setCreatedAt(new DateTime('2025-05-21 00:00:00'))
+            ->setCreatedAt(new DateTime('2025-05-21 13:28:01'))
             ->setIncomeDate(new DateTime('2025-05-21 00:00:00'))
             ->setInvoiceNumber('contract_3346');
+    }
+    public static function incomeCreateDummy(bool $imitateReal = false): static
+    {
+        return (new self)
+            ->setId(136582)
+            ->setDrug(Drug::createDummy($imitateReal))
+            ->setInvoiceID(27988)
+            ->setQuantity(36_0000)
+            ->setSum(98784_00)
+            ->setPrice(2744_00)
+            ->setFundingSource((new Constant)->setId(1)->setText('Внебюджетные средства')->setGroup('Drugstore->source')->setValue(3))
+            ->setManufacturer((new Constant)->setId(1)->setText('Эском НПК ОАО')->setGroup('Drugstore->manufacturer')->setValue(119))
+            ->setCreatedAt(new DateTime('2025-05-23 09:49:54'))
+            ->setIncomeDate(new DateTime('2025-05-22 00:00:00'))
+            ->setInvoiceNumber('65/05');
     }
 }
