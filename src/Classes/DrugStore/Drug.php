@@ -22,7 +22,7 @@ class Drug extends BaseClass
             'value' => '116'
         ],
         'dosageUnit' => 'мл',
-        'dosageInUnits' => 200_00,
+        'dosageInUnits' => 20000,
         'releaseForm' => 'флакон',
         'boxMeasure' => [
             'id' => 1,
@@ -41,87 +41,90 @@ class Drug extends BaseClass
      ** Полное название препарата
      * @var string
      */
-    private ?string $fullDrugName = null;
+    private $fullDrugName;
     /**
      ** Название препарата
      * @var string
      * @see medis_drug_store.drugs.nazvmed01
      */
 
-    private ?string $name = null;
+    private $name;
     /**
      ** Международное непатентованное наименование (МНН)
      * @var string
      * @see medis_drug_store.drugs.nazvnepatmed01
      */
-    private ?string $inn = null;
+    private $inn;
 
     /**
      ** Латинское название
      * @var string
      * @see medis_drug_store.drugs.latin_name
      */
-    private ?string $latinName = null;
+    private $latinName;
 
     /**
      ** Латинское международное непатентованное наименование (МНН)
      * @var string
      * @see medis_drug_store.drugs.MNN_latin
      */
-    private ?string $latinInn = null;
+    private $latinInn;
     /**
      ** Группа учета
      * @var Constant
      * @see medis_drug_store.drugs.uchetgrup01
      * @see medis_interface.default_constants group = 'Drugstore->drug_groups'
      */
-    private ?Constant $group = null;
+    private $group;
     /**
      ** Является ЖНВЛП
      * @var bool
      * @see medis_drug_store.drugs.zhnvlp
      */
-    private bool $isVed = false;
+    private $isVed = false;
 
     /**
      ** Дозировка в единицах измерения (1 ед = 100)
      * @var int
      * @see medis_drug_store.package_parameters.dose_number * 100
      */
-    private ?int $dosageInUnits = null;
+    private $dosageInUnits;
 
     /**
      ** Наименование единицы измерения
      * @var string
      * @see medis_drug_store.package_parameters.dosage
      */
-    private ?string $dosageUnit = null;
+    private $dosageUnit;
     /**
      ** Форма выпуска препарата
      * @var string
      * @see medis_drug_store.package_parameters.package_type
      */
-    private ?string $releaseForm = null;
+    private $releaseForm;
     /**
      ** Мера упаковки
      * @var Constant
      * @see medis_drug_store.package_parameters.box_mesure
      * @see medis_interface.default_constants group = 'Drugstore->measurement_unit_code'
      */
-    private ?Constant $boxMeasure = null;
+    private $boxMeasure;
     /**
      ** Единица фасовки
      * @var Constant
      * @see medis_drug_store.package_parameters.unit_mesure
      * @see medis_interface.default_constants group = 'Drugstore->measurement_unit_code'
      */
-    private ?Constant $unitMeasure = null;
+    private $unitMeasure;
 
     public function getFullDrugName(): ?string
     {
         return $this->fullDrugName;
     }
-    public function setFullDrugName(?string $fullName): static
+    /**
+     * @return static
+     */
+    public function setFullDrugName(?string $fullName)
     {
         $this->fullDrugName = $fullName;
         return $this;
@@ -130,7 +133,10 @@ class Drug extends BaseClass
     {
         return $this->name;
     }
-    public function setName(?string $name): static
+    /**
+     * @return static
+     */
+    public function setName(?string $name)
     {
         $this->name = $name;
         return $this;
@@ -139,7 +145,10 @@ class Drug extends BaseClass
     {
         return $this->inn;
     }
-    public function setInn(?string $inn): static
+    /**
+     * @return static
+     */
+    public function setInn(?string $inn)
     {
         $this->inn = $inn;
         return $this;
@@ -148,7 +157,10 @@ class Drug extends BaseClass
     {
         return $this->latinName;
     }
-    public function setLatinName(?string $latinName): static
+    /**
+     * @return static
+     */
+    public function setLatinName(?string $latinName)
     {
         $this->latinName = $latinName;
         return $this;
@@ -157,7 +169,10 @@ class Drug extends BaseClass
     {
         return $this->latinInn;
     }
-    public function setLatinInn(?string $latinInn): static
+    /**
+     * @return static
+     */
+    public function setLatinInn(?string $latinInn)
     {
         $this->latinInn = $latinInn;
         return $this;
@@ -166,7 +181,10 @@ class Drug extends BaseClass
     {
         return $this->isVed;
     }
-    public function setIsVed(bool $isVed): static
+    /**
+     * @return static
+     */
+    public function setIsVed(bool $isVed)
     {
         $this->isVed = $isVed;
         return $this;
@@ -175,7 +193,10 @@ class Drug extends BaseClass
     {
         return $this->dosageInUnits;
     }
-    public function setDosageInUnits(?int $dosageInUnits): static
+    /**
+     * @return static
+     */
+    public function setDosageInUnits(?int $dosageInUnits)
     {
         $this->dosageInUnits = $dosageInUnits;
         return $this;
@@ -184,7 +205,10 @@ class Drug extends BaseClass
     {
         return $this->dosageUnit;
     }
-    public function setDosageUnit(?string $dosageUnit): static
+    /**
+     * @return static
+     */
+    public function setDosageUnit(?string $dosageUnit)
     {
         $this->dosageUnit = $dosageUnit;
         return $this;
@@ -193,7 +217,10 @@ class Drug extends BaseClass
     {
         return $this->releaseForm;
     }
-    public function setReleaseForm(?string $releaseForm): static
+    /**
+     * @return static
+     */
+    public function setReleaseForm(?string $releaseForm)
     {
         $this->releaseForm = $releaseForm;
         return $this;
@@ -202,7 +229,10 @@ class Drug extends BaseClass
     {
         return $this->group;
     }
-    public function setGroup(?Constant $group): static
+    /**
+     * @return static
+     */
+    public function setGroup(?Constant $group)
     {
         $this->group = $group;
         return $this;
@@ -211,7 +241,10 @@ class Drug extends BaseClass
     {
         return $this->boxMeasure;
     }
-    public function setBoxMeasure(?Constant $boxMeasure): static
+    /**
+     * @return static
+     */
+    public function setBoxMeasure(?Constant $boxMeasure)
     {
         $this->boxMeasure = $boxMeasure;
         return $this;
@@ -220,12 +253,18 @@ class Drug extends BaseClass
     {
         return $this->unitMeasure;
     }
-    public function setUnitMeasure(?Constant $unitMeasure): static
+    /**
+     * @return static
+     */
+    public function setUnitMeasure(?Constant $unitMeasure)
     {
         $this->unitMeasure = $unitMeasure;
         return $this;
     }
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         $me
@@ -243,7 +282,7 @@ class Drug extends BaseClass
                     ->setValue(116)
             )
             ->setDosageUnit('мл')
-            ->setDosageInUnits(200_00)
+            ->setDosageInUnits(20000)
             ->setReleaseForm('флакон')
             ->setBoxMeasure((new Constant)
                     ->setId(1)

@@ -12,9 +12,9 @@ class InvoiceDrug extends BaseClass
         'id' => 136443,
         'invoiceID' => 27952,
         'drug' => Drug::dummyArray,
-        'quantity' => 36_0000,
-        'sum' => 98784_00,
-        'price' => 2744_00,
+        'quantity' => 360000,
+        'sum' => 9878400,
+        'price' => 274400,
         'fundingSource' => [
             'id' => 1,
             'text' => 'Внебюджетные средства',
@@ -38,9 +38,9 @@ class InvoiceDrug extends BaseClass
         'id' => 136582,
         'invoiceID' => 27988,
         'drug' => Drug::dummyArray,
-        'quantity' => 36_0000,
-        'sum' => 98784_00,
-        'price' => 2744_00,
+        'quantity' => 360000,
+        'sum' => 9878400,
+        'price' => 274400,
         'fundingSource' => [
             'id' => 1,
             'text' => 'Внебюджетные средства',
@@ -65,31 +65,31 @@ class InvoiceDrug extends BaseClass
      * @var Drug
      * @see medis_drug_store.invoice.kodmedupak09
      */
-    private ?Drug $drug = null;
+    private $drug;
     /**
      ** Количество (1 шт = 10000)
      * @var int
      * @see medis_drug_store.invoice.origin_count * 10000
      */
-    private ?int $quantity = null;
+    private $quantity;
     /**
      ** Сумма в копейках (1 р = 100)
      * @var int
      * @see medis_drug_store.invoice.origin_count * medis_drug_store.invoice.medcena09
      */
-    private ?int $sum = null;
+    private $sum;
     /**
      ** Цена в копейках (1 р = 100)
      * @var int
      * @see medis_drug_store.invoice.medcena09 * 100
      */
-    private ?int $price = null;
+    private $price;
     /**
      ** Дата окончания срока годности
      * @var DateTime
      * @see medis_drug_store.invoice.medsrokgodn09
      */
-    private ?DateTime $expirationDate = null;
+    private $expirationDate;
 
     /**
      ** Источник финансирования
@@ -97,40 +97,43 @@ class InvoiceDrug extends BaseClass
      * @see medis_drug_store.invoice.source_type_invoice
      * @see medis_interface.default_constants group = 'Drugstore->source'
      */
-    private ?Constant $fundingSource = null;
+    private $fundingSource;
     /**
      ** Производитель
      * @var Constant
      * @see medis_drug_store.invoice.manufacturer_id
      * @see medis_interface.default_constants group = 'Drugstore->manufacturer'
      */
-    private ?Constant $manufacturer = null;
+    private $manufacturer;
     /**
      ** Дата создания накладной
      * @var DateTime
      * @see medis_drug_store.invoice_in_caption.creation_date
      */
-    private ?DateTime $createdAt = null;
+    private $createdAt;
     /**
      ** Дата прихода
      * @var DateTime
      * @see medis_drug_store.invoice_in_caption.nakladdata05
      */
-    private ?DateTime $incomeDate = null;
+    private $incomeDate;
     /**
      ** Номер накладной
      * @var string
      * @see medis_drug_store.invoice_in_caption.nakladnomer05
      */
-    private ?string $invoiceNumber = null;
+    private $invoiceNumber;
     /**
      ** Идентификатор накладной
      * @var int
      * @see medis_drug_store.invoice_in_caption.nakladin05
      */
-    private ?int $invoiceID = null;
+    private $invoiceID;
 
-    public function setDrug(?Drug $drug): static
+    /**
+     * @return static
+     */
+    public function setDrug(?Drug $drug)
     {
         $this->drug = $drug;
         return $this;
@@ -139,7 +142,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->drug;
     }
-    public function setQuantity(?int $quantity): static
+    /**
+     * @return static
+     */
+    public function setQuantity(?int $quantity)
     {
         $this->quantity = $quantity;
         return $this;
@@ -152,7 +158,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->quantity === null ? null : $this->quantity / 10000;
     }
-    public function setSum(?int $sum): static
+    /**
+     * @return static
+     */
+    public function setSum(?int $sum)
     {
         $this->sum = $sum;
         return $this;
@@ -165,7 +174,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->sum === null ? null : $this->sum / 100;
     }
-    public function setPrice(?int $price): static
+    /**
+     * @return static
+     */
+    public function setPrice(?int $price)
     {
         $this->price = $price;
         return $this;
@@ -179,7 +191,11 @@ class InvoiceDrug extends BaseClass
         return $this->price === null ? null : $this->price / 100;
     }
 
-    public function setExpirationDate(DateTime|string|null $expirationDate): static
+    /**
+     * @param \DateTime|string|null $expirationDate
+     * @return static
+     */
+    public function setExpirationDate($expirationDate)
     {
         if ($expirationDate === null) {
             $this->expirationDate = null;
@@ -200,7 +216,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->expirationDate;
     }
-    public function setFundingSource(?Constant $fundingSource): static
+    /**
+     * @return static
+     */
+    public function setFundingSource(?Constant $fundingSource)
     {
         $this->fundingSource = $fundingSource;
         return $this;
@@ -209,7 +228,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->fundingSource;
     }
-    public function setManufacturer(?Constant $manufacturer): static
+    /**
+     * @return static
+     */
+    public function setManufacturer(?Constant $manufacturer)
     {
         $this->manufacturer = $manufacturer;
         return $this;
@@ -218,7 +240,11 @@ class InvoiceDrug extends BaseClass
     {
         return $this->manufacturer;
     }
-    public function setCreatedAt(DateTime|string|null $createdAt): static
+    /**
+     * @param \DateTime|string|null $createdAt
+     * @return static
+     */
+    public function setCreatedAt($createdAt)
     {
         if ($createdAt === null) {
             $this->createdAt = null;
@@ -239,7 +265,11 @@ class InvoiceDrug extends BaseClass
     {
         return $this->createdAt;
     }
-    public function setIncomeDate(DateTime|string|null $incomeDate): static
+    /**
+     * @param \DateTime|string|null $incomeDate
+     * @return static
+     */
+    public function setIncomeDate($incomeDate)
     {
         if ($incomeDate === null) {
             $this->incomeDate = null;
@@ -260,7 +290,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->incomeDate;
     }
-    public function setInvoiceNumber(?string $invoiceNumber): static
+    /**
+     * @return static
+     */
+    public function setInvoiceNumber(?string $invoiceNumber)
     {
         $this->invoiceNumber = $invoiceNumber;
         return $this;
@@ -270,7 +303,10 @@ class InvoiceDrug extends BaseClass
         return $this->invoiceNumber;
     }
 
-    public function setInvoiceID(?int $invoiceID): static
+    /**
+     * @return static
+     */
+    public function setInvoiceID(?int $invoiceID)
     {
         $this->invoiceID = $invoiceID;
         return $this;
@@ -282,30 +318,36 @@ class InvoiceDrug extends BaseClass
     }
 
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         return (new static)
             ->setId(136443)
             ->setDrug(Drug::createDummy($imitateReal))
             ->setInvoiceID(27952)
-            ->setQuantity(36_0000)
-            ->setSum(98784_00)
-            ->setPrice(2744_00)
+            ->setQuantity(360000)
+            ->setSum(9878400)
+            ->setPrice(274400)
             ->setFundingSource((new Constant)->setId(1)->setText('Внебюджетные средства')->setGroup('Drugstore->source')->setValue(3))
             ->setManufacturer((new Constant)->setId(1)->setText('Эском НПК ОАО')->setGroup('Drugstore->manufacturer')->setValue(119))
             ->setCreatedAt(new DateTime('2025-05-21 13:28:01'))
             ->setIncomeDate(new DateTime('2025-05-21 00:00:00'))
             ->setInvoiceNumber('contract_3346');
     }
-    public static function incomeCreateDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function incomeCreateDummy(bool $imitateReal = false)
     {
         return (new self)
             ->setId(136582)
             ->setDrug(Drug::createDummy($imitateReal))
             ->setInvoiceID(27988)
-            ->setQuantity(36_0000)
-            ->setSum(98784_00)
-            ->setPrice(2744_00)
+            ->setQuantity(360000)
+            ->setSum(9878400)
+            ->setPrice(274400)
             ->setFundingSource((new Constant)->setId(1)->setText('Внебюджетные средства')->setGroup('Drugstore->source')->setValue(3))
             ->setManufacturer((new Constant)->setId(1)->setText('Эском НПК ОАО')->setGroup('Drugstore->manufacturer')->setValue(119))
             ->setCreatedAt(new DateTime('2025-05-23 09:49:54'))

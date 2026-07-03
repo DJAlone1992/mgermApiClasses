@@ -28,24 +28,24 @@ class Specialty extends IdNameClass
      ** Код специальности по справочнику OID 1.2.643.5.1.13.13.11.1066
      * @var string|null
      */
-    private ?string $nsiCode = null;
+    private $nsiCode;
 
     /**
      ** Код должности по справочнику OID 1.2.643.5.1.13.13.11.1002
      * @var string|null
      */
-    private ?string $nsiRoleCode = null;
+    private $nsiRoleCode;
 
     /**
      ** Признак активности
      * @var bool|null
      */
-    private ?bool $isActive = true;
+    private $isActive = true;
 
     /**
      * @return static
      */
-    public static function SelfFactory(?int $id, ?string $name): static
+    public static function SelfFactory(?int $id, ?string $name)
     {
         $specialty = new static();
         $specialty->setId($id)->setName($name);
@@ -83,7 +83,10 @@ class Specialty extends IdNameClass
     {
         return $this->nsiCode;
     }
-    public function setNsiCode(?string $nsiCode): static
+    /**
+     * @return static
+     */
+    public function setNsiCode(?string $nsiCode)
     {
         $this->nsiCode = $nsiCode;
         return $this;
@@ -94,7 +97,10 @@ class Specialty extends IdNameClass
         return $this->nsiRoleCode;
     }
 
-    public function setNsiRoleCode(?string $nsiRoleCode): static
+    /**
+     * @return static
+     */
+    public function setNsiRoleCode(?string $nsiRoleCode)
     {
         $this->nsiRoleCode = $nsiRoleCode;
         return $this;
@@ -103,7 +109,10 @@ class Specialty extends IdNameClass
     {
         return $this->isActive;
     }
-    public function setIsActive(?bool $isActive): static
+    /**
+     * @return static
+     */
+    public function setIsActive(?bool $isActive)
     {
         $this->isActive = $isActive;
         return $this;

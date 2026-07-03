@@ -39,14 +39,14 @@ class Contract extends BaseClass
         'startDate' => '2025-05-22 00:00:00',
         'finishDate' => '2025-05-23 00:00:00',
         'createdAt' => '2025-05-21 13:28:01',
-        'sum' => 98784_00,
-        'income' => 98784_00,
+        'sum' => 9878400,
+        'income' => 9878400,
         'left' => 0,
-        'all' => 98784_00,
+        'all' => 9878400,
         'totals' => [
-            'income' => 98784_00,
+            'income' => 9878400,
             'left' => 0,
-            'all' => 98784_00
+            'all' => 9878400
         ]
     ];
     /**
@@ -55,91 +55,94 @@ class Contract extends BaseClass
      * @see medis_drug_store.contracts.type
      * @see medis_interface.default_constants group = 'Drugstore->contract_type'
      */
-    private ?Constant $type = null;
+    private $type;
     /**
      ** Источник финансирования договора
      * @var Constant
      * @see medis_drug_store.contracts.fin_source
      * @see medis_interface.default_constants group = 'Drugstore->source'
      */
-    private ?Constant $source = null;
+    private $source;
     /**
      ** Статус договора
      * @var Constant
      * @see medis_drug_store.contracts.current_status
      * @see medis_interface.default_constants group = 'Drugstore->contract_status'
      */
-    private ?Constant $status = null;
+    private $status;
     /**
      ** Поставщик договора
      * @var Constant
      * @see medis_drug_store.contracts.vendor
      * @see medis_interface.default_constants group = 'Drugstore->vendor'
      */
-    private ?Constant $vendor = null;
+    private $vendor;
     /**
      ** Номер договора
      * @var string
      * @see medis_drug_store.contracts.number
      */
-    private ?string $number = null;
+    private $number;
     /**
      ** ID договора в системе Парус
      * @var string
      * @see medis_drug_store.contracts.parus_id //Не реализовано
      */
-    private ?string $parusID = null;
+    private $parusID;
     /**
      ** Дата начала договора
      * @var DateTime
      * @see medis_drug_store.contracts.date_start
      */
-    private ?DateTime $startDate = null;
+    private $startDate;
     /**
      ** Дата конца договора
      * @var DateTime
      * @see medis_drug_store.contracts.date_finish
      */
-    private ?DateTime $finishDate = null;
+    private $finishDate;
     /**
      ** Дата создания договора
      * @var DateTime
      * @see medis_drug_store.contracts.creation_date
      */
-    private ?DateTime $createdAt = null;
+    private $createdAt;
     /**
      ** Сумма договора в копейках
      * @var int
      * @see medis_drug_store.contracts.summ * 100
      */
-    private ?int $sum = null;
+    private $sum;
     /**
      ** Суммы договора по данным препаратов
      * @var array
      */
-    private ?array $totals = null;
+    private $totals;
     /**
      ** Приход
      * @var float
      */
-    private ?float $income = null;
+    private $income;
     /**
      ** Остаток к поставке
      * @var float
      */
-    private ?float $left = null;
+    private $left;
     /**
      ** Всего
      * @var float
      */
-    private ?float $all = null;
+    private $all;
 
     public function getType(): ?Constant
     {
         return $this->type;
     }
 
-    public function setType(?Constant $type): static
+    /**
+     * @return static
+     */
+    public function setType(?Constant $type)
     {
         $this->type = $type;
         return $this;
@@ -150,7 +153,10 @@ class Contract extends BaseClass
         return $this->source;
     }
 
-    public function setSource(?Constant $source): static
+    /**
+     * @return static
+     */
+    public function setSource(?Constant $source)
     {
         $this->source = $source;
         return $this;
@@ -161,7 +167,10 @@ class Contract extends BaseClass
         return $this->status;
     }
 
-    public function setStatus(?Constant $status): static
+    /**
+     * @return static
+     */
+    public function setStatus(?Constant $status)
     {
         $this->status = $status;
         return $this;
@@ -172,7 +181,10 @@ class Contract extends BaseClass
         return $this->vendor;
     }
 
-    public function setVendor(?Constant $vendor): static
+    /**
+     * @return static
+     */
+    public function setVendor(?Constant $vendor)
     {
         $this->vendor = $vendor;
         return $this;
@@ -183,7 +195,10 @@ class Contract extends BaseClass
         return $this->number;
     }
 
-    public function setNumber(?string $number): static
+    /**
+     * @return static
+     */
+    public function setNumber(?string $number)
     {
         $this->number = $number;
         return $this;
@@ -194,7 +209,10 @@ class Contract extends BaseClass
         return $this->parusID;
     }
 
-    public function setParusID(?string $parusID): static
+    /**
+     * @return static
+     */
+    public function setParusID(?string $parusID)
     {
         $this->parusID = $parusID;
         return $this;
@@ -205,7 +223,11 @@ class Contract extends BaseClass
         return $this->startDate;
     }
 
-    public function setStartDate(DateTime|string|null $startDate): static
+    /**
+     * @param \DateTime|string|null $startDate
+     * @return static
+     */
+    public function setStartDate($startDate)
     {
         if ($startDate === null) {
             $this->startDate = null;
@@ -228,7 +250,11 @@ class Contract extends BaseClass
         return $this->finishDate;
     }
 
-    public function setFinishDate(DateTime|string|null $finishDate): static
+    /**
+     * @param \DateTime|string|null $finishDate
+     * @return static
+     */
+    public function setFinishDate($finishDate)
     {
         if ($finishDate === null) {
             $this->finishDate = null;
@@ -251,7 +277,11 @@ class Contract extends BaseClass
         return $this->createdAt;
     }
 
-    public function setCreatedAt(DateTime|string|null $createdAt): static
+    /**
+     * @param \DateTime|string|null $createdAt
+     * @return static
+     */
+    public function setCreatedAt($createdAt)
     {
         if ($createdAt === null) {
             $this->createdAt = null;
@@ -274,7 +304,10 @@ class Contract extends BaseClass
         return $this->sum;
     }
 
-    public function setSum(?int $sum): static
+    /**
+     * @return static
+     */
+    public function setSum(?int $sum)
     {
         $this->sum = $sum;
         return $this;
@@ -285,7 +318,10 @@ class Contract extends BaseClass
         return $this->totals;
     }
 
-    public function setTotals(?array $totals): static
+    /**
+     * @return static
+     */
+    public function setTotals(?array $totals)
     {
         $this->totals = $totals;
         if (is_array($totals)) {
@@ -311,7 +347,10 @@ class Contract extends BaseClass
         return $this->income;
     }
 
-    public function setIncome(?float $income): static
+    /**
+     * @return static
+     */
+    public function setIncome(?float $income)
     {
         $this->income = $income;
         if ($this->totals === null) {
@@ -326,7 +365,10 @@ class Contract extends BaseClass
         return $this->left;
     }
 
-    public function setLeft(?float $left): static
+    /**
+     * @return static
+     */
+    public function setLeft(?float $left)
     {
         $this->left = $left;
         if ($this->totals === null) {
@@ -341,7 +383,10 @@ class Contract extends BaseClass
         return $this->all;
     }
 
-    public function setAll(?float $all): static
+    /**
+     * @return static
+     */
+    public function setAll(?float $all)
     {
         $this->all = $all;
         if ($this->totals === null) {
@@ -351,7 +396,10 @@ class Contract extends BaseClass
         return $this;
     }
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         $me->setId(3346)
@@ -364,11 +412,11 @@ class Contract extends BaseClass
             ->setStartDate(new DateTime('2025-05-22 00:00:00'))
             ->setFinishDate(new DateTime('2025-05-23 00:00:00'))
             ->setCreatedAt(new DateTime('2025-05-21 13:28:01'))
-            ->setSum(98784_00)
+            ->setSum(9878400)
             ->setTotals([
-                'income' => 98784_00,
+                'income' => 9878400,
                 'left' => 0,
-                'all' => 98784_00
+                'all' => 9878400
             ]);
         return $me;
     }
