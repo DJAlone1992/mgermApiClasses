@@ -3,6 +3,8 @@
 namespace MgermApiClasses\Classes;
 
 use MgermApiClasses\Enum\Sex;
+use Npub\Gos\Snils;
+use UnexpectedValueException;
 
 /**
  * Класс врача из MGERM
@@ -46,8 +48,38 @@ class Doctor extends Person
         'specialty'     => Specialty::dummyArray,
         'guid'          => Guid::dummyArray,
         'contactsCount' => 0,
-        'contacts'      => []
+        'contacts'      => [],
+        'snils'         => '123-456-789 64',
+        'isActive'      => true,
+        'experience'    => 10,
+        'category'      => 'Высшая',
+        'degree'        => 'Кандидат медицинских наук',
     ];
+    /**
+     ** Стаж сотрудника в годах
+     * @var int|null
+     */
+    private ?int $experience;
+    /**
+     ** Категория сотрудника
+     * @var string|null
+     */
+    private ?string $category;
+    /**
+     ** Степень
+     * @var string|null
+     */
+    private ?string $degree;
+    /**
+     ** Признак активности
+     * @var bool|null
+     */
+    private ?bool $isActive;
+    /*
+     ** СНИЛС
+     * @var string
+     */
+    private string $snils;
     /**
      ** Специальность
      * @var Specialty|null
@@ -153,6 +185,11 @@ class Doctor extends Person
     {
         $doctor = new static();
         $doctor
+            ->setIsActive(true)
+            ->setExperience(10)
+            ->setCategory('Высшая')
+            ->setDegree('Кандидат медицинских наук')
+            ->setSnils('123-456-789 64')
             ->setGuid(Guid::createDummy($imitateReal))
             ->setDepartment(Department::createDummy($imitateReal))
             ->setSpecialty(Specialty::createDummy($imitateReal));
@@ -230,6 +267,69 @@ class Doctor extends Person
     {
         $this->guid = $guid;
 
+        return $this;
+    }
+    /**
+     * Установка СНИЛС
+     * @param Snils|string $snils
+     * @return static
+     * @throws UnexpectedValueException
+     */
+    public function setSnils(Snils|string $snils): static
+    {
+        if (is_string($snils)) {
+            $snils = Snils::createFromFormat($snils)->format(Snils::FORMAT_SPACE);
+        }
+        $this->snils = $snils;
+        return $this;
+    }
+
+    public function getSnils(): ?string
+    {
+        return $this->snils;
+    }
+
+    public function snilsObject(): ?Snils
+    {
+        return Snils::createFromFormat($this->snils);
+    }
+
+    //private ?int $experience;
+    public function getExperience(): ?int
+    {
+        return $this->experience;
+    }
+    public function setExperience(?int $experience): static
+    {
+        $this->experience = $experience;
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+    public function setCategory(?string $category): static
+    {
+        $this->category = $category;
+        return $this;
+    }
+    public function getDegree(): ?string
+    {
+        return $this->degree;
+    }
+    public function setDegree(?string $degree): static
+    {
+        $this->degree = $degree;
+        return $this;
+    }
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+    public function setIsActive(?bool $isActive): static
+    {
+        $this->isActive = $isActive;
         return $this;
     }
 }

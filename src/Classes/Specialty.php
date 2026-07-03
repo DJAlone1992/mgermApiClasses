@@ -17,13 +17,35 @@ class Specialty extends IdNameClass
             'creativeCase'      => 'Специальностью',
             'prepositionalCase' => 'Специальности',
         ],
+        'nsiCode' => '123',
+        'nsiRoleCode' => '123',
         'name'    => 'Специальность',
+        'isActive' => true,
         'id'      => 1,
     ];
+
+    /**
+     ** Код специальности по справочнику OID 1.2.643.5.1.13.13.11.1066
+     * @var string|null
+     */
+    private ?string $nsiCode = null;
+
+    /**
+     ** Код должности по справочнику OID 1.2.643.5.1.13.13.11.1002
+     * @var string|null
+     */
+    private ?string $nsiRoleCode = null;
+
+    /**
+     ** Признак активности
+     * @var bool|null
+     */
+    private ?bool $isActive = true;
+
     /**
      * @return static
      */
-    public static function SelfFactory(?int $id, ?string $name)
+    public static function SelfFactory(?int $id, ?string $name): static
     {
         $specialty = new static();
         $specialty->setId($id)->setName($name);
@@ -36,6 +58,7 @@ class Specialty extends IdNameClass
     {
         if ($imitateReal) {
             $me = self::SelfFactory(1, 'Врач общей практики');
+            $me->setNsiRoleCode(49)->setNsiCode(224);
             $me->getNameObj()
                 ->setGenitiveCase('Врача общей практики')
                 ->setDativeCase('Врачу общей практики')
@@ -44,6 +67,8 @@ class Specialty extends IdNameClass
                 ->setPrepositionalCase('Враче общей практики');
         } else {
             $me = self::SelfFactory(1, 'Специальность');
+            $me->setNsiCode('123')
+                ->setNsiRoleCode('123');
             $me->getNameObj()
                 ->setGenitiveCase('Специальности')
                 ->setDativeCase('Специальности')
@@ -52,5 +77,35 @@ class Specialty extends IdNameClass
                 ->setPrepositionalCase('Специальности');
         }
         return $me;
+    }
+
+    public function getNsiCode(): ?string
+    {
+        return $this->nsiCode;
+    }
+    public function setNsiCode(?string $nsiCode): static
+    {
+        $this->nsiCode = $nsiCode;
+        return $this;
+    }
+
+    public function getNsiRoleCode(): ?string
+    {
+        return $this->nsiRoleCode;
+    }
+
+    public function setNsiRoleCode(?string $nsiRoleCode): static
+    {
+        $this->nsiRoleCode = $nsiRoleCode;
+        return $this;
+    }
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+    public function setIsActive(?bool $isActive): static
+    {
+        $this->isActive = $isActive;
+        return $this;
     }
 }
