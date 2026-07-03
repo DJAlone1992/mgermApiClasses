@@ -2,6 +2,22 @@
 
 [Назад в меню](../README.md)
 
+[Аптека и склад медикаментов](drugStore.md)
+
+## MgermApiClasses\Classes\Constant
+
+Класс для описания констант из справочников
+Является наследником [MgermApiClasses\Base\BaseClass](abstract.md#mgermapiclassesbasebaseclass)
+
+### Описание полей
+
+| Поле  | Тип    | Описание               | Доступные методы |
+| ----- | ------ | ---------------------- | ---------------- |
+| id    | int    | Не имеет смысла        | set / get        |
+| value | string | Значение константы     | set / get        |
+| text  | string | Описание константы     | set / get        |
+| group | string | Группа константы       | set / get        |
+
 ## MgermApiClasses\Classes\Contact
 
 Класс для описания данных подразделения.
