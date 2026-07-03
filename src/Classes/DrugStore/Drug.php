@@ -22,7 +22,7 @@ class Drug extends BaseClass
             'value' => '116'
         ],
         'dosageUnit' => 'мл',
-        'dosageInUnits' => 200000,
+        'dosageInUnits' => 200_00,
         'releaseForm' => 'флакон',
         'boxMeasure' => [
             'id' => 1,
@@ -243,7 +243,7 @@ class Drug extends BaseClass
                     ->setValue(116)
             )
             ->setDosageUnit('мл')
-            ->setDosageInUnits(200000)
+            ->setDosageInUnits(200_00)
             ->setReleaseForm('флакон')
             ->setBoxMeasure((new Constant)
                     ->setId(1)
