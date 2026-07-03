@@ -27,4 +27,10 @@ http://<your-server-address>/_mgerm_external
 - [/appointment.php](/docs/entryPoints/schedule/appointment.php.md) - Работа с направлением
 - [/appointmentCallHistory.php](/docs/entryPoints/schedule/appointmentCallHistory.md) - Работа со статусом подтверждения направления
 
+# Аптека
+
+- [/drug_store/constants.php](/docs/entryPoints/drug_store/constants.md) - Получение констант аптеки
+- [/drug_store/contract.php](/docs/entryPoints/drug_store/contract.md) - Информация о контракте
+- [/drug_store/contractTable.php](/docs/entryPoints/drug_store/contractTable.md) - Информация о препаратах контракта
+
 [Назад в меню](../README.md)
