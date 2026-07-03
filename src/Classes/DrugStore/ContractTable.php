@@ -57,7 +57,10 @@ class ContractTable extends BaseClass
      */
     private ?int $totalIncomeSum = null;
 
-    public function setContractSum(?int $contractSum): static
+    /**
+     * @return static
+     */
+    public function setContractSum(?int $contractSum)
     {
         $this->contractSum = $contractSum;
         return $this;
@@ -66,7 +69,10 @@ class ContractTable extends BaseClass
     {
         return $this->contractSum;
     }
-    public function setCountDifference(?int $countDifference): static
+    /**
+     * @return static
+     */
+    public function setCountDifference(?int $countDifference)
     {
         $this->countDifference = $countDifference;
         return $this;
@@ -75,7 +81,10 @@ class ContractTable extends BaseClass
     {
         return $this->countDifference;
     }
-    public function setSumDifference(?int $sumDifference): static
+    /**
+     * @return static
+     */
+    public function setSumDifference(?int $sumDifference)
     {
         $this->sumDifference = $sumDifference;
         return $this;
@@ -84,7 +93,10 @@ class ContractTable extends BaseClass
     {
         return $this->sumDifference;
     }
-    public function setTotalIncomeCount(?int $totalIncomeCount): static
+    /**
+     * @return static
+     */
+    public function setTotalIncomeCount(?int $totalIncomeCount)
     {
         $this->totalIncomeCount = $totalIncomeCount;
         return $this;
@@ -93,7 +105,10 @@ class ContractTable extends BaseClass
     {
         return $this->totalIncomeCount;
     }
-    public function setTotalIncomeSum(?int $totalIncomeSum): static
+    /**
+     * @return static
+     */
+    public function setTotalIncomeSum(?int $totalIncomeSum)
     {
         $this->totalIncomeSum = $totalIncomeSum;
         return $this;
@@ -102,7 +117,10 @@ class ContractTable extends BaseClass
     {
         return $this->totalIncomeSum;
     }
-    public function setIncomeDrugs(?array $drugs): static
+    /**
+     * @return static
+     */
+    public function setIncomeDrugs(?array $drugs)
     {
         $this->incomeDrugs = $drugs;
         return $this;
@@ -111,7 +129,10 @@ class ContractTable extends BaseClass
     {
         return $this->incomeDrugs;
     }
-    public function addIncomeDrug(InvoiceDrug $drug): static
+    /**
+     * @return static
+     */
+    public function addIncomeDrug(InvoiceDrug $drug)
     {
         if ($this->incomeDrugs === null) {
             $this->incomeDrugs = [];
@@ -119,7 +140,10 @@ class ContractTable extends BaseClass
         $this->incomeDrugs[] = $drug;
         return $this;
     }
-    public function setReceivedDrugs(?array $drugs): static
+    /**
+     * @return static
+     */
+    public function setReceivedDrugs(?array $drugs)
     {
         $this->receivedDrugs = $drugs;
         return $this;
@@ -128,7 +152,10 @@ class ContractTable extends BaseClass
     {
         return $this->receivedDrugs;
     }
-    public function addReceivedDrug(InvoiceDrug $drug): static
+    /**
+     * @return static
+     */
+    public function addReceivedDrug(InvoiceDrug $drug)
     {
         if ($this->receivedDrugs === null) {
             $this->receivedDrugs = [];
@@ -136,7 +163,10 @@ class ContractTable extends BaseClass
         $this->receivedDrugs[] = $drug;
         return $this;
     }
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         return (new static)
             ->setId(3346)

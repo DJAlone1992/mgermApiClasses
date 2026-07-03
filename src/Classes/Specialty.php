@@ -83,7 +83,10 @@ class Specialty extends IdNameClass
     {
         return $this->nsiCode;
     }
-    public function setNsiCode(?string $nsiCode): static
+    /**
+     * @return static
+     */
+    public function setNsiCode(?string $nsiCode)
     {
         $this->nsiCode = $nsiCode;
         return $this;
@@ -94,7 +97,10 @@ class Specialty extends IdNameClass
         return $this->nsiRoleCode;
     }
 
-    public function setNsiRoleCode(?string $nsiRoleCode): static
+    /**
+     * @return static
+     */
+    public function setNsiRoleCode(?string $nsiRoleCode)
     {
         $this->nsiRoleCode = $nsiRoleCode;
         return $this;
@@ -103,7 +109,10 @@ class Specialty extends IdNameClass
     {
         return $this->isActive;
     }
-    public function setIsActive(?bool $isActive): static
+    /**
+     * @return static
+     */
+    public function setIsActive(?bool $isActive)
     {
         $this->isActive = $isActive;
         return $this;

@@ -139,7 +139,10 @@ class Contract extends BaseClass
         return $this->type;
     }
 
-    public function setType(?Constant $type): static
+    /**
+     * @return static
+     */
+    public function setType(?Constant $type)
     {
         $this->type = $type;
         return $this;
@@ -150,7 +153,10 @@ class Contract extends BaseClass
         return $this->source;
     }
 
-    public function setSource(?Constant $source): static
+    /**
+     * @return static
+     */
+    public function setSource(?Constant $source)
     {
         $this->source = $source;
         return $this;
@@ -161,7 +167,10 @@ class Contract extends BaseClass
         return $this->status;
     }
 
-    public function setStatus(?Constant $status): static
+    /**
+     * @return static
+     */
+    public function setStatus(?Constant $status)
     {
         $this->status = $status;
         return $this;
@@ -172,7 +181,10 @@ class Contract extends BaseClass
         return $this->vendor;
     }
 
-    public function setVendor(?Constant $vendor): static
+    /**
+     * @return static
+     */
+    public function setVendor(?Constant $vendor)
     {
         $this->vendor = $vendor;
         return $this;
@@ -183,7 +195,10 @@ class Contract extends BaseClass
         return $this->number;
     }
 
-    public function setNumber(?string $number): static
+    /**
+     * @return static
+     */
+    public function setNumber(?string $number)
     {
         $this->number = $number;
         return $this;
@@ -194,7 +209,10 @@ class Contract extends BaseClass
         return $this->parusID;
     }
 
-    public function setParusID(?string $parusID): static
+    /**
+     * @return static
+     */
+    public function setParusID(?string $parusID)
     {
         $this->parusID = $parusID;
         return $this;
@@ -205,7 +223,11 @@ class Contract extends BaseClass
         return $this->startDate;
     }
 
-    public function setStartDate(DateTime|string|null $startDate): static
+    /**
+     * @param \DateTime|string|null $startDate
+     * @return static
+     */
+    public function setStartDate($startDate)
     {
         if ($startDate === null) {
             $this->startDate = null;
@@ -228,7 +250,11 @@ class Contract extends BaseClass
         return $this->finishDate;
     }
 
-    public function setFinishDate(DateTime|string|null $finishDate): static
+    /**
+     * @param \DateTime|string|null $finishDate
+     * @return static
+     */
+    public function setFinishDate($finishDate)
     {
         if ($finishDate === null) {
             $this->finishDate = null;
@@ -251,7 +277,11 @@ class Contract extends BaseClass
         return $this->createdAt;
     }
 
-    public function setCreatedAt(DateTime|string|null $createdAt): static
+    /**
+     * @param \DateTime|string|null $createdAt
+     * @return static
+     */
+    public function setCreatedAt($createdAt)
     {
         if ($createdAt === null) {
             $this->createdAt = null;
@@ -274,7 +304,10 @@ class Contract extends BaseClass
         return $this->sum;
     }
 
-    public function setSum(?int $sum): static
+    /**
+     * @return static
+     */
+    public function setSum(?int $sum)
     {
         $this->sum = $sum;
         return $this;
@@ -285,7 +318,10 @@ class Contract extends BaseClass
         return $this->totals;
     }
 
-    public function setTotals(?array $totals): static
+    /**
+     * @return static
+     */
+    public function setTotals(?array $totals)
     {
         $this->totals = $totals;
         if (is_array($totals)) {
@@ -311,7 +347,10 @@ class Contract extends BaseClass
         return $this->income;
     }
 
-    public function setIncome(?float $income): static
+    /**
+     * @return static
+     */
+    public function setIncome(?float $income)
     {
         $this->income = $income;
         if ($this->totals === null) {
@@ -326,7 +365,10 @@ class Contract extends BaseClass
         return $this->left;
     }
 
-    public function setLeft(?float $left): static
+    /**
+     * @return static
+     */
+    public function setLeft(?float $left)
     {
         $this->left = $left;
         if ($this->totals === null) {
@@ -341,7 +383,10 @@ class Contract extends BaseClass
         return $this->all;
     }
 
-    public function setAll(?float $all): static
+    /**
+     * @return static
+     */
+    public function setAll(?float $all)
     {
         $this->all = $all;
         if ($this->totals === null) {
@@ -351,7 +396,10 @@ class Contract extends BaseClass
         return $this;
     }
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         $me->setId(3346)

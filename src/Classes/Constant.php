@@ -30,7 +30,10 @@ class Constant extends BaseClass
      * @var string
      */
     private string $group;
-    public function setValue(string $value): static
+    /**
+     * @return static
+     */
+    public function setValue(string $value)
     {
         $this->value = $value;
         return $this;
@@ -45,7 +48,10 @@ class Constant extends BaseClass
         return $this->text;
     }
 
-    public function setText(string $text): static
+    /**
+     * @return static
+     */
+    public function setText(string $text)
     {
         $this->text = $text;
         return $this;
@@ -56,13 +62,19 @@ class Constant extends BaseClass
         return $this->group;
     }
 
-    public function setGroup(string $group): static
+    /**
+     * @return static
+     */
+    public function setGroup(string $group)
     {
         $this->group = $group;
         return $this;
     }
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         $me->setId(1)->setValue('1')->setText('Индивидуальный расчет')->setGroup('contract_type');

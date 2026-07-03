@@ -3,7 +3,6 @@
 namespace MgermApiClasses\Classes;
 
 use MgermApiClasses\Enum\Sex;
-use Npub\Gos\Snils;
 use UnexpectedValueException;
 
 /**
@@ -271,15 +270,12 @@ class Doctor extends Person
     }
     /**
      * Установка СНИЛС
-     * @param Snils|string $snils
+     * @param string $snils
      * @return static
      * @throws UnexpectedValueException
      */
-    public function setSnils(Snils|string $snils): static
+    public function setSnils($snils)
     {
-        if (is_string($snils)) {
-            $snils = Snils::createFromFormat($snils)->format(Snils::FORMAT_SPACE);
-        }
         $this->snils = $snils;
         return $this;
     }
@@ -289,9 +285,9 @@ class Doctor extends Person
         return $this->snils;
     }
 
-    public function snilsObject(): ?Snils
+    public function snilsObject(): void
     {
-        return Snils::createFromFormat($this->snils);
+        throw new UnexpectedValueException('Метод snilsObject() не реализован');
     }
 
     //private ?int $experience;
@@ -299,7 +295,10 @@ class Doctor extends Person
     {
         return $this->experience;
     }
-    public function setExperience(?int $experience): static
+    /**
+     * @return static
+     */
+    public function setExperience(?int $experience)
     {
         $this->experience = $experience;
         return $this;
@@ -309,7 +308,10 @@ class Doctor extends Person
     {
         return $this->category;
     }
-    public function setCategory(?string $category): static
+    /**
+     * @return static
+     */
+    public function setCategory(?string $category)
     {
         $this->category = $category;
         return $this;
@@ -318,7 +320,10 @@ class Doctor extends Person
     {
         return $this->degree;
     }
-    public function setDegree(?string $degree): static
+    /**
+     * @return static
+     */
+    public function setDegree(?string $degree)
     {
         $this->degree = $degree;
         return $this;
@@ -327,7 +332,10 @@ class Doctor extends Person
     {
         return $this->isActive;
     }
-    public function setIsActive(?bool $isActive): static
+    /**
+     * @return static
+     */
+    public function setIsActive(?bool $isActive)
     {
         $this->isActive = $isActive;
         return $this;

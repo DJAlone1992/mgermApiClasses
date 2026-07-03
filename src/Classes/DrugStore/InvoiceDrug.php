@@ -130,7 +130,10 @@ class InvoiceDrug extends BaseClass
      */
     private ?int $invoiceID = null;
 
-    public function setDrug(?Drug $drug): static
+    /**
+     * @return static
+     */
+    public function setDrug(?Drug $drug)
     {
         $this->drug = $drug;
         return $this;
@@ -139,7 +142,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->drug;
     }
-    public function setQuantity(?int $quantity): static
+    /**
+     * @return static
+     */
+    public function setQuantity(?int $quantity)
     {
         $this->quantity = $quantity;
         return $this;
@@ -152,7 +158,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->quantity === null ? null : $this->quantity / 10000;
     }
-    public function setSum(?int $sum): static
+    /**
+     * @return static
+     */
+    public function setSum(?int $sum)
     {
         $this->sum = $sum;
         return $this;
@@ -165,7 +174,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->sum === null ? null : $this->sum / 100;
     }
-    public function setPrice(?int $price): static
+    /**
+     * @return static
+     */
+    public function setPrice(?int $price)
     {
         $this->price = $price;
         return $this;
@@ -179,7 +191,11 @@ class InvoiceDrug extends BaseClass
         return $this->price === null ? null : $this->price / 100;
     }
 
-    public function setExpirationDate(DateTime|string|null $expirationDate): static
+    /**
+     * @param \DateTime|string|null $expirationDate
+     * @return static
+     */
+    public function setExpirationDate($expirationDate)
     {
         if ($expirationDate === null) {
             $this->expirationDate = null;
@@ -200,7 +216,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->expirationDate;
     }
-    public function setFundingSource(?Constant $fundingSource): static
+    /**
+     * @return static
+     */
+    public function setFundingSource(?Constant $fundingSource)
     {
         $this->fundingSource = $fundingSource;
         return $this;
@@ -209,7 +228,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->fundingSource;
     }
-    public function setManufacturer(?Constant $manufacturer): static
+    /**
+     * @return static
+     */
+    public function setManufacturer(?Constant $manufacturer)
     {
         $this->manufacturer = $manufacturer;
         return $this;
@@ -218,7 +240,11 @@ class InvoiceDrug extends BaseClass
     {
         return $this->manufacturer;
     }
-    public function setCreatedAt(DateTime|string|null $createdAt): static
+    /**
+     * @param \DateTime|string|null $createdAt
+     * @return static
+     */
+    public function setCreatedAt($createdAt)
     {
         if ($createdAt === null) {
             $this->createdAt = null;
@@ -239,7 +265,11 @@ class InvoiceDrug extends BaseClass
     {
         return $this->createdAt;
     }
-    public function setIncomeDate(DateTime|string|null $incomeDate): static
+    /**
+     * @param \DateTime|string|null $incomeDate
+     * @return static
+     */
+    public function setIncomeDate($incomeDate)
     {
         if ($incomeDate === null) {
             $this->incomeDate = null;
@@ -260,7 +290,10 @@ class InvoiceDrug extends BaseClass
     {
         return $this->incomeDate;
     }
-    public function setInvoiceNumber(?string $invoiceNumber): static
+    /**
+     * @return static
+     */
+    public function setInvoiceNumber(?string $invoiceNumber)
     {
         $this->invoiceNumber = $invoiceNumber;
         return $this;
@@ -270,7 +303,10 @@ class InvoiceDrug extends BaseClass
         return $this->invoiceNumber;
     }
 
-    public function setInvoiceID(?int $invoiceID): static
+    /**
+     * @return static
+     */
+    public function setInvoiceID(?int $invoiceID)
     {
         $this->invoiceID = $invoiceID;
         return $this;
@@ -282,7 +318,10 @@ class InvoiceDrug extends BaseClass
     }
 
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         return (new static)
             ->setId(136443)
@@ -297,7 +336,10 @@ class InvoiceDrug extends BaseClass
             ->setIncomeDate(new DateTime('2025-05-21 00:00:00'))
             ->setInvoiceNumber('contract_3346');
     }
-    public static function incomeCreateDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function incomeCreateDummy(bool $imitateReal = false)
     {
         return (new self)
             ->setId(136582)
