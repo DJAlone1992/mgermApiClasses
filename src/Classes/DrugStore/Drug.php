@@ -127,7 +127,10 @@ class Drug extends BaseClass
     {
         return $this->packageID;
     }
-    public function setPackageID(?int $packageID): static
+    /**
+     * @return static
+     */
+    public function setPackageID(?int $packageID)
     {
         $this->packageID = $packageID;
         return $this;
