@@ -38,6 +38,12 @@ class Drug extends BaseClass
         ]
     ];
     /**
+     ** Код параметров упаковки
+     * @var int
+     * @see medis_drug_store.invoice.kodmedupak09
+     */
+    private ?int $packageID = null;
+    /**
      ** Полное название препарата
      * @var string
      */
@@ -117,6 +123,15 @@ class Drug extends BaseClass
      */
     private ?Constant $unitMeasure = null;
 
+    public function getPackageID(): ?int
+    {
+        return $this->packageID;
+    }
+    public function setPackageID(?int $packageID): static
+    {
+        $this->packageID = $packageID;
+        return $this;
+    }
     public function getFullDrugName(): ?string
     {
         return $this->fullDrugName;
