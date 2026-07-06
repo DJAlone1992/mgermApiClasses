@@ -4,7 +4,9 @@
 
 ## Параметры
 
-Метод: GET Параметры:
+Метод: GET
+
+Параметры:
 
 - jsonParameters (int) - Параметры [кодирования](https://www.php.net/manual/ru/function.json-encode.php) JSON ответа
 - mgermID (int) - Идентификатор контракта в МИС

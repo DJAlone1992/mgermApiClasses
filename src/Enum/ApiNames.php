@@ -16,4 +16,5 @@ final class ApiNames
     public const UIS = 'uis';
     public const ChatPush = 'chatpush';
     public const NaPopravku = 'napopravku';
+    public const Parus = 'parus';
 }
