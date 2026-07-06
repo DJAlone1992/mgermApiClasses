@@ -42,7 +42,7 @@ class Drug extends BaseClass
      * @var int
      * @see medis_drug_store.invoice.kodmedupak09
      */
-    private ?int $packageID = null;
+    private $packageID;
     /**
      ** Полное название препарата
      * @var string
@@ -127,7 +127,10 @@ class Drug extends BaseClass
     {
         return $this->packageID;
     }
-    public function setPackageID(?int $packageID): static
+    /**
+     * @return static
+     */
+    public function setPackageID(?int $packageID)
     {
         $this->packageID = $packageID;
         return $this;
