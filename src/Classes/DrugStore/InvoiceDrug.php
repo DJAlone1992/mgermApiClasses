@@ -5,6 +5,7 @@ namespace MgermApiClasses\Classes\DrugStore;
 use DateTime;
 use MgermApiClasses\Base\BaseClass;
 use MgermApiClasses\Classes\Constant;
+use MgermApiClasses\Enum\DrugStore;
 
 class InvoiceDrug extends BaseClass
 {
@@ -156,7 +157,7 @@ class InvoiceDrug extends BaseClass
     }
     public function getQuantityFloat(): ?float
     {
-        return $this->quantity === null ? null : $this->quantity / 10000;
+        return $this->quantity === null ? null : $this->quantity /DrugStore::QuantityMultiplier;
     }
     /**
      * @return static
@@ -172,7 +173,7 @@ class InvoiceDrug extends BaseClass
     }
     public function getSumFloat(): ?float
     {
-        return $this->sum === null ? null : $this->sum / 100;
+        return $this->sum === null ? null : $this->sum / DrugStore::RublesMultiplier;
     }
     /**
      * @return static
@@ -188,7 +189,7 @@ class InvoiceDrug extends BaseClass
     }
     public function getPriceFloat(): ?float
     {
-        return $this->price === null ? null : $this->price / 100;
+        return $this->price === null ? null : $this->price / DrugStore::RublesMultiplier;
     }
 
     /**
