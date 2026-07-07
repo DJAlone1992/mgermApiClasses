@@ -208,12 +208,18 @@ class ContractTable extends BaseClass
     {
         return $this->differenceTable;
     }
-    public function setDifferenceTable(array $differenceTable): static
+    /**
+     * @return static
+     */
+    public function setDifferenceTable(array $differenceTable)
     {
         $this->differenceTable = $differenceTable;
         return $this;
     }
-    public function addDifferenceDrug(int $drugID, int $countDifference, int $sumDifference): static
+    /**
+     * @return static
+     */
+    public function addDifferenceDrug(int $drugID, int $countDifference, int $sumDifference)
     {
         $this->differenceTable[$drugID] = [
             'count' => $countDifference,
