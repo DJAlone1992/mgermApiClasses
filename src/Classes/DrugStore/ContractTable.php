@@ -3,6 +3,7 @@
 namespace MgermApiClasses\Classes\DrugStore;
 
 use MgermApiClasses\Base\BaseClass;
+use MgermApiClasses\Enum\DrugStore;
 
 class ContractTable extends BaseClass
 {
@@ -14,12 +15,31 @@ class ContractTable extends BaseClass
         'receivedDrugs' => [
             InvoiceDrug::IncomeDummyArray
         ],
+        'differenceTable' => [
+            136443 => [
+                'count' => 0,
+                'countFloat' => 0,
+                'sum' => 0,
+                'sumFloat' => 0
+            ]
+        ],
         'contractSum' => 9878400,
+        'contractSumFloat' => 98784,
         'countDifference' => 0,
+        'countDifferenceFloat' => 0,
         'sumDifference' => 0,
-        'totalIncomeCount' => 1,
-        'totalIncomeSum' => 9878400
+        'sumDifferenceFloat' => 0,
+        'totalIncomeCount' => 10000,
+        'totalIncomeCountFloat' => 1,
+        'totalIncomeSum' => 9878400,
+        'totalIncomeSumFloat' => 98784
     ];
+    /**
+     ** Массив различий по каждому препарату
+     * @var array
+     */
+    private array $differenceTable = [];
+
     /**
      ** Массив информации о препаратах в контракте
      * @var InvoiceDrug[]|null
@@ -163,6 +183,47 @@ class ContractTable extends BaseClass
         $this->receivedDrugs[] = $drug;
         return $this;
     }
+
+    public function getContractSumFloat(): ?float
+    {
+        return $this->contractSum === null ? null : $this->contractSum / DrugStore::RublesMultiplier;
+    }
+    public function getCountDifferenceFloat(): ?float
+    {
+        return $this->countDifference === null ? null : $this->countDifference / DrugStore::QuantityMultiplier;
+    }
+    public function getSumDifferenceFloat(): ?float
+    {
+        return $this->sumDifference === null ? null : $this->sumDifference / DrugStore::RublesMultiplier;
+    }
+    public function getTotalIncomeCountFloat(): ?float
+    {
+        return $this->totalIncomeCount === null ? null : $this->totalIncomeCount / DrugStore::QuantityMultiplier;
+    }
+    public function getTotalIncomeSumFloat(): ?float
+    {
+        return $this->totalIncomeSum === null ? null : $this->totalIncomeSum / DrugStore::RublesMultiplier;
+    }
+    public function getDifferenceTable(): array
+    {
+        return $this->differenceTable;
+    }
+    public function setDifferenceTable(array $differenceTable): static
+    {
+        $this->differenceTable = $differenceTable;
+        return $this;
+    }
+    public function addDifferenceDrug(int $drugID, int $countDifference, int $sumDifference): static
+    {
+        $this->differenceTable[$drugID] = [
+            'count' => $countDifference,
+            'countFloat' => $countDifference / DrugStore::QuantityMultiplier,
+            'sum' => $sumDifference,
+            'sumFloat' => $sumDifference / DrugStore::RublesMultiplier
+        ];
+        return $this;
+    }
+
     /**
      * @return static
      */
@@ -173,9 +234,10 @@ class ContractTable extends BaseClass
             ->setContractSum(9878400)
             ->addIncomeDrug(InvoiceDrug::createDummy($imitateReal))
             ->addReceivedDrug(InvoiceDrug::incomeCreateDummy($imitateReal))
+            ->addDifferenceDrug(136443, 0, 0)
             ->setCountDifference(0)
             ->setSumDifference(0)
-            ->setTotalIncomeCount(1)
+            ->setTotalIncomeCount(10000)
             ->setTotalIncomeSum(9878400);
     }
 }
