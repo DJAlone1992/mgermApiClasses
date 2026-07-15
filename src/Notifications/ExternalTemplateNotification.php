@@ -21,7 +21,7 @@ class ExternalTemplatedNotification extends BaseClass
     public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
-        $me->setNotificationType(ExternalNotificationTypes::Referral)->seObject(Referral::createDummy($imitateReal));
+        $me->setNotificationType(ExternalNotificationTypes::Referral)->setObject(Referral::createDummy($imitateReal));
         return $me;
     }
     /**
@@ -39,7 +39,7 @@ class ExternalTemplatedNotification extends BaseClass
      * @param \MgermApiClasses\Classes\Referral|\MgermApiClasses\Classes\Record|\MgermApiClasses\Classes\Patient $object
      * @return static
      */
-    public function seObject($object)
+    public function setObject($object)
     {
         $this->object = $object;
         return $this;
@@ -47,7 +47,7 @@ class ExternalTemplatedNotification extends BaseClass
     /**
      * @return \MgermApiClasses\Classes\Referral|\MgermApiClasses\Classes\Record|\MgermApiClasses\Classes\Patient
      */
-    public function geObject()
+    public function getObject()
     {
         return $this->object;
     }
