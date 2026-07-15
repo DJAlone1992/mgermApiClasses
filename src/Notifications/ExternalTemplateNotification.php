@@ -15,7 +15,10 @@ class ExternalTemplatedNotification extends BaseClass
         'object' => Referral::dummyArray,
     ];
 
-    public static function createDummy(bool $imitateReal = false): static
+    /**
+     * @return static
+     */
+    public static function createDummy(bool $imitateReal = false)
     {
         $me = new static();
         $me->setNotificationType(ExternalNotificationTypes::Referral)->seObject(Referral::createDummy($imitateReal));
@@ -30,18 +33,28 @@ class ExternalTemplatedNotification extends BaseClass
      ** Объект
      * @var Referral|Record|Patient
      */
-    private Referral|Record|Patient $object;
+    private $object;
 
-    public function seObject(Referral|Record|Patient $object): static
+    /**
+     * @param \MgermApiClasses\Classes\Referral|\MgermApiClasses\Classes\Record|\MgermApiClasses\Classes\Patient $object
+     * @return static
+     */
+    public function seObject($object)
     {
         $this->object = $object;
         return $this;
     }
-    public function geObject(): Referral|Record|Patient
+    /**
+     * @return \MgermApiClasses\Classes\Referral|\MgermApiClasses\Classes\Record|\MgermApiClasses\Classes\Patient
+     */
+    public function geObject()
     {
         return $this->object;
     }
-    public function setNotificationType(int $notificationType): static
+    /**
+     * @return static
+     */
+    public function setNotificationType(int $notificationType)
     {
         if (!in_array($notificationType, [ExternalNotificationTypes::Referral, ExternalNotificationTypes::Analysis, ExternalNotificationTypes::AfterVisit])) {
             throw new \Exception("Invalid notification type");
